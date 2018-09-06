@@ -1,24 +1,48 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>index</title>
-  </head>
-  <body>
-    <div id="Title">
-      <center><H1>Movies</H1></center>
-      <a href="register.jsp">regrister</a>
-      <a href="login.jsp">Login</a>
-    </div>
-    <div id="Search">
-        search form goes here using
-        1. Title [Name of the movie]
-        2. Genre [Action, Sci-Fi, Horror, Comedy]
-        3. Movie release year [user can search a period between 2 dates]
-    </div><div id="Movies">
-        <%--movies should apear here--%>
-    </div><div id="Checkout">
-        <a href="checkout."
-    </div>
-  </body>
+    <datalist id="Genres">
+        <option value="Action">
+        <option value="Sci-Fi">
+        <option value="Horror">
+        <option value="Comedy">
+    </datalist>
+</head>
+<body bgcolor="#bdbdbd">
+<div id="Title" style="text-align: right;">
+    <H1 style="text-align: center">Movies</H1>
+    <a href="register.jsp">Register</a>
+    <a href="login.jsp">Login</a>
+</div>
+<div id="Search" style="margin: auto; width: 50%; padding: 10px;">
+    <form action="">
+        <table>
+            <tr>
+                <td>
+                    <label for="Title">Title</label>
+                    <input name="Title" type="text" value="" autocomplete="false">
+                </td>
+                <td>
+                    <label for="Genre">Genre</label>
+                    <input name="Genre" list="Genres" value="" autocomplete="false" onfocus="this.value=''">
+                </td>
+                <td>
+                    <label for="YearS">Start Year</label>
+                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="9000" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
+                </td>
+                <td>
+                    <label for="YearF">End</label>
+                    <input name="YearF" type="number" value="2000" autocomplete="false" min="9000" max="2020" maxlength="4" minlength="4">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div><div id="Movies">
+    <%--movies should apear here--%>
+</div><div id="Checkout">
+    <a href="checkout."></a>
+</div>
+</body colo>
 </html>
