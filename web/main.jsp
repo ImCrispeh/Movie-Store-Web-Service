@@ -3,9 +3,39 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Landing Page</title>
     </head>
+    
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    
     <body>
-        <h1>Hello World!</h1>
+        <h1 align="center">Main Page</h1>
+        <div align="right">Logged in as: </div>
+        <div align="right"><a href="account.jsp">My Account</a> | <a href="index.jsp">Logout</a></div>
+        <h3 align="center">Order History</h3>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th width="10%">Order ID</th>
+                    <th width="60%">Movies</th>
+                    <th width="10%">Cost</th>
+                    <th width="10%">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>
