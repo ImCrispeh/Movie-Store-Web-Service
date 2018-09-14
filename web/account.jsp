@@ -1,9 +1,3 @@
-<%-- 
-    Document   : account
-    Created on : 30/08/2018, 8:59:10 PM
-    Author     : MKs
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

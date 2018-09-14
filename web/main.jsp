@@ -4,14 +4,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Landing Page</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
-    
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
     
     <body>
         <h1 align="center">Main Page</h1>

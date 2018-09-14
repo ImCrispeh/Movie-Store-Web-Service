@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://wsd/oms"
+    xmlns="http://wsd/oms"
+    elementFormDefault="qualified"> 
+    
+    <xs:simpleType name="date">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="email">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-z][A-z\._]*@[A-z]+(\.[A-z]+)+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:element name="history">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="order">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="orderID" type="xs:integer"/>
+                            <xs:element name="movies">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="movie" type="movieType"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="fullName" type="xs:string" />
+                            <xs:element name="email" type="email"/>
+                            <xs:element name="paymentMethod" type="xs:string"/>
+                            <xs:element name="saleTotal" type="xs:integer"/>
+                            <xs:element name="orderStatus" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
