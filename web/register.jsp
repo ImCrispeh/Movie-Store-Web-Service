@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td><label for="address">Address:</label></td>
-            <td><input name="address" id="address" type="tel" pattern="[0-9]{10}"></td>
+            <td><input name="address" id="address" type="text"></td>
         </tr>
         <tr>
             <td><label for="city">City:</label></td>

@@ -9,8 +9,7 @@
     
     <body>
         <h1 align="center">Main Page</h1>
-        <div align="right">Logged in as: </div>
-        <div align="right"><a href="account.jsp">My Account</a> | <a href="index.jsp">Logout</a></div>
+        <%@include file="/WEB-INF/jspf/navbar.jspf" %>
         <h3 align="center">Order History</h3>
         <table width="100%">
             <thead>
