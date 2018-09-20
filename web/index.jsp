@@ -44,5 +44,5 @@
 </div><div id="Checkout">
     <a href="checkout."></a>
 </div>
-</body colo>
+</body>
 </html>
