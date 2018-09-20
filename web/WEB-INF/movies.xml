@@ -2,7 +2,7 @@
 <movies>
     <movie>
         <title>Name of movie</title>
-        <Genre>Action</Genre>
+        <genre>Action</genre>
         <releaseDate>2018</releaseDate>
         <price>$20</price>
         <copies>3</copies>
