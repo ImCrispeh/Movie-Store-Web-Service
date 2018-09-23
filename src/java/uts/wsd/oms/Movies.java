@@ -1,4 +1,4 @@
-package uts.wsd;
+package uts.wsd.oms;
 
 import javax.xml.bind.annotation.*;
 import java.util.*;

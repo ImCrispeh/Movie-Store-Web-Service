@@ -5,18 +5,6 @@
     xmlns="http://wsd/oms"
     elementFormDefault="qualified"> 
     
-    <xs:simpleType name="date">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}"/>
-        </xs:restriction>
-    </xs:simpleType>
-    
-    <xs:simpleType name="email">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="[A-z][A-z\._]*@[A-z]+(\.[A-z]+)+"/>
-        </xs:restriction>
-    </xs:simpleType>
-    
     <xs:element name="history">
         <xs:complexType>
             <xs:sequence>

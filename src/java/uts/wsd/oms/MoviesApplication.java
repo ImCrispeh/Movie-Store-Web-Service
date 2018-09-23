@@ -1,6 +1,4 @@
-package uts.wsd;
-
-package uts.wsd;
+package uts.wsd.oms;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +25,7 @@ public class MoviesApplication {
         return filePath;
     }
 
-    public void setFilePath(String filePath) {
+    public void setFilePath(String filePath) throws JAXBException, FileNotFoundException, IOException {
         this.filePath = filePath;
 
         JAXBContext jc = JAXBContext.newInstance(Movies.class);
