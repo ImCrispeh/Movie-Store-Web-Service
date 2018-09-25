@@ -9,17 +9,25 @@ import java.io.Serializable;
 public class Movies implements Serializable {
 
     @XmlElement(name = "movie")
-    private ArrayList<Movie> list = new ArrayList<Movie>();
+    private ArrayList<Movie> movies = new ArrayList<Movie>();
 
     public ArrayList<Movie> getList() {
-        return list;
+        return movies;
     }
 
     public void addMovie(Movie movie) {
-        list.add(movie);
+        int i = movies.indexOf(movie);
+        if (i > -1)
+            movies.get(i).incrementCopies(movie.getCopies());
+        else
+            movies.add(movie);
     }
 
-    public void removemovie(Movie movie) {
-        list.remove(movie);
+    public void removeMovie(Movie movie) {
+        int i = movies.indexOf(movie);
+        if (i > -1)
+            movies.get(i).decrementCopies(movie.getCopies());
+        else
+            movies.remove(movie);
     }
 }

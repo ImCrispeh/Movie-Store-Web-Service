@@ -2,6 +2,7 @@ package uts.wsd.oms;
 
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @XmlRootElement(name="movie")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -20,7 +21,7 @@ public class Movie implements Serializable {
     private float price;
 
     @XmlElement(name = "copies")
-    private String copies;
+    private int copies;
 
 
     public Movie() {
@@ -65,11 +66,51 @@ public class Movie implements Serializable {
         this.price = price;
     }
 
-    public String getCopies() {
+    public int getCopies() {
         return copies;
     }
 
-    public void setCopies(String copies) {
+    public void setCopies(int copies) {
         this.copies = copies;
     }
+    
+    public void incrementCopies(int amount){
+        copies += amount;
+    }
+    
+    public void decrementCopies(int amount){
+        copies -= amount;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Movie other = (Movie) obj;
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.genre, other.genre)) {
+            return false;
+        }
+        if (!Objects.equals(this.releaseDate, other.releaseDate)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 13 * hash + Objects.hashCode(this.title);
+        hash = 13 * hash + Objects.hashCode(this.genre);
+        hash = 13 * hash + Objects.hashCode(this.releaseDate);
+        return hash;
+    }
+    
+    
 }
