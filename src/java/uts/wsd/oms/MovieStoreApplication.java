@@ -85,7 +85,7 @@ public class MovieStoreApplication {
             JAXBContext jc = JAXBContext.newInstance(Users.class);
             Marshaller m = jc.createMarshaller();
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal(users, new FileOutputStream(filePath));
+            m.marshal(users, new FileOutputStream(filePath + "/users.xml"));
             return true;
         }
         else
