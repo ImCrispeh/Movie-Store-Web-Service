@@ -11,11 +11,10 @@ public class Util {
         nextOrderID++;
         return temp;
     }
-    
-    public static void initOrderID(ArrayList<History> history){
-        for(History h : history)
-            for(Order order : h.getOrders())
-                if(order.getOrderID() > nextOrderID)
-                    nextOrderID = order.getOrderID()+1;
+
+    public static void initOrderID(History history) {
+        for (Order order : history.getOrders())
+            if (order.getOrderID() > nextOrderID)
+                nextOrderID = order.getOrderID() + 1;
     }
 }

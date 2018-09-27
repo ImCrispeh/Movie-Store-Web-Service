@@ -46,6 +46,7 @@ public class MovieStoreApplication {
         file = new FileInputStream(filePath + "/history.xml");
         history = (History) u.unmarshal(file);
         file.close();
+        Util.initOrderID(history);
     }
 
     public Movies getMovies() {
