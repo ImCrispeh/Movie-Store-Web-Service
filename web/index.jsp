@@ -41,7 +41,6 @@
     </form>
 </div><div id="Movies">
     <%--movies should apear here--%>
-    MOVIES !!!!!!!!!!!!!!!!!!!!!!!!
 </div><div id="Checkout">
     <a href="checkout."></a>
 </div>
