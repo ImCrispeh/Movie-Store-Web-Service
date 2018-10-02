@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<history>
+    xmlns="http://uts/wsd/oms"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://uts/wsd/oms history.xsd"
+    <order>
+        <orderID>001</orderID>
+        <movies>
+            <movie>
+                <title>Name of movie</title>
+                <genre>Action</genre>
+                <releaseDate>01/02/2018</releaseDate>
+                <price>20</price>
+                <copies>1</copies>
+            </movie>
+        </movies>
+        <fullname>Christopher Fung</fullname>
+        <email>test@email.com</email>
+        <paymentMethod>visa</paymentMethod>
+        <saleTotal>20</saleTotal>
+        <orderStatus>cancelled</orderStatus>
+    </order>
+</history>

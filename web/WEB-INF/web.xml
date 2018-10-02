@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <listener>
+<!--    <listener>
         <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
     </listener>
     <servlet>
@@ -17,5 +17,20 @@
     <servlet-mapping>
         <servlet-name>WSServlet</servlet-name>
         <url-pattern>/services/*</url-pattern>
+    </servlet-mapping>-->
+    
+    <servlet>
+        <servlet-name>Jersey REST Web Services</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>uts.wsd.oms.rest</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+  
+    <servlet-mapping>
+        <servlet-name>Jersey REST Web Services</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 </web-app>
