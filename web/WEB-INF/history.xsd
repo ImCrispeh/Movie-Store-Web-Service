@@ -8,25 +8,28 @@
     <xs:element name="history">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="order" minOccurs="0">
+                <xs:element name="order" type="order" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="order">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="orderID" type="xs:integer"/>
+                <xs:element name="movies">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="orderID" type="xs:integer"/>
-                            <xs:element name="movies">
-                                <xs:complexType>
-                                    <xs:sequence>
-                                        <xs:element name="movie" type="movieType"/>
-                                    </xs:sequence>
-                                </xs:complexType>
-                            </xs:element>
-                            <xs:element name="fullname" type="xs:string" />
-                            <xs:element name="email" type="email"/>
-                            <xs:element name="paymentMethod" type="xs:string"/>
-                            <xs:element name="saleTotal" type="xs:integer"/>
-                            <xs:element name="orderStatus" type="xs:string"/>
+                            <xs:element name="movie" type="movieType" minOccurs="1"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
+                <xs:element name="firstName" type="name"/>
+                <xs:element name="lastName" type="name"/>
+                <xs:element name="email" type="email"/>
+                <xs:element name="paymentMethod" type="xs:string"/>
+                <xs:element name="saleTotal" type="xs:integer"/>
+                <xs:element name="orderStatus" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>

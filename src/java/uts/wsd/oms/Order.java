@@ -16,8 +16,11 @@ public class Order implements Serializable {
     @XmlElement(name = "movies")
     private Movies movies;
 
-    @XmlElement(name = "fullName")
-    private String fullname;
+    @XmlElement(name = "firstName")
+    private String firstName;
+    
+    @XmlElement(name = "lastName")
+    private String lastName;
 
     @XmlElement(name = "email")
     private String email;
@@ -34,16 +37,17 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(Movies movies, String fullname, String email, String paymentMethod, int saleTotal, String orderStatus) {
-        this.orderID = Util.generateOrderID();
+    public Order(int orderID, Movies movies, String firstName, String lastName, String email, String paymentMethod, int saleTotal, String orderStatus) {
+        this.orderID = orderID;
         this.movies = movies;
-        this.fullname = fullname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.paymentMethod = paymentMethod;
         this.saleTotal = saleTotal;
         this.orderStatus = orderStatus;
     }
-
+    
     public int getOrderID() {
         return orderID;
     }
@@ -60,15 +64,23 @@ public class Order implements Serializable {
         this.movies = movies;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getEmail() {
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
+        public String getEmail() {
         return email;
     }
 
@@ -98,5 +110,26 @@ public class Order implements Serializable {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+    
+    private void updateTotal(){
+        saleTotal = 0;
+        for(Movie movie : movies.getList())
+            saleTotal += movie.getCopies() * movie.getPrice();
+    }
+    
+    public void addMovie(Movie movie){
+        movies.addMovie(movie);
+        updateTotal();
+    }
+    
+    public void removeMovie(Movie movie){
+        movies.removeMovie(movie);
+        updateTotal();
+    }
+    
+    public void removeMovie(String title, String releaseDate){
+        movies.removeMovie(title, releaseDate);
+        updateTotal();
     }
 }

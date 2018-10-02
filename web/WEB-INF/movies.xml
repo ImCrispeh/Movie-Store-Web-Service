@@ -3,7 +3,7 @@
     <movie>
         <title>Name of movie</title>
         <genre>Action</genre>
-        <releaseDate>2018</releaseDate>
+        <releaseDate>01/01/2018</releaseDate>
         <price>20</price>
         <copies>3</copies>
     </movie>

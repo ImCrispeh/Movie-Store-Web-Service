@@ -25,9 +25,16 @@ public class Movies implements Serializable {
 
     public void removeMovie(Movie movie) {
         int i = movies.indexOf(movie);
-        if (i > -1)
+        if (i > -1 && movies.get(i).getCopies() > 1)
             movies.get(i).decrementCopies(movie.getCopies());
         else
             movies.remove(movie);
+    }
+    
+    public void removeMovie(String title, String releaseDate) {
+        if(movies.stream().filter(m -> m.getTitle().equals(title) && m.getReleaseDate().equals(releaseDate)).findFirst().isPresent())
+        {
+            removeMovie(movies.stream().filter(m -> m.getTitle().equals(title) && m.getReleaseDate().equals(releaseDate)).findFirst().get());
+        }
     }
 }

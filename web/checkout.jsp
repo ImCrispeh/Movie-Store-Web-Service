@@ -1,9 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% String filePath = application.getRealPath("WEB-INF");%>
-<jsp:useBean id="movieStoreApp" class="uts.wsd.oms.MovieStoreApplication" scope="application">
-    <jsp:setProperty name="diaryApp" property="filePath" value="<%=filePath%>"/>
-</jsp:useBean>
+<%
+    String xmlPath = "file:///" + application.getRealPath("WEB-INF\\order.xml");
+    String xslPath = "file:///" + application.getRealPath("WEB-INF\\order.xsl");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,30 +15,16 @@
     </head>
 
     <body>
+        <c:import url="<%=xmlPath%>"  var="inputDoc" />
+
+        <c:import url="<%=xslPath%>" var="stylesheet" />
+
         <h1 align="center">Checkout Page</h1>
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
-        <h3 align="center">Order: </h3>
-        <form action="#" method="Post">
-            <table width="100%">
-                <thead>
-                    <tr>
-                        <th width="20%">Title</th>
-                        <th width="20%">Genre</th>
-                        <th width="20%">Release Date</th>
-                        <th width="20%">Price</th>
-                        <th width="20%">Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>title</td>
-                        <td>genre</td>
-                        <td>releaseDate</td>
-                        <td>price</td>
-                        <td><input name="amount_ID" type="number"  value="1" autocomplete="false" min="0" max="10"></td> <!- set max = available copies ->
-                    </tr>
-                </tbody>
-            </table>
+
+        <form action="checkoutAction.jsp" method="Post">
+            <x:transform xml="${inputDoc}" xslt="${stylesheet}">
+            </x:transform>
             <input type="submit" name="cancelOrder" value="Cancel Order">
             <input type="submit" name="placeOrder" value="Place Order">
         </form>
