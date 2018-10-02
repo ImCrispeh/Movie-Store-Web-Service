@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://wsd/oms"
-    xmlns="http://wsd/oms"
+    targetNamespace="http://uts/wsd/oms"
+    xmlns="http://uts/wsd/oms"
+    xmlns:common="http://uts/wsd/oms/common"
     elementFormDefault="qualified"> 
+    
+    <xs:import namespace="http://uts/wsd/oms/common" 
+           schemaLocation="commonTypes.xsd"/>
     
     <xs:element name="history">
         <xs:complexType>
@@ -20,7 +24,7 @@
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="fullname" type="xs:string" />
-                            <xs:element name="email" type="email"/>
+                            <xs:element name="email" type="common:email"/>
                             <xs:element name="paymentMethod" type="xs:string"/>
                             <xs:element name="saleTotal" type="xs:integer"/>
                             <xs:element name="orderStatus" type="xs:string"/>
@@ -30,4 +34,14 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    <xs:complexType name="movieType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="title"/>
+            <xs:element type="xs:string" name="genre"/>
+            <xs:element type="common:date" name="releaseDate"/>
+            <xs:element type="xs:float" name="price"/>
+            <xs:element type="xs:integer" name="copies"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>

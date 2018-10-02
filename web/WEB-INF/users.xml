@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<users>
+<users
+    xmlns="http://uts/wsd/oms"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://uts/wsd/oms users.xsd">>
     <user>
         <firstName>Ryan</firstName>
         <lastName>Heise</lastName>

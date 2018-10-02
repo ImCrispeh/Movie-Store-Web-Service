@@ -9,7 +9,11 @@ and open the template in the editor.
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            targetNamespace="http://uts/wsd/oms"
            xmlns="http://uts/wsd/oms"
-           elementFormDefault="qualified">
+           elementFormDefault="qualified"
+           xmlns:common="http://uts/wsd/oms/common">
+    
+    <xs:import namespace="http://uts/wsd/oms/common" 
+               schemaLocation="commonTypes.xsd"/>
 
     <xs:element name="users">
         <xs:complexType>
@@ -17,15 +21,15 @@ and open the template in the editor.
                 <xs:element name="user" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="firstName" type="name"/>
-                            <xs:element name="lastName" type="name"/>
-                            <xs:element name="email" type="email"/>
-                            <xs:element name="password" type="password"/>
-                            <xs:element name="phoneNo" type="phoneNo"/>
+                            <xs:element name="firstName" type="common:name"/>
+                            <xs:element name="lastName" type="common:name"/>
+                            <xs:element name="email" type="common:email"/>
+                            <xs:element name="password" type="common:password"/>
+                            <xs:element name="phoneNo" type="common:phoneNo"/>
                             <xs:element name="address" type="xs:string"/>
-                            <xs:element name="city" type="city"/>
-                            <xs:element name="state" type="state"/>
-                            <xs:element name="postCode" type="postCode"/>
+                            <xs:element name="city" type="common:city"/>
+                            <xs:element name="state" type="common:state"/>
+                            <xs:element name="postCode" type="common:postCode"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>

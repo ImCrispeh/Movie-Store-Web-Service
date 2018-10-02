@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<movies>
+<movies
+    xmlns="http://uts/wsd/oms"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://uts/wsd/oms movies.xsd">
     <movie>
         <title>Name of movie</title>
         <genre>Action</genre>
-        <releaseDate>2018</releaseDate>
+        <releaseDate>01/03/2018</releaseDate>
         <price>20</price>
         <copies>3</copies>
     </movie>
