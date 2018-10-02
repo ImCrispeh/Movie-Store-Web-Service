@@ -26,14 +26,7 @@ public class HistoryService {
             return movieStoreApp;
         }
     }
-    
-    @Path("history/all")
-    @GET
-    @Produces(MediaType.APPLICATION_XML)
-    public List<Order> getHistory() throws JAXBException, IOException {
-        return getMovieStoreApp().getHistory().getOrders();
-    }
-    
+        
     @Path("history")
     @GET
     @Produces(MediaType.APPLICATION_XML)
