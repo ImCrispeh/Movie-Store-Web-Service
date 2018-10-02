@@ -30,8 +30,8 @@ public class HistoryService {
     @Path("history/all")
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public History getHistory() throws JAXBException, IOException {
-        return getMovieStoreApp().getHistory();
+    public List<Order> getHistory() throws JAXBException, IOException {
+        return getMovieStoreApp().getHistory().getOrders();
     }
     
     @Path("history")

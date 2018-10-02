@@ -41,13 +41,14 @@ public class History implements Serializable {
                 }
             }
         } else {
-            ordersToReturn.addAll(orders);
+            if (orders != null) {
+                ordersToReturn.addAll(orders);
+            }
         }
 
         //Remove any orders that do match email parameter
         if (email != null) {
             List<Order> toDelete = new ArrayList<Order>();
-
             for (Order order : ordersToReturn) {
                 if (!order.getEmail().equals(email)) {
                     toDelete.add(order);
@@ -70,6 +71,7 @@ public class History implements Serializable {
                     if (movies.get(i).getTitle().equals(title)) {
                         isMatch = true;
                     }
+                    i++;
                 }
                 
                 if (!isMatch) {
