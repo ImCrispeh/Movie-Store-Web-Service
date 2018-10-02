@@ -35,7 +35,7 @@ public class MovieStoreApplication {
 
         jc = JAXBContext.newInstance(Users.class);
         u = jc.createUnmarshaller();
-
+        
         file = new FileInputStream(filePath + "/users.xml");
         users = (Users) u.unmarshal(file);
         file.close();
@@ -99,5 +99,13 @@ public class MovieStoreApplication {
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         m.marshal(getHistory(), new FileOutputStream(filePath + "/history.xml"));
+    }
+    
+    public boolean validateUsername(String username){
+        return username.matches("[A-Z]([a-zA-]*)");
+    }
+    
+    public boolean validatePassword(String password){
+        return password.matches("([a-zA-Z0-9]+)");
     }
 }

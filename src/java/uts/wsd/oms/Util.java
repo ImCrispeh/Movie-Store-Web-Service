@@ -13,8 +13,9 @@ public class Util {
     }
 
     public static void initOrderID(History history) {
-        for (Order order : history.getOrders())
-            if (order.getOrderID() > nextOrderID)
-                nextOrderID = order.getOrderID() + 1;
+        if(history != null && history.getOrders() != null)
+            for (Order order : history.getOrders())
+                if (order.getOrderID() > nextOrderID)
+                    nextOrderID = order.getOrderID() + 1;
     }
 }

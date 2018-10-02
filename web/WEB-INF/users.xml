@@ -1,5 +1,25 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<users xmlns="http://wsd/oms"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://wsd/oms users.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+    <user>
+        <firstName>Ryan</firstName>
+        <lastName>Heise</lastName>
+        <email>ryan@ryanheise.com</email>
+        <password>blahblah</password>
+        <phoneNo>12345678</phoneNo>
+        <address>123 fake st</address>
+        <city>sydney</city>
+        <state>NSW</state>
+        <postcode>2000</postcode>
+    </user>
+    <user>
+        <firstName>Joe</firstName>
+        <lastName>Bloggs</lastName>
+        <email>joe@bloggs.com</email>
+        <password>foobar</password>
+        <phoneNo>12345678</phoneNo>
+        <address>123 fake st</address>
+        <city>sydney</city>
+        <state>NSW</state>
+        <postcode>2000</postcode>
+    </user>
 </users>

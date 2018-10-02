@@ -1,4 +1,9 @@
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% String filePath = application.getRealPath("WEB-INF");%>
+<jsp:useBean id="movieStoreApp" class="uts.wsd.oms.MovieStoreApplication" scope="application">
+    <jsp:setProperty name="diaryApp" property="filePath" value="<%=filePath%>"/>
+</jsp:useBean>
 <!DOCTYPE html>
 <html>
     <head>
