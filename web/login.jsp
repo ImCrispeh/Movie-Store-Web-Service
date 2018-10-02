@@ -6,21 +6,25 @@
 </jsp:useBean>
 <%
     boolean loginError = false;
-    boolean validEmail = false, validPassword = false;
+    boolean validEmail = true, validPassword = true;
+    String email = "";
+    String password = "";
     User user = (User) session.getAttribute("user");
     //redirect user if they go to the login page while already logged in
     if(user != null)
             response.sendRedirect("index.jsp");
     
     if (request.getParameter("login") != null) {
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+        email = request.getParameter("email");
+        password = request.getParameter("password");
         user = movieStoreApp.getUsers().login(email, password);
         if (user != null) {
             session.setAttribute("user", user);
             response.sendRedirect("index.jsp");
         } else {
             loginError = true;
+            validEmail = movieStoreApp.validateEmail(email);
+            validPassword = movieStoreApp.validatePassword(password);
         }
     }
 %>
@@ -41,21 +45,25 @@
         <% }%>
 
         <form action="" method="post">
-            <table>
+            <table id="loginTable">
                 <tbody>
                     <tr>
                         <td><label for="email">Email</label></td>
-                        <td><input type="email" name="email"></td>
-                        <td><text class="validation">Invalid Email</text></td>
+                        <td><input type="email" name="email" value="<%=email%>"></td>
+                        <% if(!validEmail) { %>
+                        <td><text class="validation">Invalid Email format</text></td>
+                        <% } %>
                     </tr>
                     <tr>
                         <td><label for="password">Password</label></td>
                         <td><input type="password" name="password"></td>
-                        <td><text class="validation">Invalid Password</text></td>
+                        <% if(!validPassword) { %>
+                        <td><text class="validation">Invalid Password format</text></td>
+                        <% } %>
                     </tr>
                     <tr>
                         <td><label for="login"></label></td>
-                        <td><input type="submit" name="login" value="Login" <%= validEmail && validPassword ? "" : "disabled=\"\""%> ></td>
+                        <td><input type="submit" name="login" value="Login"></td>
                     </tr>
                 </tbody>
             </table>

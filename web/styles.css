@@ -6,3 +6,7 @@ table, th, td {
 .validation{
     color: red;
 }
+
+#loginTable, #loginTable th, #loginTable td {
+    border: 0px !important;
+}

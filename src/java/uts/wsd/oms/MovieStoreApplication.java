@@ -101,8 +101,8 @@ public class MovieStoreApplication {
         m.marshal(getHistory(), new FileOutputStream(filePath + "/history.xml"));
     }
     
-    public boolean validateUsername(String username){
-        return username.matches("[A-Z]([a-zA-]*)");
+    public boolean validateEmail(String email){
+        return email.matches("[A-z][A-z\\._]*@[A-z]+(\\.[A-z]+)+");
     }
     
     public boolean validatePassword(String password){
