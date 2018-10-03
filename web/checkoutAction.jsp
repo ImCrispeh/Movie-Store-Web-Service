@@ -5,24 +5,29 @@
 <jsp:useBean id="orderController" class="uts.wsd.oms.OrderController" scope="application">
     <jsp:setProperty name="orderController" property="filePath" value="<%=filePath%>"/>
 </jsp:useBean>
+<% String msFilePath = application.getRealPath("WEB-INF");%>
+<jsp:useBean id="movieStoreApp" class="uts.wsd.oms.MovieStoreApplication" scope="application">
+    <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=msFilePath%>"/>
+</jsp:useBean>
 <%
-    String submissionString;
     ArrayList<String> paramNames = Collections.list(request.getParameterNames());
     for(String param : paramNames)
     {
         if(param.contains("remove"))
         {
-            
             orderController.removeMovie(param);
             response.sendRedirect("checkout.jsp");
         }
         else if(param.equals("placeOrder"))
         {
-            //TODO: place an order
+            movieStoreApp.addOrder(orderController.getOrder());
+            orderController.cancelOrder();
+            response.sendRedirect("main.jsp");
         }
         else if(param.equals("cancelOrder"))
         {
-            //TODO: cancel order
+            orderController.cancelOrder();
+            response.sendRedirect("index.jsp");
         }
     }
     

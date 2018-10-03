@@ -16,25 +16,4 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
-    
-    <xs:element name="order">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="orderID" type="xs:integer"/>
-                <xs:element name="movies">
-                    <xs:complexType>
-                        <xs:sequence>
-                            <xs:element name="movie" type="common:movieType" minOccurs="1"/>
-                        </xs:sequence>
-                    </xs:complexType>
-                </xs:element>
-                <xs:element name="firstName" type="common:name"/>
-                <xs:element name="lastName" type="common:name"/>
-                <xs:element name="email" type="common:email"/>
-                <xs:element name="paymentMethod" type="xs:string"/>
-                <xs:element name="saleTotal" type="xs:integer"/>
-                <xs:element name="orderStatus" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
 </xs:schema>

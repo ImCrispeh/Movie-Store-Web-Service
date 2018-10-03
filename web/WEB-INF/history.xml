@@ -14,7 +14,8 @@
                 <copies>1</copies>
             </movie>
         </movies>
-        <fullname>Christopher Fung</fullname>
+        <firstName>Christopher</firstName>
+        <lastName>Fung</lastName>
         <email>test@email.com</email>
         <paymentMethod>visa</paymentMethod>
         <saleTotal>20</saleTotal>
@@ -39,7 +40,8 @@
                 <copies>1</copies>
             </movie>
         </movies>
-        <fullname>Christopher Fung</fullname>
+        <firstName>Christopher</firstName>
+        <lastName>Fung</lastName>
         <email>test@email.com</email>
         <paymentMethod>visa</paymentMethod>
         <saleTotal>20</saleTotal>
@@ -57,7 +59,8 @@
                 <copies>1</copies>
             </movie>
         </movies>
-        <fullname>Christopher Fung</fullname>
+        <firstName>Christopher</firstName>
+        <lastName>Fung</lastName>
         <email>nontest@email.com</email>
         <paymentMethod>visa</paymentMethod>
         <saleTotal>20</saleTotal>

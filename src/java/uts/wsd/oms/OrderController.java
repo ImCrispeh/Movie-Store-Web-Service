@@ -34,6 +34,7 @@ public class OrderController {
 
         FileInputStream file = new FileInputStream(filePath);
         order = (Order) u.unmarshal(file);
+        System.out.println(order.getOrderID());
         file.close();
     }
 
@@ -54,5 +55,13 @@ public class OrderController {
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(getOrder(), new FileOutputStream(filePath));
         }
+    }
+
+    public void cancelOrder() throws JAXBException, FileNotFoundException {
+        setOrder(new Order());
+        JAXBContext jc = JAXBContext.newInstance(Order.class);
+        Marshaller m = jc.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        m.marshal(getOrder(), new FileOutputStream(filePath));
     }
 }

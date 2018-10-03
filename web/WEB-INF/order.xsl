@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet 
+    xmlns:ns="http://uts/wsd/oms"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html"/>
 
     <xsl:template match="/">
@@ -9,17 +11,17 @@
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
             </head>
             <body>
-                <xsl:apply-templates select="order/orderID"/>
-                <xsl:apply-templates select="order/movies"/>
+                <xsl:apply-templates select="ns:order/ns:orderID"/>
+                <xsl:apply-templates select="ns:order/ns:movies"/>
             </body>
         </html>
     </xsl:template>
     
-    <xsl:template match="orderID">
+    <xsl:template match="ns:orderID">
         <h3 align="center">Order: <xsl:apply-templates/></h3>
     </xsl:template>
     
-    <xsl:template match="movies">
+    <xsl:template match="ns:movies">
         <table width="100%">
             <thead>
                 <tr>
@@ -37,14 +39,14 @@
         </table>
     </xsl:template>
     
-    <xsl:template match="movie">
+    <xsl:template match="ns:movie">
         <tr>
-            <td><xsl:value-of select="title"/></td>
-            <td><xsl:value-of select="genre"/></td>
-            <td><xsl:value-of select="releaseDate"/></td>
-            <td>$<xsl:value-of select="price"/></td>
-            <td><xsl:value-of select="copies"/></td>
-            <td><input type="submit" name="remove_{title}_{releaseDate}" class="material-icons" value="delete" /></td>
+            <td><xsl:value-of select="ns:title"/></td>
+            <td><xsl:value-of select="ns:genre"/></td>
+            <td><xsl:value-of select="ns:releaseDate"/></td>
+            <td>$<xsl:value-of select="ns:price"/></td>
+            <td><xsl:value-of select="ns:copies"/></td>
+            <td><input type="submit" name="remove_{ns:title}_{ns:releaseDate}" class="material-icons" value="delete" /></td>
         </tr>
     </xsl:template>
 </xsl:stylesheet>
