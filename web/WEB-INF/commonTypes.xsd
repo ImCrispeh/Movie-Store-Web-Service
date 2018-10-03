@@ -2,7 +2,7 @@
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     targetNamespace="http://uts/wsd/oms/common"
-    xmlns="http://uts/wsd/oms"
+    xmlns="http://uts/wsd/oms/common"
     elementFormDefault="qualified"> 
     
     <xs:simpleType name="date">
@@ -54,5 +54,4 @@
             <xs:pattern value="([0-9]{4})"/>
         </xs:restriction>
     </xs:simpleType>
-    
 </xs:schema>

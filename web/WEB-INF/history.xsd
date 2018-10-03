@@ -12,21 +12,21 @@
     <xs:element name="history">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="order" minOccurs="0">
+                <xs:element name="order" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="orderID" type="xs:integer"/>
                             <xs:element name="movies">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="movie" type="movieType"/>
+                                        <xs:element name="movie" type="movieType" maxOccurs="unbounded"/>
                                     </xs:sequence>
                                 </xs:complexType>
                             </xs:element>
                             <xs:element name="fullname" type="xs:string" />
                             <xs:element name="email" type="common:email"/>
                             <xs:element name="paymentMethod" type="xs:string"/>
-                            <xs:element name="saleTotal" type="xs:integer"/>
+                            <xs:element name="saleTotal" type="xs:double"/>
                             <xs:element name="orderStatus" type="xs:string"/>
                         </xs:sequence>
                     </xs:complexType>

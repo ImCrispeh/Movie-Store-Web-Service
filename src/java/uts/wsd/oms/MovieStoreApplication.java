@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import javax.xml.bind.*;
 
-public class MovieStoreApplication {
+public class MovieStoreApplication implements Serializable{
 
     private String filePath;
     private Movies movies;
