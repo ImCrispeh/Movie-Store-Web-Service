@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="xsl/history.xsl"?>  
 <history
     xmlns="http://uts/wsd/oms"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -19,9 +20,8 @@
         <email>test@email.com</email>
         <paymentMethod>visa</paymentMethod>
         <saleTotal>20</saleTotal>
-        <orderStatus>cancelled</orderStatus>
+        <orderStatus>submitted</orderStatus>
     </order>
-    
     <order>
         <orderID>1</orderID>
         <movies>
@@ -46,8 +46,7 @@
         <paymentMethod>visa</paymentMethod>
         <saleTotal>20</saleTotal>
         <orderStatus>cancelled</orderStatus>
-    </order>
-    
+    </order> 
     <order>
         <orderID>2</orderID>
         <movies>
@@ -63,7 +62,7 @@
         <lastName>Fung</lastName>
         <email>nontest@email.com</email>
         <paymentMethod>visa</paymentMethod>
-        <saleTotal>20</saleTotal>
+        <saleTotal>0</saleTotal>
         <orderStatus>cancelled</orderStatus>
     </order>
 </history>
