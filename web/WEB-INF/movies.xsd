@@ -13,7 +13,17 @@
     
     <xs:complexType name="moviesType">
         <xs:sequence>
-            <xs:element type="commont:movieType" name="movie"/>
+            <xs:element type="movieType" name="movie"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+        <xs:complexType name="movieType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="title"/>
+            <xs:element type="xs:string" name="genre"/>
+            <xs:element type="common:date" name="releaseDate"/>
+            <xs:element type="xs:float" name="price"/>
+            <xs:element type="xs:integer" name="copies"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>
