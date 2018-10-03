@@ -16,7 +16,7 @@
                 <xs:element name="movies">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="movie" type="common:movieType" minOccurs="1"/>
+                            <xs:element name="movie" type="movieType" minOccurs="1" maxOccurs="unbounded"/>
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
@@ -29,4 +29,14 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    
+    <xs:complexType name="movieType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="title"/>
+            <xs:element type="xs:string" name="genre"/>
+            <xs:element type="common:date" name="releaseDate"/>
+            <xs:element type="xs:float" name="price"/>
+            <xs:element type="xs:integer" name="copies"/>
+        </xs:sequence>
+    </xs:complexType>
 </xs:schema>
