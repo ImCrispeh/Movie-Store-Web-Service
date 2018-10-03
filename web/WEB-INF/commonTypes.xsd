@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="http://uts/wsd/oms"
+    targetNamespace="http://uts/wsd/oms/common"
     xmlns="http://uts/wsd/oms"
     elementFormDefault="qualified"> 
     
@@ -54,5 +54,15 @@
             <xs:pattern value="([0-9]{4})"/>
         </xs:restriction>
     </xs:simpleType>
+    
+    <xs:complexType name="movieType">
+        <xs:sequence>
+            <xs:element type="xs:string" name="title"/>
+            <xs:element type="xs:string" name="genre"/>
+            <xs:element type="date" name="releaseDate"/>
+            <xs:element type="xs:float" name="price"/>
+            <xs:element type="xs:integer" name="copies"/>
+        </xs:sequence>
+    </xs:complexType>
     
 </xs:schema>

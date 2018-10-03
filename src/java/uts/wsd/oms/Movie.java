@@ -11,7 +11,7 @@ public class Movie implements Serializable {
     @XmlElement(name = "title")
     private String title;
 
-    @XmlElement(name = "tenre")
+    @XmlElement(name = "genre")
     private String genre;
 
     @XmlElement(name = "releaseDate")
