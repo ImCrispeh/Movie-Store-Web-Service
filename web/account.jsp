@@ -20,5 +20,21 @@
             <%--<jsp:setProperty name = "editUser" property = "state" value = "<%userPath%>"/>--%>
             <%--<jsp:setProperty name = "editUser" property = "zipcode" value = "<%userPath%>"/>--%>            
         </jsp:useBean>
+        <%Users users = editUser.getUsers();%>
+        <%
+            User user = (User)session.getAttribute("user");
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String phoneNo = request.getParameter("phoneNo");
+            String address = request.getParameter("address");
+            String city = request.getParameter("city");
+            String state = request.getParameter("state");
+            String zipcode = request.getParameter("zipcode");
+            if (user != null)
+            {
+                editUser.editUser(firstName, lastName, email, password, phoneNo, address, city, state, zipcode);
+            }
     </body>
 </html>
