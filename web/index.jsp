@@ -1,5 +1,8 @@
-
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="uts.wsd.oms.Movie"%>
+<%@page import="uts.wsd.oms.Movies"%>
+<%@ page contentType="text/html"%>
 <html>
 <head>
     <title>index</title>
@@ -26,21 +29,36 @@
                 </td>
                 <td>
                     <label for="Genre">Genre</label>
-                    <input name="Genre" list="Genres" value="" autocomplete="false" onfocus="this.value=''">
+                    <input name="Genre" list="Genres" value="" autocomplete="false" onclick="value=''">
+                </td>
+                <td>
+                    <label for="Genre">Genre</label>
+                    <input name="Genre" list="Genres" value="" autocomplete="false" onclick="value=''">
                 </td>
                 <td>
                     <label for="YearS">Start Year</label>
-                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="9000" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
+                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
                 </td>
                 <td>
                     <label for="YearF">End</label>
-                    <input name="YearF" type="number" value="2000" autocomplete="false" min="9000" max="2020" maxlength="4" minlength="4">
+                    <input name="YearF" type="number" value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
+                </td>
+                <td>
+                </td>
+                <td>
+                    <button>Submit</button>
                 </td>
             </tr>
         </table>
     </form>
 </div><div id="Movies">
     <%--movies should apear here--%>
+    <c:import url="WEB-INF/movies.xml" var="moviesxml"/>
+    <c:import url="Movies.xsl" var="Moviesxslt"/>
+
+    <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
+
+    </x:transform>
 </div><div id="Checkout">
     <a href="checkout."></a>
 </div>
