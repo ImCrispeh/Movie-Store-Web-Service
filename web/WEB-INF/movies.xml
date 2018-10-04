@@ -1,113 +1,22 @@
 <?xml version="1.0" ?>
 <?xml-sylesheet type="text/xsl" href="movies.xsl" ?>
-<movies>
+<movies
+    xmlns="http://uts/wsd/oms"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://uts/wsd/oms movies.xsd">
+    
     <movie>
         <title>Title of movie</title>
         <genre>Action</genre>
-        <releaseDate>01/03/2018</releaseDate>
+        <releaseDate>2018</releaseDate>
         <price>20</price>
         <copies>3</copies>
     </movie>
     <movie>
-        <genre>Epic</genre>
         <title>The Lord of the Rings</title>
-        <price>3</price>
-        <copies>9</copies>
-    </movie>
-    <movie>
-        <genre>Action</genre>
-        <title>Mad Max</title>
-        <price>4</price>
-        <copies>5</copies>
-    </movie>
-    <movie>
-        <genre>Sci-fi</genre>
-        <title>The Avengers</title>
-        <price>2</price>
-        <copies>7</copies>
-    </movie>
-    <movie>
-        <genre>Horror</genre>
-        <title>Underworld</title>
-        <price>5</price>
-        <copies>6</copies>
-    </movie>
-    <movie>
-        <genre>Action</genre>
-        <title>Indiana Jones</title>
-        <price>4</price>
-        <copies>7</copies>
-    </movie>
-    <movie>
-        <genre>Sci-fi</genre>
-        <title>The Matrix</title>
-        <price>3</price>
-        <copies>8</copies>
-    </movie>
-    <movie>
-        <genre>Horror</genre>
-        <title>Blade</title>
-        <price>3</price>
-        <copies>7</copies>
-    </movie>
-    <movie>
-        <genre>Comedy</genre>
-        <title>American Pie</title>
-        <price>4</price>
-        <copies>9</copies>
-    </movie>
-    <movie>
-        <genre>Action</genre>
-        <title>Die Hard</title>
-        <price>5</price>
-        <copies>6</copies>
-    </movie>
-    <movie>
-        <genre>Action</genre>
-        <title>Fast and Furious</title>
-        <price>8</price>
-        <copies>7</copies>
-    </movie>
-    <movie>
-        <genre>Action</genre>
-        <title>Mission Impossible</title>
-        <price>5</price>
-        <copies>6</copies>
-    </movie>
-    <movie>
-        <genre>Horror</genre>
-        <title>Halloween</title>
-        <price>10</price>
-        <copies>5</copies>
-    </movie>
-    <movie>
-        <genre>Sci-fi</genre>
-        <title>Iron Man</title>
-        <price>3</price>
-        <copies>8</copies>
-    </movie>
-    <movie>
-        <genre>Sci-fi</genre>
-        <title>Terminator</title>
-        <price>5</price>
-        <copies>9</copies>
-    </movie>
-    <movie>
-        <genre>Action</genre>
-        <title>Transporter</title>
-        <price>4</price>
-        <copies>7</copies>
-    </movie>
-    <movie>
         <genre>Epic</genre>
-        <title>Hobbit</title>
+        <releaseDate>2018</releaseDate>
         <price>3</price>
-        <copies>8</copies>
-    </movie>
-    <movie>
-        <genre>Comedy</genre>
-        <title>Rush Hour</title>
-        <price>3</price>
-        <copies>7</copies>
+        <copies>9</copies>
     </movie>
 </movies>

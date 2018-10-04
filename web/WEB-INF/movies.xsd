@@ -13,7 +13,7 @@
     
     <xs:complexType name="moviesType">
         <xs:sequence>
-            <xs:element type="movieType" name="movie"/>
+            <xs:element type="movieType" name="movie" minOccurs="0" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
     
