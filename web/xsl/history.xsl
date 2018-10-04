@@ -13,9 +13,6 @@
     version="1.0">
     <xsl:output method="html"/>
 
-    <!-- TODO customize transformation rules 
-         syntax recommendation http://www.w3.org/TR/xslt 
-    -->
     <xsl:template match="/">
         <form action="cancel.jsp" method="post">
             <table width="80%" align="center">

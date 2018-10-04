@@ -4,7 +4,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String xmlPath = "file:///" + application.getRealPath("WEB-INF\\order.xml");
-    String xslPath = "file:///" + application.getRealPath("WEB-INF\\order.xsl");
+    String xslPath = "xsl/order.xsl";
 %>
 <!DOCTYPE html>
 <html>
