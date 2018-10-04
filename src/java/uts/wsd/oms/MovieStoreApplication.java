@@ -101,11 +101,27 @@ public class MovieStoreApplication implements Serializable{
         m.marshal(getHistory(), new FileOutputStream(filePath + "/history.xml"));
     }
     
+    public boolean validateName(String name) {
+        return name.matches("[A-Z]([a-zA-]*)");
+    }
+    
+    public boolean validatePhoneNo(String phoneNo) {
+        return phoneNo.matches("([0-9]{10})");
+    }
+    
+    public boolean validateCity(String city) {
+        return city.matches("([a-zA-Z\\s]+)");
+    }
+    
+    public boolean validatePostCode(String postCode) {
+        return postCode.matches("([0-9]{4})");
+    }
+    
     public boolean validateEmail(String email){
         return email.matches("[A-z][A-z\\._]*@[A-z]+(\\.[A-z]+)+");
     }
     
     public boolean validatePassword(String password){
-        return password.matches("([a-zA-Z0-9]+)");
+        return password.matches("([a-zA-Z0-9]{8,})");
     }
 }

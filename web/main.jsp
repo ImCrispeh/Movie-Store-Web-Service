@@ -16,52 +16,27 @@
     <jsp:useBean id="movieStoreApp" class="uts.wsd.oms.MovieStoreApplication" scope="application">
         <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=filePath%>"/>
     </jsp:useBean>
-    <%History history = movieStoreApp.getHistory();%>
     <%
-        List<Order> userOrders = new ArrayList<Order>();
+        String email = "";
+        
         if (session != null) {
             User user = (User) session.getAttribute("user");
             if (user != null) {
-                String userEmail = user.getEmail();
-                userOrders = history.getUserOrders(userEmail);
-            } else {
-                userOrders = history.getOrders();
+                email = user.getEmail();
             }
-        } else {
-            userOrders = history.getOrders();
         }
     %>
 
     <!-- Provide XML using user specific orders -->
-    <c:set var = "xmltext"> 
-        <history>
-                <%
-                    for (Order order : userOrders) {
-                %>
-                <order>
-                <orderID><%= order.getOrderID()%></orderID>
-                <movies>
-                    <%
-                        for (Movie movie : order.getMovies().getList()) {
-                    %>
-                    <movie>
-                        <title><%= movie.getTitle()%></title>
-                        <copies><%= movie.getCopies()%></copies>
-                    </movie>
-                    <%}%>
-                </movies>
-                <saleTotal><%= order.getSaleTotal()%></saleTotal>
-                <orderStatus><%= order.getOrderStatus()%></orderStatus>
-                </order>
-                    <%}%>
-        </history>
-    </c:set>
 
     <body>
         <h1 align="center">Main Page</h1>
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
         <h3 align="center">Order History</h3>
+        <c:import url = "WEB-INF/history.xml" var="xml"/>
         <c:import url = "xsl/history.xsl" var="xslt"/>
-        <x:transform xml = "${xmltext}" xslt = "${xslt}"/>
+        <x:transform xml = "${xml}" xslt = "${xslt}">
+            <x:param name="user" value="<%=email%>" />
+        </x:transform>
     </body>
 </html>

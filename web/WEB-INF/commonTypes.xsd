@@ -27,7 +27,7 @@
     <!-- if updated also update in MovieStoreApplication.validatePassword() -->
     <xs:simpleType name="password">
         <xs:restriction base="xs:string">
-            <xs:pattern value="([a-zA-Z0-9]+)"/>
+            <xs:pattern value="([a-zA-Z0-9]{8,})"/>
         </xs:restriction>
     </xs:simpleType>
     

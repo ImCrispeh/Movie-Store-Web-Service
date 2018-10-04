@@ -24,7 +24,7 @@
                 <xs:element name="lastName" type="common:name"/>
                 <xs:element name="email" type="common:email"/>
                 <xs:element name="paymentMethod" type="xs:string"/>
-                <xs:element name="saleTotal" type="xs:integer"/>
+                <xs:element name="saleTotal" type="xs:double"/>
                 <xs:element name="orderStatus" type="xs:string"/>
             </xs:sequence>
         </xs:complexType>
@@ -35,7 +35,7 @@
             <xs:element type="xs:string" name="title"/>
             <xs:element type="xs:string" name="genre"/>
             <xs:element type="common:date" name="releaseDate"/>
-            <xs:element type="xs:float" name="price"/>
+            <xs:element type="xs:double" name="price"/>
             <xs:element type="xs:integer" name="copies"/>
         </xs:sequence>
     </xs:complexType>

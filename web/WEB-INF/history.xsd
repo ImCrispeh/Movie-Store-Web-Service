@@ -7,7 +7,7 @@
     elementFormDefault="qualified"> 
     
     <xs:import namespace="http://uts/wsd/oms/common" 
-           schemaLocation="commonTypes.xsd"/>
+               schemaLocation="commonTypes.xsd"/>
     
     <xs:element name="history">
         <xs:complexType>
@@ -36,7 +36,7 @@
         </xs:complexType>
     </xs:element>
     
-        <xs:complexType name="movieType">
+    <xs:complexType name="movieType">
         <xs:sequence>
             <xs:element type="xs:string" name="title"/>
             <xs:element type="xs:string" name="genre"/>
