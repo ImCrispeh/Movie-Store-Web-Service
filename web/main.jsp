@@ -36,7 +36,7 @@
         <c:import url = "WEB-INF/history.xml" var="xml"/>
         <c:import url = "xsl/history.xsl" var="xslt"/>
         <x:transform xml = "${xml}" xslt = "${xslt}">
-            <x:param name="user" value="<%=email%>" />
+            <x:param name="email" value="test@email.com" />
         </x:transform>
     </body>
 </html>

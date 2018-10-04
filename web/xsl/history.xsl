@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <xsl:apply-templates select="ns:order[@ns:email='test@email.com']"/>
+                    <xsl:apply-templates select="//ns:history/ns:order[ns:email=$email]"/>
                 </tbody>
             </table>
         </form>
