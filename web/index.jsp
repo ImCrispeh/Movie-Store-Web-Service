@@ -54,7 +54,7 @@
 </div><div id="Movies">
     <%--movies should apear here--%>
     <c:import url="WEB-INF/movies.xml" var="moviesxml"/>
-    <c:import url="Movies.xsl" var="Moviesxslt"/>
+    <c:import url="xsl/Movies.xsl" var="Moviesxslt"/>
 
     <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
 

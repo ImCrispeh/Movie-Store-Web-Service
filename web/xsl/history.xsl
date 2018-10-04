@@ -50,7 +50,7 @@
                 <xsl:choose>
                     <xsl:when test="ns:orderStatus = 'cancelled'">N/A</xsl:when>
                     <xsl:otherwise>
-                        <input type="submit" name="order{ns:orderID}" value="Cancel"></input>
+                        <input type="submit" name="order_{ns:orderID}" value="Cancel"></input>
                     </xsl:otherwise>
                 </xsl:choose>
             </td>

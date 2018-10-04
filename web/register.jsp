@@ -61,10 +61,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
         <h1>Register</h1>
-        <form action="" _lpchecked="1" method="post">
+        
+        <%@include file="/WEB-INF/jspf/navbar.jspf" %>
+        
+        <form action="" method="post">
             <table>
                 <tbody>
                     <tr>
