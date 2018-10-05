@@ -11,12 +11,8 @@
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
             </head>
             <body>
-                <form action="checkoutAction.jsp" method="Post">
-                    <xsl:apply-templates select="ns:order/ns:orderID"/>
-                    <xsl:apply-templates select="ns:order/ns:movies"/>
-                    <input type="submit" name="cancelOrder" value="Cancel Order"/>
-                    <input type="submit" name="placeOrder" value="Place Order"/>
-                </form>
+                <xsl:apply-templates select="ns:order/ns:orderID"/>
+                <xsl:apply-templates select="ns:order/ns:movies"/>
             </body>
         </html>
     </xsl:template>
@@ -45,22 +41,12 @@
     
     <xsl:template match="ns:movie">
         <tr>
-            <td>
-                <xsl:value-of select="ns:title"/>
-            </td>
-            <td>
-                <xsl:value-of select="ns:genre"/>
-            </td>
-            <td>
-                <xsl:value-of select="ns:releaseDate"/>
-            </td>
+            <td><xsl:value-of select="ns:title"/></td>
+            <td><xsl:value-of select="ns:genre"/></td>
+            <td><xsl:value-of select="ns:releaseDate"/></td>
             <td>$<xsl:value-of select="ns:price"/></td>
-            <td>
-                <xsl:value-of select="ns:copies"/>
-            </td>
-            <td>
-                <input type="submit" name="remove_{ns:title}_{ns:releaseDate}" class="material-icons" value="delete" />
-            </td>
+            <td><xsl:value-of select="ns:copies"/></td>
+            <td><input type="submit" name="remove_{ns:title}_{ns:releaseDate}" class="material-icons" value="delete" /></td>
         </tr>
     </xsl:template>
 </xsl:stylesheet>

@@ -7,8 +7,6 @@
     
     <xs:simpleType name="date">
         <xs:restriction base="xs:integer">
-            <xs:minInclusive value="100"/>
-            <xs:maxInclusive value="999"/>
         </xs:restriction>
     </xs:simpleType>
     

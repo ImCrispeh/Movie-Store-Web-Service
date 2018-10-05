@@ -9,7 +9,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-public class CartController {
+public class OrderController {
 
     private String filePath;
     private Order order;
@@ -36,14 +36,6 @@ public class CartController {
         order = (Order) u.unmarshal(file);
         System.out.println(order.getOrderID());
         file.close();
-    }
-    
-    public void createOrder() throws JAXBException, FileNotFoundException {
-        setOrder(new Order());
-        JAXBContext jc = JAXBContext.newInstance(Order.class);
-        Marshaller m = jc.createMarshaller();
-        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-        m.marshal(getOrder(), new FileOutputStream(filePath));
     }
 
     public void addMovie(Movie movie) throws JAXBException, FileNotFoundException {
