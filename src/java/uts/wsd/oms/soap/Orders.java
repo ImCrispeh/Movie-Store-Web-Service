@@ -17,10 +17,6 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import uts.wsd.oms.*;
 
-/**
- *
- * @author MKs
- */
 @WebService(serviceName = "Orders")
 public class Orders {
 
@@ -36,14 +32,13 @@ public class Orders {
                 movieStoreApp.setFilePath(application.getRealPath("WEB-INF"));
                 application.setAttribute("movieStoreApp", movieStoreApp);
             }
-        } catch (JAXBException ex) {
-        } catch (IOException ex) {
+        } catch (JAXBException | IOException ex) {
         }
         return movieStoreApp;
     }
-    
+
     @WebMethod()
-    public History ViewAllOrder(){
+    public History ViewAllOrder() {
         return getMovieStoreApp().getHistory();
     }
 }
