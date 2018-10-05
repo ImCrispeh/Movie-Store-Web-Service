@@ -1,5 +1,6 @@
 package uts.wsd.oms.rest;
         
+import com.sun.jersey.api.provider.jaxb.XmlHeader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,9 +31,10 @@ public class HistoryService {
     @Path("history")
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Order> getHistoryByParams(@DefaultValue("-1") @QueryParam("id") int id, @QueryParam("email") String email,
+    public History getHistoryByParams(@DefaultValue("-1") @QueryParam("id") int id, @QueryParam("email") String email,
             @QueryParam("title") String title, @QueryParam("status") String status) throws JAXBException, IOException {
-        
-        return getMovieStoreApp().getHistory().getOrdersByParams(id, email, title, status);
+        History history = new History();
+        history.setOrders((ArrayList)getMovieStoreApp().getHistory().getOrdersByParams(id, email, title, status));
+        return history;
     }
 }

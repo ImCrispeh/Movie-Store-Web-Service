@@ -5,10 +5,7 @@
  */
 package uts.wsd.oms.soap;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.jws.*;
 import javax.servlet.ServletContext;
@@ -17,8 +14,8 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import uts.wsd.oms.*;
 
-@WebService(serviceName = "Orders")
-public class Orders {
+@WebService(serviceName = "History")
+public class HistorySoap {
 
     @Resource
     private WebServiceContext context;
@@ -36,9 +33,9 @@ public class Orders {
         }
         return movieStoreApp;
     }
-
+    
     @WebMethod()
-    public History ViewAllOrder() {
+    public History ViewAllOrders(@WebParam(name = "email") String email) {
         return getMovieStoreApp().getHistory();
     }
 }
