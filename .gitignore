@@ -5,3 +5,4 @@ out
 /build/
 /WSDAssignment.iml
 /web/WEB-INF/sun-jaxws.xml
+nbbuild.xml

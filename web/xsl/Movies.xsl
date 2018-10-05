@@ -1,10 +1,12 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
-
-<xsl:output method = "html" />
-
-    <xsl:template match = "movies">
+    <xsl:param name="Title"/>
+    <xsl:param name="Genre"/>
+    <xsl:param name="StartYear"/>
+    <xsl:param name="EndYear"/>
+    <xsl:output method = "html" />
+    <xsl:template match = "/">
         <html>
             <body>
                 <div style="text-align:center">
@@ -19,7 +21,10 @@
                                 <th>copeis</th>
                             </tr>
                         </thead>
-                        <xsl:apply-templates />
+                        <!--<xsl:apply-templates select="//movies/movie[title=$Title]" />-->
+                        <xsl:apply-templates select="//movies/movie[title='The Lord of the Rings']" />
+<!--                        <xsl:apply-templates select="//movies/movie[genre=$Genre]" />
+                        <xsl:apply-templates select="//movies/movie[releaseDate>$StartYear and releaseDate>$EndYear ]" />-->
                     </table>
                     </div>
                     <div style="width:10%"/>
@@ -27,7 +32,7 @@
             </body>
         </html>
     </xsl:template>
-    <xsl:template match="//movie[title='Transporter']">
+    <xsl:template match="movie">
         <tr>
             <td>
                 <xsl:value-of select="title" />

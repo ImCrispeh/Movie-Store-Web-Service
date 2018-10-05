@@ -1,7 +1,5 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="uts.wsd.oms.Movie"%>
-<%@page import="uts.wsd.oms.Movies"%>
 <%@ page contentType="text/html"%>
 <html>
 <head>
@@ -32,10 +30,6 @@
                     <input name="Genre" list="Genres" value="" autocomplete="false" onclick="value=''">
                 </td>
                 <td>
-                    <label for="Genre">Genre</label>
-                    <input name="Genre" list="Genres" value="" autocomplete="false" onclick="value=''">
-                </td>
-                <td>
                     <label for="YearS">Start Year</label>
                     <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
                 </td>
@@ -57,7 +51,7 @@
     <c:import url="xsl/Movies.xsl" var="Moviesxslt"/>
 
     <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
-
+        <x:param name="Title" value="The Lord of the Rings" />
     </x:transform>
 </div><div id="Checkout">
     <a href="checkout."></a>
