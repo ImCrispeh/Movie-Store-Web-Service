@@ -20,7 +20,7 @@
         user = movieStoreApp.getUsers().login(email, password);
         if (user != null) {
             session.setAttribute("user", user);
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("main.jsp");
         } else {
             loginError = true;
             validEmail = movieStoreApp.validateEmail(email);

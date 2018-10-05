@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 import javax.xml.bind.*;
 
-public class MovieStoreApplication implements Serializable{
+public class MovieStoreApplication implements Serializable {
 
     private String filePath;
     private Movies movies;
@@ -35,7 +35,7 @@ public class MovieStoreApplication implements Serializable{
 
         jc = JAXBContext.newInstance(Users.class);
         u = jc.createUnmarshaller();
-        
+
         file = new FileInputStream(filePath + "/users.xml");
         users = (Users) u.unmarshal(file);
         file.close();
@@ -88,9 +88,9 @@ public class MovieStoreApplication implements Serializable{
             m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             m.marshal(users, new FileOutputStream(filePath + "/users.xml"));
             return true;
-        }
-        else
+        } else {
             return false;
+        }
     }
 
     public void addOrder(Order order) throws JAXBException, FileNotFoundException {
@@ -100,12 +100,38 @@ public class MovieStoreApplication implements Serializable{
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
         m.marshal(getHistory(), new FileOutputStream(filePath + "/history.xml"));
     }
-    
-    public boolean validateEmail(String email){
+
+    public void cancelOrder(int orderId) throws JAXBException, FileNotFoundException {
+        if (getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().isPresent()) {
+            getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().get().setOrderStatus("cancelled");
+            JAXBContext jc = JAXBContext.newInstance(History.class);
+            Marshaller m = jc.createMarshaller();
+            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+            m.marshal(getHistory(), new FileOutputStream(filePath + "/history.xml"));
+        }
+    }
+
+    public boolean validateName(String name) {
+        return name.matches("[A-Z]([a-zA-]*)");
+    }
+
+    public boolean validatePhoneNo(String phoneNo) {
+        return phoneNo.matches("([0-9]{10})");
+    }
+
+    public boolean validateCity(String city) {
+        return city.matches("([a-zA-Z\\s]+)");
+    }
+
+    public boolean validatePostCode(String postCode) {
+        return postCode.matches("([0-9]{4})");
+    }
+
+    public boolean validateEmail(String email) {
         return email.matches("[A-z][A-z\\._]*@[A-z]+(\\.[A-z]+)+");
     }
-    
-    public boolean validatePassword(String password){
-        return password.matches("([a-zA-Z0-9]+)");
+
+    public boolean validatePassword(String password) {
+        return password.matches("([a-zA-Z0-9]{8,})");
     }
 }

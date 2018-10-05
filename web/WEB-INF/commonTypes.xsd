@@ -6,8 +6,7 @@
     elementFormDefault="qualified"> 
     
     <xs:simpleType name="date">
-        <xs:restriction base="xs:string">
-            <xs:pattern value="\d{1,2}/\d{1,2}/\d{1,4}"/>
+        <xs:restriction base="xs:integer">
         </xs:restriction>
     </xs:simpleType>
     
@@ -27,7 +26,7 @@
     <!-- if updated also update in MovieStoreApplication.validatePassword() -->
     <xs:simpleType name="password">
         <xs:restriction base="xs:string">
-            <xs:pattern value="([a-zA-Z0-9]+)"/>
+            <xs:pattern value="([a-zA-Z0-9]{8,})"/>
         </xs:restriction>
     </xs:simpleType>
     

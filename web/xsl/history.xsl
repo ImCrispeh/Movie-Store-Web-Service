@@ -8,11 +8,12 @@
         Purpose of transformation follows.
 -->
 
-<xsl:stylesheet 
+<xsl:stylesheet
+    xmlns:ns="http://uts/wsd/oms"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     version="1.0">
+    <xsl:param name="email"/>
     <xsl:output method="html"/>
-
     <xsl:template match="/">
         <form action="cancel.jsp" method="post">
             <table width="80%" align="center">
@@ -26,43 +27,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <xsl:apply-templates/>
+                    <xsl:apply-templates select="//ns:history/ns:order[ns:email=$email]"/>
                 </tbody>
             </table>
         </form>
     </xsl:template>
-    <xsl:template match="order">
+    <xsl:template match="ns:order">
         <tr>
             <td style="text-align:center">
-                <xsl:value-of select="orderID"/>
+                <xsl:value-of select="ns:orderID"/>
             </td>
             <td>
-                <xsl:apply-templates select="movies"/>
+                <xsl:apply-templates select="ns:movies"/>
             </td>
             <td style="text-align:center">
-                $<xsl:value-of select="format-number(saleTotal, '0.00')"/>
+                $<xsl:value-of select="format-number(ns:saleTotal, '0.00')"/>
             </td>
             <td style="text-align:center">
-                <xsl:value-of select="orderStatus"/>
+                <xsl:value-of select="ns:orderStatus"/>
             </td>
             <td style="text-align:center">
                 <xsl:choose>
-                    <xsl:when test="orderStatus = 'cancelled'">N/A</xsl:when>
+                    <xsl:when test="ns:orderStatus = 'cancelled'">N/A</xsl:when>
                     <xsl:otherwise>
-                        <input type="submit" name="order{orderID}" value="Cancel"></input>
+                        <input type="submit" name="order_{ns:orderID}" value="Cancel"></input>
                     </xsl:otherwise>
                 </xsl:choose>
             </td>
         </tr>
     </xsl:template>
-    <xsl:template match="movies">
+    <xsl:template match="ns:movies">
         <ul>
             <xsl:apply-templates/>
         </ul>
     </xsl:template>
-    <xsl:template match="movie">
+    <xsl:template match="ns:movie">
         <li>
-            <xsl:value-of select="title"/> x <xsl:value-of select="copies"/>
+            <xsl:value-of select="ns:title"/> x <xsl:value-of select="ns:copies"/>
         </li>
     </xsl:template>
 </xsl:stylesheet>
