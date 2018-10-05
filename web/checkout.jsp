@@ -3,8 +3,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    String xmlPath = "file:///" + application.getRealPath("WEB-INF\\order.xml");
-    String xslPath = "file:///" + application.getRealPath("WEB-INF\\order.xsl");
+    String xmlPath = "WEB-INF\\order.xml";
+    String xslPath = "xsl/cart.xsl";
 %>
 <!DOCTYPE html>
 <html>
@@ -22,11 +22,8 @@
         <h1 align="center">Checkout Page</h1>
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
 
-        <form action="checkoutAction.jsp" method="Post">
-            <x:transform xml="${inputDoc}" xslt="${stylesheet}">
-            </x:transform>
-            <input type="submit" name="cancelOrder" value="Cancel Order">
-            <input type="submit" name="placeOrder" value="Place Order">
-        </form>
+        <x:transform xml="${inputDoc}" xslt="${stylesheet}">
+        </x:transform>
+        
     </body>
 </html>
