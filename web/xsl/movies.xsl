@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<xsl:stylesheet 
+    xmlns:ns="http://uts/wsd/oms"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
     <xsl:param name="Title"/>
     <xsl:param name="Genre"/>
@@ -21,8 +23,8 @@
                                 <th>copeis</th>
                             </tr>
                         </thead>
+                        <xsl:apply-templates select="ns:movies/ns:movie[ns:title='The Lord of the Rings']"/>
                         <!--<xsl:apply-templates select="//movies/movie[title=$Title]" />-->
-                        <xsl:apply-templates select="//movies/movie[title='The Lord of the Rings']" />
 <!--                        <xsl:apply-templates select="//movies/movie[genre=$Genre]" />
                         <xsl:apply-templates select="//movies/movie[releaseDate>$StartYear and releaseDate>$EndYear ]" />-->
                     </table>
@@ -32,21 +34,21 @@
             </body>
         </html>
     </xsl:template>
-    <xsl:template match="movie">
+    
+    <xsl:template match="ns:movie">
         <tr>
             <td>
-                <xsl:value-of select="title" />
+                <xsl:value-of select="ns:title" />
             </td>
             <td>
-                <xsl:value-of select="genre"/>
+                <xsl:value-of select="ns:genre"/>
             </td>
             <td>
-                <xsl:value-of select="price"/>
+                <xsl:value-of select="ns:price"/>
             </td>
             <td>
-                <xsl:value-of select="copies"/>
+                <xsl:value-of select="ns:copies"/>
             </td>
         </tr>
     </xsl:template>
-    <xsl:template match="movie"/>
 </xsl:stylesheet>
