@@ -56,7 +56,7 @@
                     <tr><td>First Name:</td><td><input style="width:250px;" type="text" value="${user!=null ? user.getName() : tutor.getName()}" name="firstName" required><span class="validity" ></span></td></tr>
                     <tr><td>Last Name:</td><td><input style="width:250px;" type="text" value="${user!=null ? user.getName() : tutor.getName()}" name="lastName" required><span class="validity" ></span></td></tr>
                     <tr><td>Password:</td><td><input style="width:250px;" type="password" value="${user!=null ? user.getEmail() : tutor.getEmail()}" name="password" required><span class="validity" ></span></td></tr>               
-                    <tr><td>Phone Number:</td><td><input style="width:250px;" type="date" value="${user!=null ? user.getDob() : tutor.getDob()}" name="phoneNo" required ><span class="validity" ></span></td></tr>
+                    <tr><td>Phone Number:</td><td><input style="width:250px;" type="text" value="${user!=null ? user.getDob() : tutor.getDob()}" name="phoneNo" required ><span class="validity" ></span></td></tr>
                     <tr><td>Address:</td><td><input style="width:250px;" type="text" value="${user!=null ? user.getName() : tutor.getName()}" name="address" required><span class="validity" ></span></td></tr>
                     <tr><td></td><td><input class="button" type="submit" value=" Update " name="edit" > &emsp; <input class="button" type="submit" value="Cancel Account" name="cancel" ></td></tr>
                 </table>                  

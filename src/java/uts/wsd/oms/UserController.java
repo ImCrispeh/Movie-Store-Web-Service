@@ -73,7 +73,7 @@ public class UserController implements Serializable {
         this.users = users;
     }
     
-    public void editStudent(User user, String firstName, String lastName, String password, String address, String phoneNo) throws Exception{
+    public void editUser(User user, String firstName, String lastName, String password, String address, String phoneNo) throws Exception{
         users.removeUser(user);
         user.updateUser(firstName, lastName, password, address, phoneNo);
         users.addUser(user);
