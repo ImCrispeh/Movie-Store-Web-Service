@@ -1,6 +1,18 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html"%>
+<style>
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+td {
+    height: 50px;
+    vertical-align: bottom;
+    border: 1px solid;
+}
+</style>
 <html>
 <head>
     <title>index</title>
@@ -51,7 +63,10 @@
     <c:import url="xsl/Movies.xsl" var="Moviesxslt"/>
 
     <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
+        <x:param name="Genre" value="Action" />
         <x:param name="Title" value="The Lord of the Rings" />
+        <x:param name="StartYear" value="00000" />
+        <x:param name="EndYear" value="00000" />
     </x:transform>
 </div><div id="Checkout">
     <a href="checkout."></a>

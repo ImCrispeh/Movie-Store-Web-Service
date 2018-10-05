@@ -3,6 +3,7 @@
     xmlns:ns="http://uts/wsd/oms"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 version="1.0">
+    <xsl:param name="jspPath"/>
     <xsl:param name="Title"/>
     <xsl:param name="Genre"/>
     <xsl:param name="StartYear"/>
@@ -23,10 +24,11 @@
                                 <th>copeis</th>
                             </tr>
                         </thead>
-                        <xsl:apply-templates select="ns:movies/ns:movie[ns:title='The Lord of the Rings']"/>
-                        <!--<xsl:apply-templates select="//movies/movie[title=$Title]" />-->
-<!--                        <xsl:apply-templates select="//movies/movie[genre=$Genre]" />
-                        <xsl:apply-templates select="//movies/movie[releaseDate>$StartYear and releaseDate>$EndYear ]" />-->
+                        
+                        <xsl:apply-templates select="jspPath" />
+                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title]" />
+                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
+                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate >= $StartYear and ns:releaseDate=$EndYear]" />
                     </table>
                     </div>
                     <div style="width:10%"/>
@@ -51,4 +53,5 @@
             </td>
         </tr>
     </xsl:template>
+    
 </xsl:stylesheet>
