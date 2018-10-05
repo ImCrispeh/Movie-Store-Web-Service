@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-@XmlRootElement(name="movie")
+@XmlRootElement(name = "movie")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Movie implements Serializable {
 
@@ -16,13 +16,12 @@ public class Movie implements Serializable {
 
     @XmlElement(name = "releaseDate")
     private String releaseDate;
-    
+
     @XmlElement(name = "price")
     private float price;
 
     @XmlElement(name = "copies")
     private int copies;
-
 
     public Movie() {
     }
@@ -41,7 +40,6 @@ public class Movie implements Serializable {
         this.genre = genre;
     }
 
-
     public String getReleaseDate() {
         return releaseDate;
     }
@@ -57,7 +55,7 @@ public class Movie implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
-    
+
     public float getPrice() {
         return price;
     }
@@ -73,15 +71,15 @@ public class Movie implements Serializable {
     public void setCopies(int copies) {
         this.copies = copies;
     }
-    
-    public void incrementCopies(int amount){
+
+    public void incrementCopies(int amount) {
         copies += amount;
     }
-    
-    public void decrementCopies(int amount){
+
+    public void decrementCopies(int amount) {
         copies -= amount;
     }
-    
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -111,6 +109,4 @@ public class Movie implements Serializable {
         hash = 13 * hash + Objects.hashCode(this.releaseDate);
         return hash;
     }
-    
-    
 }

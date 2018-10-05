@@ -6,6 +6,7 @@
 package uts.wsd.oms.soap;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.annotation.Resource;
 import javax.jws.*;
 import javax.servlet.ServletContext;
@@ -35,7 +36,14 @@ public class HistorySoap {
     }
     
     @WebMethod()
-    public History ViewAllOrders(@WebParam(name = "email") String email) {
-        return getMovieStoreApp().getHistory();
+    public History ViewAllOrders(@WebParam(name = "orderID") String orderID, @WebParam(name = "email") String email, @WebParam(name = "title") String title, @WebParam(name = "status") String status) {
+        History history = new History();
+        int id = -1;
+        try{
+            id = Integer.parseInt(orderID);
+        }catch(NumberFormatException ex){
+        }
+        history.setOrders((ArrayList<Order>)getMovieStoreApp().getHistory().getOrdersByParams(id, email, title, status));
+        return history;
     }
 }

@@ -61,7 +61,7 @@ public class History implements Serializable {
         }
 
         //Remove any orders that do match email parameter
-        if (email != null) {
+        if (email != null && !email.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
             for (Order order : ordersToReturn) {
                 if (!order.getEmail().equals(email)) {
@@ -73,7 +73,7 @@ public class History implements Serializable {
         }
 
         //Remove any orders that do match title parameter
-        if (title != null) {
+        if (title != null && !title.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
 
             for (Order order : ordersToReturn) {
@@ -97,7 +97,7 @@ public class History implements Serializable {
         }
 
         //Remove any orders that do match status parameter
-        if (status != null) {
+        if (status != null && !status.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
 
             for (Order order : ordersToReturn) {

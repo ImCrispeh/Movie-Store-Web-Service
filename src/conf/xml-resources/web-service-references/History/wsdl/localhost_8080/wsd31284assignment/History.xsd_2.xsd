@@ -8,7 +8,10 @@
 
 <xs:complexType name="ViewAllOrders">
 <xs:sequence>
+<xs:element name="orderID" type="xs:string" minOccurs="0"/>
 <xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="status" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
