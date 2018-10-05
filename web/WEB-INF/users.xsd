@@ -18,7 +18,7 @@ and open the template in the editor.
     <xs:element name="users">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="user" minOccurs="0">
+                <xs:element name="user" minOccurs="0" maxOccurs="unbounded">
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element name="firstName" type="common:name"/>

@@ -2,27 +2,60 @@
 <users
     xmlns="http://uts/wsd/oms"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://uts/wsd/oms users.xsd">>
+    xsi:schemaLocation="http://uts/wsd/oms users.xsd">
     <user>
         <firstName>Ryan</firstName>
         <lastName>Heise</lastName>
         <email>ryan@ryanheise.com</email>
         <password>blahblah</password>
-        <phoneNo>12345678</phoneNo>
-        <address>123 fake st</address>
-        <city>sydney</city>
+        <phoneNo>1234567890</phoneNo>
+        <address>123 Fake Street</address>
+        <city>Sydney</city>
         <state>NSW</state>
-        <postcode>2000</postcode>
+        <postCode>2000</postCode>
     </user>
     <user>
         <firstName>Joe</firstName>
         <lastName>Bloggs</lastName>
         <email>joe@bloggs.com</email>
-        <password>foobar</password>
-        <phoneNo>12345678</phoneNo>
-        <address>123 fake st</address>
-        <city>sydney</city>
+        <password>foobar123</password>
+        <phoneNo>1234567890</phoneNo>
+        <address>123 Fake Street</address>
+        <city>Sydney</city>
         <state>NSW</state>
-        <postcode>2000</postcode>
+        <postCode>2000</postCode>
+    </user>
+    <user>
+        <firstName>Christopher</firstName>
+        <lastName>Fung</lastName>
+        <email>chrisf@gmail.com</email>
+        <password>Password123</password>
+        <phoneNo>0294583910</phoneNo>
+        <address>123 Test Lane</address>
+        <city>Hobart</city>
+        <state>TAS</state>
+        <postCode>1042</postCode>
+    </user>
+        <user>
+        <firstName>John</firstName>
+        <lastName>Doe</lastName>
+        <email>john@doe.com</email>
+        <password>johndoe123</password>
+        <phoneNo>0987654321</phoneNo>
+        <address>123 John Avenue</address>
+        <city>Sydney</city>
+        <state>NSW</state>
+        <postCode>2000</postCode>
+    </user>
+    <user>
+        <firstName>Test</firstName>
+        <lastName>User</lastName>
+        <email>test@email.com</email>
+        <password>testpass</password>
+        <phoneNo>0450110540</phoneNo>
+        <address>123 Test Lane</address>
+        <city>Melbourne</city>
+        <state>VIC</state>
+        <postCode>2071</postCode>
     </user>
 </users>
