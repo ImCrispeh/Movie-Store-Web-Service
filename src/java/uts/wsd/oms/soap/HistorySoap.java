@@ -5,10 +5,8 @@
  */
 package uts.wsd.oms.soap;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
 import javax.annotation.Resource;
 import javax.jws.*;
 import javax.servlet.ServletContext;
@@ -17,8 +15,8 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import uts.wsd.oms.*;
 
-@WebService(serviceName = "Orders")
-public class Orders {
+@WebService(serviceName = "History")
+public class HistorySoap {
 
     @Resource
     private WebServiceContext context;
@@ -36,9 +34,16 @@ public class Orders {
         }
         return movieStoreApp;
     }
-
+    
     @WebMethod()
-    public History ViewAllOrder() {
-        return getMovieStoreApp().getHistory();
+    public History ViewAllOrders(@WebParam(name = "orderID") String orderID, @WebParam(name = "email") String email, @WebParam(name = "title") String title, @WebParam(name = "status") String status) {
+        History history = new History();
+        int id = -1;
+        try{
+            id = Integer.parseInt(orderID);
+        }catch(NumberFormatException ex){
+        }
+        history.setOrders((ArrayList<Order>)getMovieStoreApp().getHistory().getOrdersByParams(id, email, title, status));
+        return history;
     }
 }
