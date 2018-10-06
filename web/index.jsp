@@ -1,6 +1,19 @@
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html"%>
+<%@ page import="java.io.*" %>
+<style>
+table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+td {
+    height: 50px;
+    vertical-align: bottom;
+    border: 1px solid;
+}
+</style>
 <html>
 <head>
     <title>index</title>
@@ -18,7 +31,7 @@
     <a href="login.jsp">Login</a>
 </div>
 <div id="Search" style="margin: auto; width: 50%; padding: 10px;">
-    <form action="">
+    <form action="index.jsp">
         <table>
             <tr>
                 <td>
@@ -50,8 +63,18 @@
     <c:import url="WEB-INF/movies.xml" var="moviesxml"/>
     <c:import url="xsl/Movies.xsl" var="Moviesxslt"/>
 
+    <%
+        String genre = request.getParameter("Genre");
+        String title = request.getParameter("Title");
+        String startY = request.getParameter("YearS");
+        String endY = request.getParameter("YearF");
+        
+    %>
     <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
-        <x:param name="Title" value="The Lord of the Rings" />
+        <x:param name="Genre" value="<%= genre %>" />
+        <x:param name="Title" value="<%= title %>" />
+        <x:param name="StartYear" value="<%= startY %>" />
+        <x:param name="EndYear" value="<%= endY %>" />
     </x:transform>
 </div><div id="Checkout">
     <a href="checkout."></a>

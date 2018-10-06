@@ -19,14 +19,15 @@
                             <tr>
                                 <th>Title</th>
                                 <th>Genre</th>
+                                <th>Release Date</th>
                                 <th>Price</th>
                                 <th>copeis</th>
                             </tr>
                         </thead>
-                        <xsl:apply-templates select="ns:movies/ns:movie[ns:title='The Lord of the Rings']"/>
-                        <!--<xsl:apply-templates select="//movies/movie[title=$Title]" />-->
-<!--                        <xsl:apply-templates select="//movies/movie[genre=$Genre]" />
-                        <xsl:apply-templates select="//movies/movie[releaseDate>$StartYear and releaseDate>$EndYear ]" />-->
+                        
+                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title]" />
+                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
+                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />
                     </table>
                     </div>
                     <div style="width:10%"/>
@@ -44,6 +45,9 @@
                 <xsl:value-of select="ns:genre"/>
             </td>
             <td>
+                <xsl:value-of select="ns:releaseDate"/>
+            </td>
+            <td>
                 <xsl:value-of select="ns:price"/>
             </td>
             <td>
@@ -51,4 +55,5 @@
             </td>
         </tr>
     </xsl:template>
+    
 </xsl:stylesheet>
