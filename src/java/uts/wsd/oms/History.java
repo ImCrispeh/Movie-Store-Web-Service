@@ -64,7 +64,7 @@ public class History implements Serializable {
         if (email != null && !email.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
             for (Order order : ordersToReturn) {
-                if (!order.getEmail().equals(email)) {
+                if (!order.getEmail().equalsIgnoreCase(email)) {
                     toDelete.add(order);
                 }
             }
@@ -82,7 +82,7 @@ public class History implements Serializable {
                 int i = 0;
                 boolean isMatch = false;
                 while (i < movies.size() && !isMatch) {
-                    if (movies.get(i).getTitle().equals(title)) {
+                    if (movies.get(i).getTitle().equalsIgnoreCase(title)) {
                         isMatch = true;
                     }
                     i++;
@@ -101,7 +101,7 @@ public class History implements Serializable {
             List<Order> toDelete = new ArrayList<Order>();
 
             for (Order order : ordersToReturn) {
-                if (!order.getOrderStatus().equals(status)) {
+                if (!order.getOrderStatus().equalsIgnoreCase(status)) {
                     toDelete.add(order);
                 }
             }
