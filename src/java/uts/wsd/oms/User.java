@@ -114,6 +114,12 @@ public class User implements Serializable {
         this.postCode = postCode;
     }
     
-    
+    public void updateUser(String firstName, String lastName, String password, String address, String phoneNo){
+        this.firstName = firstName;
+        this.lastName= lastName;
+        this.password = password;
+        this.address = address;
+        this.phoneNo = phoneNo;
+    }
 }
 

@@ -49,4 +49,9 @@ public class Users implements Serializable {
         return null;
 
     }
+
+    public void editUser(User user, String firstName, String lastName, String password, String address, String phoneNo){
+        removeUser(user);
+        user.updateUser(firstName, lastName, password, address, phoneNo);
+    }
 }
