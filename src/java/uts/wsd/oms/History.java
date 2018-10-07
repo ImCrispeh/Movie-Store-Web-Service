@@ -30,18 +30,6 @@ public class History implements Serializable {
     public void addOrder(Order order) {
         orders.add(order);
     }
-    
-    //Return orders that are placed by a specific user (for main.jsp)
-    public List<Order> getUserOrders(String email) {
-        List<Order> ordersToReturn = new ArrayList<Order>();
-        for (Order order : orders) {
-            if (order.getEmail().equals(email)) {
-                ordersToReturn.add(order);
-            }
-        }
-        
-        return ordersToReturn;
-    }
 
     //Return orders based from the entirety of history.xml based on URL parameters (for web service)
     public List<Order> getOrdersByParams(int id, String email, String title, String status) {
