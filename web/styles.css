@@ -24,9 +24,12 @@ table {
 .highlight_row {
     background: #eef;
 }
- .OrdersTable{
-    border: 1px solid #bcbcbc;
-    border-collapse: collapse;
-    vertical-align: bottom;
-    background-color: #ddd;
+ .OrdersTable, .OrdersTable table,.OrdersTable th,.OrdersTable td{
+    border: 1px solid black !important;
+    border-collapse: collapse !important;
+    vertical-align: bottom !important;
+    background-color: #ddd !important;
+}
+.CartDetails{
+    width:auto !important;
 }

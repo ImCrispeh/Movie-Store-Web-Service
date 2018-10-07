@@ -77,7 +77,7 @@ public class History implements Serializable {
             List<Order> toDelete = new ArrayList<Order>();
 
             for (Order order : ordersToReturn) {
-                List<Movie> movies = order.getMovies().getList();
+                List<Movie> movies = order.getMovies().getMovies();
                 
                 int i = 0;
                 boolean isMatch = false;

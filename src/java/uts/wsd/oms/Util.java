@@ -26,7 +26,8 @@ public class Util {
         int min = 100, max = 999;
         do{
             id = rand.nextInt((max - min) + 1) + min;
-        }while(usedIDs.contains(id));
+        }while(usedIDs.contains(id) && usedIDs.size() < (max-min));
+        usedIDs.add(id);
         nextOrderID = id;
     }
 }

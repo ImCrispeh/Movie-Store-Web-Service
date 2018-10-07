@@ -36,6 +36,13 @@ public class Order implements Serializable {
 
     public Order() {
         this.orderID = Util.generateOrderID();
+        this.movies = new Movies();
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.paymentMethod = "";
+        this.saleTotal = 0;
+        this.orderStatus = "";
     }
 
     public Order(int orderID, Movies movies, String firstName, String lastName, String email, String paymentMethod, int saleTotal, String orderStatus) {
@@ -47,6 +54,12 @@ public class Order implements Serializable {
         this.paymentMethod = paymentMethod;
         this.saleTotal = saleTotal;
         this.orderStatus = orderStatus;
+    }
+    
+    public void setUserDetails(User user){
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.email = user.getEmail();
     }
     
     public int getOrderID() {
@@ -115,7 +128,7 @@ public class Order implements Serializable {
     
     private void updateTotal(){
         saleTotal = 0;
-        for(Movie movie : movies.getList())
+        for(Movie movie : movies.getMovies())
             saleTotal += movie.getCopies() * movie.getPrice();
     }
     

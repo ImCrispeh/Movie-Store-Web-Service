@@ -4,7 +4,9 @@
     xmlns:ns="http://uts/wsd/oms"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
     <xsl:output method="html"/>
-
+    <xsl:param name="emailError"/>
+    <xsl:param name="firstNameError"/>
+    <xsl:param name="lastNameError"/>
     <xsl:template match="/">
         <html>
             <head>
@@ -12,13 +14,86 @@
             </head>
             <body>
                 <form action="checkoutAction.jsp" method="Post">
-                    <xsl:apply-templates select="ns:order/ns:orderID"/>
-                    <xsl:apply-templates select="ns:order/ns:movies"/>
-                    <input type="submit" name="cancelOrder" value="Cancel Order"/>
-                    <input type="submit" name="placeOrder" value="Place Order"/>
+                    <xsl:apply-templates/>
+                    <input type="submit" name="cancelOrder" value="Cancel Order">
+                        <xsl:if test="count(ns:order/ns:movies/ns:movie) &lt; 1">
+                                <xsl:attribute name="disabled"/>
+                        </xsl:if>
+                    </input>
+                    <input type="submit" name="placeOrder" value="Place Order">
+                        <xsl:if test="count(ns:order/ns:movies/ns:movie) &lt; 1">
+                                <xsl:attribute name="disabled"/>
+                        </xsl:if>
+                    </input>
                 </form>
             </body>
         </html>
+    </xsl:template>
+    
+    
+    <xsl:template match="ns:order">
+        <xsl:apply-templates select="ns:orderID"/>
+        <xsl:apply-templates select="ns:movies"/>
+        <table class="CartDetails">
+            <tr>
+                <td><label for="saleTotal">Sale Total:</label></td>
+                <td><xsl:value-of select="ns:saleTotal"/></td>
+            </tr>
+            <tr>
+                <td><label for="firstName">First Name:</label></td>
+                <td><input type="text" name="firstName" value='{ns:firstName}'/></td>
+                <xsl:if test="$firstNameError = 'true'">
+                    <td class="validation">First Name Required</td>
+                </xsl:if>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last Name:</label></td>
+                <td><input type="text" name="lastName" value='{ns:lastName}'/></td>
+                <xsl:if test="$lastNameError = 'true'">
+                    <td class="validation">Last Name Required</td>
+                </xsl:if>
+            </tr>
+            <tr>
+                <td><label for="email">Email</label></td>
+                <td><input type="email" name="email" value='{ns:email}'/></td>
+                <xsl:if test="$emailError = 'true'">
+                    <td class="validation">Email Required</td>
+                </xsl:if>
+            </tr>
+            <tr>
+                <td>
+                    <label for="paymentMethod">Payment Method:</label>
+                </td>
+                <td> 
+                    <select name="paymentMethod">
+                        <option value="Visa">
+                            <xsl:if test="ns:paymentMethod='Visa'">
+                                <xsl:attribute name="selected">selected</xsl:attribute>
+                            </xsl:if>
+                            Visa
+                        </option>
+                        <option value="Mastercard">
+                            <xsl:if test="ns:paymentMethod = 'Mastercard'">
+                                <xsl:attribute name="selected">selected</xsl:attribute>
+                            </xsl:if>
+                            Mastercard
+                        </option>
+                        <option value="Paypal">
+                            <xsl:if test="ns:paymentMethod = 'Paypal'">
+                                <xsl:attribute name="selected">selected</xsl:attribute>
+                            </xsl:if>
+                            Paypal
+                        </option>
+                        <option value="Google">
+                            <xsl:if test="ns:paymentMethod = 'Google'">
+                                <xsl:attribute name="selected">selected</xsl:attribute>
+                            </xsl:if>
+                            Google Wallet
+                        </option>
+                    </select> 
+                </td>
+            </tr>
+        </table>
     </xsl:template>
     
     <xsl:template match="ns:orderID">
@@ -63,4 +138,5 @@
             </td>
         </tr>
     </xsl:template>
+    
 </xsl:stylesheet>
