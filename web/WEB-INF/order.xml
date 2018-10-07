@@ -5,27 +5,4 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://uts/wsd/oms order.xsd">
     
-    <orderID>100</orderID>
-    <movies>
-        <movie>
-            <title>Name of movie</title>
-            <genre>Action</genre>
-            <releaseDate>2018</releaseDate>
-            <price>20</price>
-            <copies>1</copies>
-        </movie>
-        <movie>
-            <title>Name of movie2</title>
-            <genre>Action</genre>
-            <releaseDate>2018</releaseDate>
-            <price>20</price>
-            <copies>1</copies>
-        </movie>
-    </movies>
-    <firstName>Ryan</firstName>
-    <lastName>Heise</lastName>
-    <email>ryan@ryanheise.com</email>
-    <paymentMethod></paymentMethod>
-    <saleTotal>40</saleTotal>
-    <orderStatus></orderStatus>
 </order>

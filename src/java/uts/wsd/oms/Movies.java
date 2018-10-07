@@ -9,10 +9,18 @@ import java.io.Serializable;
 public class Movies implements Serializable {
 
     @XmlElement(name = "movie")
-    private ArrayList<Movie> movies = new ArrayList<Movie>();
+    private ArrayList<Movie> movies;
 
-    public ArrayList<Movie> getList() {
+    public Movies() {
+        movies = new ArrayList<Movie>();
+    }
+    
+    public ArrayList<Movie> getMovies() {
         return movies;
+    }
+    
+    public void setMovies(ArrayList<Movie> movies){
+        this.movies = movies;
     }
 
     public void addMovie(Movie movie) {

@@ -1,10 +1,22 @@
+<%@page import="uts.wsd.oms.Order"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% String filePath = application.getRealPath("WEB-INF/order.xml");%>
+<jsp:useBean id="cartController" class="uts.wsd.oms.CartController" scope="application">
+    <jsp:setProperty name="cartController" property="filePath" value="<%=filePath%>"/>
+</jsp:useBean>
 <%
     String xmlPath = "WEB-INF\\order.xml";
     String xslPath = "xsl/cart.xsl";
+    User user = (User) session.getAttribute("user");
+    if(cartController.getOrder() == null || cartController.getOrder().getOrderID() == 0)
+    {
+        Order order = cartController.createOrder();
+        if(user != null)
+            order.setUserDetails(user);
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +35,9 @@
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
 
         <x:transform xml="${inputDoc}" xslt="${stylesheet}">
+            <x:param name="emailError" value="<%=session.getAttribute("emailError")%>" />
+            <x:param name="firstNameError" value="<%=session.getAttribute("firstNameError")%>" />
+            <x:param name="lastNameError" value="<%=session.getAttribute("lastNameError")%>" />
         </x:transform>
-        
     </body>
 </html>
