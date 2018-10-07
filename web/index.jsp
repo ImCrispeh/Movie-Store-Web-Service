@@ -2,8 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html"%>
 <%@ page import="java.io.*" %>
-<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" type="text/javascript"></script>
 <link rel="stylesheet" href="styles.css"/>
 <html>
 <head>
@@ -56,8 +54,6 @@ $(document).ready(function () {
                 <td>
                     <label for="YearF">End</label>
                     <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
-                </td>
-                <td>
                 </td>
                 <td>
                     <button>Search</button>
