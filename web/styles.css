@@ -1,12 +1,23 @@
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
+body{
+    background-color: #bdbdbd;
 }
-
+table, th, td {
+    /*border: 1px solid black;*/
+    border-collapse: collapse;
+    vertical-align: bottom;
+}
+tbody th, td{
+    padding: 3px 10px;
+}
+table {
+    width: 100%;
+}
 .validation{
     color: red;
 }
-
 #loginTable, #loginTable th, #loginTable td {
     border: 0px !important;
+}
+#movies tbody tr:hover{
+    background: #eef;
 }
