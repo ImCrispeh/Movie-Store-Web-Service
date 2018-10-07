@@ -58,8 +58,6 @@ $(document).ready(function () {
                     <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
                 </td>
                 <td>
-                </td>
-                <td>
                     <button>Search</button>
                 </td>
             </tr>
