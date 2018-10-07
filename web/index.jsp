@@ -15,6 +15,22 @@
         <option value="Comedy">
     </datalist>
 </head>
+<script>
+$(document).ready(function () {
+    $('.order tr').click(function (event) {
+        if (event.target.type !== 'checkbox') {
+            $(':checkbox', this).trigger('click');
+        }
+    });
+    $("input[type='checkbox']").change(function (e) {
+        if ($(this).is(":checked")) {
+            $(this).closest('tr').addClass("highlight_row");
+        } else {
+            $(this).closest('tr').removeClass("highlight_row");
+        }
+    });
+});
+</script>
 <body bgcolor="#bdbdbd">
 <div id="Title" style="text-align: right;">
     <H1 style="text-align: center">Movies</H1>
@@ -44,7 +60,7 @@
                 <td>
                 </td>
                 <td>
-                    <button>Submit</button>
+                    <button>Search</button>
                 </td>
             </tr>
         </table>
@@ -59,7 +75,6 @@
         String title = request.getParameter("Title");
         String startY = request.getParameter("YearS");
         String endY = request.getParameter("YearF");
-        
     %>
     <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
         <x:param name="Genre" value="<%= genre %>" />
