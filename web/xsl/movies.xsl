@@ -14,7 +14,7 @@
                 <div style="text-align:center">
                     <div style="width:10%"/>
                     <div align="center" style="width: 80%; display: inline-block" >
-                    <table>
+                    <table id="movies" class="display">
                         <thead>
                             <tr>
                                 <th>Title</th>
@@ -37,7 +37,7 @@
     </xsl:template>
     
     <xsl:template match="ns:movie">
-        <tr>
+        <tr style="height: 50px; vertical-align: bottom; border: 1px solid;">
             <td>
                 <xsl:value-of select="ns:title" />
             </td>
