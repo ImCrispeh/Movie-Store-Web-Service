@@ -14,21 +14,23 @@
                 <div style="text-align:center">
                     <div style="width:10%"/>
                     <div align="center" style="width: 80%; display: inline-block" >
-                    <table id="movies" class="display">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Genre</th>
-                                <th>Release Date</th>
-                                <th>Price</th>
-                                <th>copeis</th>
-                            </tr>
-                        </thead>
-                        
-                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title]" />
-                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
-                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />
-                    </table>
+                        <form action="checkout.jsp">
+                            <table id="movies" class="order">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Genre</th>
+                                        <th>Release Date</th>
+                                        <th>Price</th>
+                                        <th>copeis</th>
+                                    </tr>
+                                </thead>
+                                <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title]" />
+                                <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
+                                <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />
+                            </table>
+                            <button style="float:right;">Submit</button>
+                        </form>
                     </div>
                     <div style="width:10%"/>
                 </div>
@@ -37,7 +39,11 @@
     </xsl:template>
     
     <xsl:template match="ns:movie">
-        <tr style="height: 50px; vertical-align: bottom; border: 1px solid;">
+        <tr style="height: 50px; vertical-align: bottom; border: 1px solid;" onclick="">
+            <td style="display:none;">
+            <!--<td>-->
+                <input name="Checkout" type="checkbox"/>
+            </td>
             <td>
                 <xsl:value-of select="ns:title" />
             </td>

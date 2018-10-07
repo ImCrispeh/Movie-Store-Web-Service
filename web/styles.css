@@ -21,3 +21,7 @@ table {
 #movies tbody tr:hover{
     background: #eef;
 }
+.highlight_row {
+    background: #eef;
+}
+  
