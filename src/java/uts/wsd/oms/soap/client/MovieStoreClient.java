@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class MovieStoreClient {
 
-    static History_Service locator = new History_Service();
-    static HistorySoap history = locator.getHistorySoapPort();
+    static Movie_Service locator = new Movie_Service();
+    static MovieSoap movie = locator.getMovieSoapPort();
 
     public static void main(String[] args) {
         ViewOrders();
@@ -24,7 +24,7 @@ public class MovieStoreClient {
         status = in.nextLine();
         
         System.out.println("");
-        for (Order order : history.viewAllOrders(id, email, title, status).getOrder()) {
+        for (Order order : movie.viewAllOrders(id, email, title, status).getOrder()) {
             System.out.println("----------------------------------------------------");
             System.out.println(getOrderString(order));
         }

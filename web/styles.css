@@ -24,4 +24,9 @@ table {
 .highlight_row {
     background: #eef;
 }
-  
+ .OrdersTable{
+    border: 1px solid #bcbcbc;
+    border-collapse: collapse;
+    vertical-align: bottom;
+    background-color: #ddd;
+}

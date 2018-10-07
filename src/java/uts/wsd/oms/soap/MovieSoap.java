@@ -15,8 +15,8 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import uts.wsd.oms.*;
 
-@WebService(serviceName = "History")
-public class HistorySoap {
+@WebService(serviceName = "Movie")
+public class MovieSoap {
 
     @Resource
     private WebServiceContext context;

@@ -26,7 +26,7 @@
     </xsl:template>
     
     <xsl:template match="ns:movies">
-        <table width="100%">
+        <table width="100%" class="OrdersTable">
             <thead>
                 <tr>
                     <th width="19%">Title</th>

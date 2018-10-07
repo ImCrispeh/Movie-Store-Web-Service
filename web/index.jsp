@@ -64,7 +64,7 @@ $(document).ready(function () {
 </div><div id="Movies">
     <%--movies should apear here--%>
     <c:import url="WEB-INF/movies.xml" var="moviesxml"/>
-    <c:import url="xsl/Movies.xsl" var="Moviesxslt"/>
+    <c:import url="xsl/movies.xsl" var="Moviesxslt"/>
 
     <%
         String genre = request.getParameter("Genre");

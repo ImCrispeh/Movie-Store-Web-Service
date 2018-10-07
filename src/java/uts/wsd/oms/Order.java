@@ -35,6 +35,7 @@ public class Order implements Serializable {
     private String orderStatus;
 
     public Order() {
+        this.orderID = Util.generateOrderID();
     }
 
     public Order(int orderID, Movies movies, String firstName, String lastName, String email, String paymentMethod, int saleTotal, String orderStatus) {
