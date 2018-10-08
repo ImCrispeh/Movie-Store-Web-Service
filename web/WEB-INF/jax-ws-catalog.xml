@@ -11,4 +11,5 @@
     <system systemId="http://localhost:8080/wsd31284assignment/Movie?xsd=2" uri="wsdl/localhost_8080/wsd31284assignment/Movie.xsd_2.xsd"/>
     <system systemId="http://localhost:8080/wsd31284assignment/PlaceOrder?wsdl" uri="wsdl/localhost_8080/wsd31284assignment/PlaceOrder.wsdl"/>
     <system systemId="http://localhost:8080/wsd31284assignment/PlaceOrder?xsd=1" uri="wsdl/localhost_8080/wsd31284assignment/PlaceOrder.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/wsd31284assignment/PlaceOrder?xsd=2" uri="wsdl/localhost_8080/wsd31284assignment/PlaceOrder.xsd_2.xsd"/>
 </catalog>

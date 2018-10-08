@@ -9,6 +9,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 import javax.xml.bind.Unmarshaller;
+import static jdk.nashorn.internal.objects.NativeString.split;
 
 public class CartController {
 
@@ -50,13 +51,13 @@ public class CartController {
         marshal();
     }
 
-    public void removeMovie(String movie) throws JAXBException, FileNotFoundException {
-        String[] splitString = movie.split("_");
-        if (splitString.length == 3) {
-            getOrder().removeMovie(splitString[1], splitString[2]);
-            marshal();
-        }
-    }
+//    public void removeMovie(String movie) throws JAXBException, FileNotFoundException {
+//        String[] splitString = movie.split("_");
+//        if (splitString.length == 3) {
+//            getOrder().removeMovie(splitString[1], splitString[2].);
+//            marshal();
+//        }
+//    }
 
     private void marshal() throws JAXBException, FileNotFoundException {
         JAXBContext jc = JAXBContext.newInstance(Order.class);

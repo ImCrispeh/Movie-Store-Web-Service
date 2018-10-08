@@ -9,6 +9,7 @@
     <system systemId="http://localhost:8080/wsd31284assignment/Movie?wsdl" uri="src/conf/xml-resources/web-service-references/Movie/wsdl/localhost_8080/wsd31284assignment/Movie.wsdl"/>
     <system systemId="http://localhost:8080/wsd31284assignment/Movie?xsd=1" uri="src/conf/xml-resources/web-service-references/Movie/wsdl/localhost_8080/wsd31284assignment/Movie.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/wsd31284assignment/Movie?xsd=2" uri="src/conf/xml-resources/web-service-references/Movie/wsdl/localhost_8080/wsd31284assignment/Movie.xsd_2.xsd"/>
-    <system systemId="http://localhost:8080/wsd31284assignment/PlaceOrder?wsdl" uri="src/conf/xml-resources/web-service-references/PlaceOrder/wsdl/localhost_8080/wsd31284assignment/PlaceOrder.wsdl"/>
-    <system systemId="http://localhost:8080/wsd31284assignment/PlaceOrder?xsd=1" uri="src/conf/xml-resources/web-service-references/PlaceOrder/wsdl/localhost_8080/wsd31284assignment/PlaceOrder.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/wsd31284assignment/PlaceOrder?wsdl" uri="src/conf/xml-resources/web-service-references/PlaceOrder_1/wsdl/localhost_8080/wsd31284assignment/PlaceOrder.wsdl"/>
+    <system systemId="http://localhost:8080/wsd31284assignment/PlaceOrder?xsd=1" uri="src/conf/xml-resources/web-service-references/PlaceOrder_1/wsdl/localhost_8080/wsd31284assignment/PlaceOrder.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/wsd31284assignment/PlaceOrder?xsd=2" uri="src/conf/xml-resources/web-service-references/PlaceOrder_1/wsdl/localhost_8080/wsd31284assignment/PlaceOrder.xsd_2.xsd"/>
 </catalog>

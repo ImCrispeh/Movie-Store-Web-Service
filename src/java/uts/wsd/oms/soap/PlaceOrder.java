@@ -5,9 +5,14 @@
  */
 package uts.wsd.oms.soap;
 
-import javax.jws.WebService;
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
+import java.io.IOException;
+import javax.annotation.Resource;
+import javax.jws.*;
+import javax.servlet.ServletContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.ws.WebServiceContext;
+import javax.xml.ws.handler.MessageContext;
+import uts.wsd.oms.*;
 
 /**
  *
@@ -15,12 +20,45 @@ import javax.jws.WebParam;
  */
 @WebService(serviceName = "PlaceOrder")
 public class PlaceOrder {
+    
+    @Resource
+    private WebServiceContext context;
+
+    private MovieStoreApplication getMovieStoreApp() {
+        ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
+        MovieStoreApplication movieStoreApp = (MovieStoreApplication) application.getAttribute("diaryApp");
+        try {
+            if (movieStoreApp == null) {
+                movieStoreApp = new MovieStoreApplication();
+                movieStoreApp.setFilePath(application.getRealPath("WEB-INF"));
+                application.setAttribute("movieStoreApp", movieStoreApp);
+            }
+        } catch (JAXBException | IOException ex) {
+        }
+        return movieStoreApp;
+    }
 
     /**
-     * This is a sample web service operation
+     *
+     * @param email
+     * @param firstName
+     * @param lastName
+     * @param movies
      */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
+    @WebMethod()
+    public void AddOrder(@WebParam(name="email") String email, @WebParam(name="firstName") String firstName, @WebParam(name="lastName") String lastName, @WebParam(name="movies") Movies movies ) {
+        Order order = new Order();
+        order.setEmail(email);
+        order.setFirstName(firstName);
+        order.setLastName(lastName);
+        for (int i = 0; i < movies.getMovies().size(); i++) {
+            order.addMovie(movies.getMovies().get(i));
+        }
+    }
+    @WebMethod()
+    public void AddMovie(Movie movie){
+        Movies movies = new Movies();
+        movies.addMovie(movie);
     }
 }
+
