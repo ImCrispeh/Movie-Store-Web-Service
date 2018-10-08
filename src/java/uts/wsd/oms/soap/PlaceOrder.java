@@ -51,14 +51,6 @@ public class PlaceOrder {
         order.setEmail(email);
         order.setFirstName(firstName);
         order.setLastName(lastName);
-        for (int i = 0; i < movies.getMovies().size(); i++) {
-            order.addMovie(movies.getMovies().get(i));
-        }
-    }
-    @WebMethod()
-    public void AddMovie(Movie movie){
-        Movies movies = new Movies();
-        movies.addMovie(movie);
     }
 }
 
