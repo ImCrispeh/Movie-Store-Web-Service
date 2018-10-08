@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class MovieStoreClient {
 
     static Movie_Service movielocator = new Movie_Service();
-    static MovieSoap movie = movielocator.getMovieSoapPort();
+    static MovieSoap history = movielocator.getMovieSoapPort();
     static PlaceOrder_Service Orderlocator = new PlaceOrder_Service();
     static PlaceOrder order = Orderlocator.getPlaceOrderPort();
     static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
-        AddMovie();
+//        AddMovie();
         System.out.println("-------------------------------------------------------------");
         PlaceOrder();
         System.out.println("-------------------------------------------------------------");
@@ -30,7 +30,7 @@ public class MovieStoreClient {
         status = in.nextLine();
         
         System.out.println("");
-        for (Order order : movie.viewAllOrders(id, email, title, status).getOrder()) {
+        for (Order order : history.viewAllOrders(id, email, title, status).getOrder()) {
             System.out.println("----------------------------------------------------");
             System.out.println(getOrderString(order));
         }
@@ -54,32 +54,36 @@ public class MovieStoreClient {
         return orderString;
     }
     private static void PlaceOrder() {
-        String email, firstName, lastName, status;
+        String email, firstName, lastName;
+        Movie movie = null;
         System.out.print("Enter email: ");
         email = in.nextLine();
         System.out.print("Enetr First Name: ");
         firstName = in.nextLine();
         System.out.print("Enter last Name: ");
         lastName = in.nextLine();
-        
+        System.out.print("What Movie would you like to Buy");
+        for (int i = 0; i < 10; i++) {
+            
+        }
         System.out.println("Finalising your order");
-        order.addOrder(email, firstName, lastName, (uts.wsd.oms.soap.client.Movies) movies.movie);
+        order.addOrder(email, firstName, lastName, movie);
     }
-    public static void AddMovie(){
-        Movie movie = new Movie();
-        System.out.println("Please enter the details for the movie you would like to Buy: ");
-        System.out.print("Enter the Title:");
-        movie.setTitle(in.nextLine());
-        System.out.print("Enter the Genre:");
-        movie.setGenre(in.nextLine());
-        System.out.print("Enter the release date of the movie:");
-        movie.setReleaseDate(in.nextInt());
-        System.out.print("Enter the amount of copies avalible:");
-        movie.setCopies(in.nextInt());
-        System.out.print("Enter the Price of each copie:");
-        movie.setPrice(in.nextInt());
-        
-        Movies movies = new Movies();
-        movies.movie.add(movies.movie.size(), movie);
-    }
+//    public static void AddMovie(){
+//        Movie movie = new Movie();
+//        System.out.println("Please enter the details for the movie you would like to Buy: ");
+//        System.out.print("Enter the Title:");
+//        movie.setTitle(in.nextLine());
+//        System.out.print("Enter the Genre:");
+//        movie.setGenre(in.nextLine());
+//        System.out.print("Enter the release date of the movie:");
+//        movie.setReleaseDate(in.nextInt());
+//        System.out.print("Enter the amount of copies avalible:");
+//        movie.setCopies(in.nextInt());
+//        System.out.print("Enter the Price of each copie:");
+//        movie.setPrice(in.nextInt());
+//        
+//        Movies movies = new Movies();
+//        movies.movie.add(movies.movie.size(), movie);
+//    }
 }

@@ -6,6 +6,7 @@
 package uts.wsd.oms.soap.client;
 
 import java.util.Scanner;
+import uts.wsd.oms.*;
 
 /**
  *
@@ -27,13 +28,30 @@ public class PlaceOrderClient {
         lastName = in.nextLine();
         
         Movie movie = new Movie();
-        movie.setCopies(1);
-        movie.setGenre("Action");
-        movie.setPrice(20);
-        movie.setReleaseDate(2018);
-        movie.setTitle("Avengers Infinity War");
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("Please enter the details for the movie you would like to Buy: ");
+        System.out.print("Enter the Title:");
+        movie.setTitle(in.nextLine());
+        System.out.print("Enter the Genre:");
+        movie.setGenre(in.nextLine());
+        System.out.print("Enter the release date of the movie:");
+        movie.setReleaseDate(in.nextInt());
+        System.out.print("Enter the amount of copies avalible:");
+        movie.setCopies(in.nextInt());
+        System.out.print("Enter the Price of each copie:");
+        movie.setPrice(in.nextInt());
+        
+        System.out.println("Press enter to create the MOVIES");
+        in.next();
         Movies movies = new Movies();
+        
+        System.out.println("Press enter to add the movie to the MOVIES");
+        in.next();
+        
         movies.movie.add(movies.movie.size(), movie);
-        order.addOrder(email, firstName, lastName, movies);
+        
+        System.out.println("Press enter to finalise your order");
+        in.next();
+        order.addOrder(email, firstName, lastName, (uts.wsd.oms.soap.client.Movies) movies.movie);
     }
 }
