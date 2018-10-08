@@ -14,6 +14,9 @@
     </datalist>
 </head>
 <script>
+$(document).ready(function(){
+   $("form#MovieSearch").submit();
+});
 $(document).ready(function () {
     $('.order tr').click(function (event) {
         if (event.target.type !== 'checkbox') {
@@ -36,7 +39,7 @@ $(document).ready(function () {
     <a href="login.jsp">Login</a>
 </div>
 <div id="Search" style="margin: auto; width: 50%; padding: 10px;">
-    <form action="index.jsp">
+    <form action="index.jsp" id="MovieSearch">
         <table>
             <tr>
                 <td>
@@ -49,11 +52,11 @@ $(document).ready(function () {
                 </td>
                 <td>
                     <label for="YearS">Start Year</label>
-                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
+                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> 
                 </td>
                 <td>
                     <label for="YearF">End</label>
-                    <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
+                    <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
                 </td>
                 <td>
                     <button>Search</button>
