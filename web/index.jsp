@@ -2,6 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html"%>
 <%@ page import="java.io.*" %>
+<% String msFilePath = application.getRealPath("WEB-INF");%>
+<jsp:useBean id="movieStoreApp" class="uts.wsd.oms.MovieStoreApplication" scope="application">
+    <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=msFilePath%>"/>
+</jsp:useBean>
+<%
 <link rel="stylesheet" href="styles.css"/>
 <html>
 <head>
@@ -14,9 +19,6 @@
     </datalist>
 </head>
 <script>
-$(document).ready(function(){
-   $("form#MovieSearch").submit();
-});
 $(document).ready(function () {
     $('.order tr').click(function (event) {
         if (event.target.type !== 'checkbox') {
