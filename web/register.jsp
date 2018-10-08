@@ -31,6 +31,7 @@
         email = request.getParameter("email");
         password = request.getParameter("password");
         phoneNo = request.getParameter("phoneNo");
+        address = request.getParameter("address");
         city = request.getParameter("city");
         state = request.getParameter("state");
         postCode = request.getParameter("postCode");
@@ -73,69 +74,69 @@
                 <tbody>
                     <tr>
                         <td><label for="firstName">First Name:</label></td>
-                        <td><input name="firstName" id="firstName" type="text" ></td>
+                        <td><input name="firstName" type="text" value="<%=firstName%>" ></td>
                             <% if (!validFirstName) { %>
-                        <td class="validation">Invalid name</td>
+                        <td class="validation">Invalid name (only letters allowed)</td>
                         <%}%>
                     </tr>
                     <tr>
                         <td><label for="lastName">Last Name:</label></td>
-                        <td><input name="lastName" id="lastName" type="text"></td>
+                        <td><input name="lastName" type="text" value="<%=lastName%>"></td>
                             <% if (!validLastName) { %>
-                        <td class="validation">Invalid name</td>
+                        <td class="validation">Invalid name (only letters allowed)</td>
                         <%}%>
                     </tr>
                     <tr>
                         <td><label for="email">Email:</label></td>
-                        <td><input name="email" id="email" type="email"></td>
+                        <td><input name="email" type="email" value="<%=email%>"></td>
                             <% if (!validEmail) { %>
                         <td class="validation">Invalid email format</td>
                         <%}%>
                     </tr>
                     <tr>
                         <td><label for="password">Password:</label></td>
-                        <td><input name="password" id="password" type="password"></td>
+                        <td><input name="password" type="password"></td>
                             <% if (!validPassword) { %>
-                        <td class="validation">Invalid password format</td>
+                        <td class="validation">Invalid password format (minimum 8 characters and only alphanumeric characters allowed)</td>
                         <%}%>
                     </tr>
                     <tr>
                         <td><label for="phoneNo">Phone Number:</label></td>
-                        <td><input name="phoneNo" id="phoneNo" type="number"></td>
+                        <td><input name="phoneNo" type="text" value="<%=phoneNo%>"></td>
                             <% if (!validPhone) { %>
-                        <td class="validation">Invalid phone number</td>
+                        <td class="validation">Invalid phone number (10 digits required)</td>
                         <%}%>
                     </tr>
                     <tr>
                         <td><label for="address">Address:</label></td>
-                        <td><input name="address" id="address" type="text"></td>
+                        <td><input name="address" type="text" value="<%=address%>"></td>
                     </tr>
                     <tr>
                         <td><label for="city">City:</label></td>
-                        <td><input name="city" id="city" type="text"></td>
+                        <td><input name="city" type="text" value="<%=city%>"></td>
                             <% if (!validCity) { %>
-                        <td class="validation">Invalid city</td>
+                        <td class="validation">Invalid city (only letters allowed)</td>
                         <%}%>
                     </tr>
                     <tr>
                         <td><label for="state">State:</label></td>
-                        <td><select name="state" id="state">
-                                <option value="nsw">NSW</option>  
-                                <option value="qld">QLD</option>
-                                <option value="sa">SA</option>
-                                <option value="wa">WA</option>
-                                <option value="vic">VIC</option>
-                                <option value="act">ACT</option>
-                                <option value="nt">NT</option>
-                                <option value="tas">TAS</option>
+                        <td><select name="state">
+                                <option value="nsw" <%= state.equals("nsw") ? "selected" : "" %>>NSW</option>  
+                                <option value="qld" <%= state.equals("qld") ? "selected" : "" %>>QLD</option>
+                                <option value="sa" <%= state.equals("sa") ? "selected" : "" %>>SA</option>
+                                <option value="wa" <%= state.equals("wa") ? "selected" : "" %>>WA</option>
+                                <option value="vic" <%= state.equals("vic") ? "selected" : "" %>>VIC</option>
+                                <option value="act" <%= state.equals("act") ? "selected" : "" %>>ACT</option>
+                                <option value="nt" <%= state.equals("nt") ? "selected" : "" %>>NT</option>
+                                <option value="tas" <%= state.equals("tas") ? "selected" : "" %>>TAS</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td><label for="postCode">Postcode:</label></td>
-                        <td><input name="postCode" id="postCode" type="number"></td>
+                        <td><input name="postCode" type="text" value="<%=postCode%>"></td>
                             <% if (!validPostCode) { %>
-                        <td class="validation">Invalid post code</td>
+                        <td class="validation">Invalid post code (4 digits required)</td>
                         <%}%>
                     </tr>
                     <tr>
