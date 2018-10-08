@@ -15,6 +15,7 @@
 </head>
 <script>
 $(document).ready(function () {
+    $('form#MovieSearch').css("background-color","green");
     $('.order tr').click(function (event) {
         if (event.target.type !== 'checkbox') {
             $(':checkbox', this).trigger('click');
@@ -36,7 +37,7 @@ $(document).ready(function () {
     <a href="login.jsp">Login</a>
 </div>
 <div id="Search" style="margin: auto; width: 50%; padding: 10px;">
-    <form action="index.jsp">
+    <form action="index.jsp" id="MovieSearch" >
         <table>
             <tr>
                 <td>
@@ -49,11 +50,11 @@ $(document).ready(function () {
                 </td>
                 <td>
                     <label for="YearS">Start Year</label>
-                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
+                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> 
                 </td>
                 <td>
                     <label for="YearF">End</label>
-                    <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
+                    <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
                 </td>
                 <td>
                     <button>Search</button>
@@ -67,10 +68,13 @@ $(document).ready(function () {
     <c:import url="xsl/movies.xsl" var="Moviesxslt"/>
 
     <%
-        String genre = request.getParameter("Genre");
-        String title = request.getParameter("Title");
-        String startY = request.getParameter("YearS");
-        String endY = request.getParameter("YearF");
+        String genre, title, startY, endY;
+        
+        genre = request.getParameter("Genre");
+        title = request.getParameter("Title");
+        startY = request.getParameter("YearS");
+        endY = request.getParameter("YearF");
+        
     %>
     <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
         <x:param name="Genre" value="<%= genre %>" />

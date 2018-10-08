@@ -30,4 +30,8 @@ public class Util {
         usedIDs.add(id);
         nextOrderID = id;
     }
+    
+    public static void removeOrderID(int id){
+        usedIDs.remove((Integer)id);
+    }
 }

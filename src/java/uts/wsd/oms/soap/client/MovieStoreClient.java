@@ -4,15 +4,21 @@ import java.util.Scanner;
 
 public class MovieStoreClient {
 
-    static Movie_Service locator = new Movie_Service();
-    static MovieSoap movie = locator.getMovieSoapPort();
+    static History_Service locator = new History_Service();
+    static HistorySoap history = locator.getHistorySoapPort();
+    static PlaceOrder_Service Orderlocator = new PlaceOrder_Service();
+    static PlaceOrder order = Orderlocator.getPlaceOrderPort();
+    static Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
+//        AddMovie();
+        System.out.println("-------------------------------------------------------------");
+        PlaceOrder();
+        System.out.println("-------------------------------------------------------------");
         ViewOrders();
     }
 
     private static void ViewOrders() {
-        Scanner in = new Scanner(System.in);
         String email, id, title, status;
         System.out.print("Enter email: ");
         email = in.nextLine();
@@ -24,7 +30,7 @@ public class MovieStoreClient {
         status = in.nextLine();
         
         System.out.println("");
-        for (Order order : movie.viewAllOrders(id, email, title, status).getOrder()) {
+        for (Order order : history.viewAllOrders(id, email, title, status).getOrder()) {
             System.out.println("----------------------------------------------------");
             System.out.println(getOrderString(order));
         }
@@ -46,5 +52,19 @@ public class MovieStoreClient {
         orderString += "└ Sale Totale: $" + order.getSaleTotal() + "\n";
         orderString += "└ Order Status: " + order.getOrderStatus();
         return orderString;
+    }
+    private static void PlaceOrder() {
+        String email, firstName, lastName;
+        Movies movies = null;
+        System.out.print("Enter email: ");
+        email = in.nextLine();
+        System.out.print("Enetr First Name: ");
+        firstName = in.nextLine();
+        System.out.print("Enter last Name: ");
+        lastName = in.nextLine();
+        System.out.print("What Movie would you like to Buy");
+        
+        System.out.println("Finalising your order");
+        order.addOrder(email, firstName, lastName, movies);
     }
 }

@@ -15,7 +15,7 @@ public class Movie implements Serializable {
     private String genre;
 
     @XmlElement(name = "releaseDate")
-    private String releaseDate;
+    private int releaseDate;
 
     @XmlElement(name = "price")
     private float price;
@@ -26,7 +26,7 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-    public Movie(String title, String genre, String releaseDate) {
+    public Movie(String title, String genre, int releaseDate) {
         this.title = title;
         this.genre = genre;
         this.releaseDate = releaseDate;
@@ -40,11 +40,11 @@ public class Movie implements Serializable {
         this.genre = genre;
     }
 
-    public String getReleaseDate() {
+    public int getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(int releaseDate) {
         this.releaseDate = releaseDate;
     }
 

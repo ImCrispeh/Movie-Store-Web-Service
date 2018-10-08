@@ -40,9 +40,9 @@ public class Movies implements Serializable {
     }
     
     public void removeMovie(String title, String releaseDate) {
-        if(movies.stream().filter(m -> m.getTitle().equals(title) && m.getReleaseDate().equals(releaseDate)).findFirst().isPresent())
+        if(movies.stream().filter(m -> m.getTitle().equals(title) && (m.getReleaseDate()+"").equals(releaseDate)).findFirst().isPresent())
         {
-            removeMovie(movies.stream().filter(m -> m.getTitle().equals(title) && m.getReleaseDate().equals(releaseDate)).findFirst().get());
+            removeMovie(movies.stream().filter(m -> m.getTitle().equals(title) && (m.getReleaseDate()+"").equals(releaseDate)).findFirst().get());
         }
     }
 }
