@@ -22,6 +22,7 @@
                 </style>
             </head>
             <body>
+                <h1 align="center">Viewing Order History From REST Web Service</h1>
                 <table width="100%" align="center">
                     <thead>
                         <tr>
@@ -73,7 +74,7 @@
     </xsl:template>
     <xsl:template match="ns:movie">
         <li>
-            <xsl:value-of select="ns:title"/> x <xsl:value-of select="ns:copies"/> [Genre: <xsl:value-of select="ns:genre"/>, Release Date: <xsl:value-of select="ns:releaseDate"/>, Individual Price: <xsl:value-of select="ns:price"/>]
+            <xsl:value-of select="ns:title"/> x <xsl:value-of select="ns:copies"/> [Genre: <xsl:value-of select="ns:genre"/>, Release Date: <xsl:value-of select="ns:releaseDate"/>, Individual Price: $<xsl:value-of select="format-number(ns:price, '0.00')"/>]
         </li>
     </xsl:template>
 </xsl:stylesheet>
