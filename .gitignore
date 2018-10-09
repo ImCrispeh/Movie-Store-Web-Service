@@ -10,3 +10,4 @@ catalog.xml
 web/WEB-INF/jax-ws-catalog.xml 
 web/WEB-INF/wsdl
 src/conf/xml-resources
+WSDAssignment01.iml
