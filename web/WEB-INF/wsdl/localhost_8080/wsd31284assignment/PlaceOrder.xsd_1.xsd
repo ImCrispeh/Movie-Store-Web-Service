@@ -4,12 +4,6 @@
 
 <xs:element name="movies" type="tns:movies"/>
 
-<xs:complexType name="movies">
-<xs:sequence>
-<xs:element ref="tns:movie" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="movie">
 <xs:sequence>
 <xs:element name="title" type="xs:string" minOccurs="0"/>
@@ -17,6 +11,12 @@
 <xs:element name="releaseDate" type="xs:int"/>
 <xs:element name="price" type="xs:float"/>
 <xs:element name="copies" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="movies">
+<xs:sequence>
+<xs:element ref="tns:movie" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

@@ -21,4 +21,10 @@
     <system systemId="http://localhost:8080/Project/PlaceOrder?wsdl" uri="src/conf/xml-resources/web-service-references/PlaceOrder/wsdl/localhost_8080/Project/PlaceOrder.wsdl"/>
     <system systemId="http://localhost:8080/Project/PlaceOrder?xsd=1" uri="src/conf/xml-resources/web-service-references/PlaceOrder/wsdl/localhost_8080/Project/PlaceOrder.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/Project/PlaceOrder?xsd=2" uri="src/conf/xml-resources/web-service-references/PlaceOrder/wsdl/localhost_8080/Project/PlaceOrder.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/wsd31284assignment01/PlaceOrder?wsdl" uri="src/conf/xml-resources/web-service-references/PlaceOrder/wsdl/localhost_8080/wsd31284assignment01/PlaceOrder.wsdl"/>
+    <system systemId="http://localhost:8080/wsd31284assignment01/PlaceOrder?xsd=1" uri="src/conf/xml-resources/web-service-references/PlaceOrder/wsdl/localhost_8080/wsd31284assignment01/PlaceOrder.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/wsd31284assignment01/PlaceOrder?xsd=2" uri="src/conf/xml-resources/web-service-references/PlaceOrder/wsdl/localhost_8080/wsd31284assignment01/PlaceOrder.xsd_2.xsd"/>
+    <system systemId="http://localhost:8080/wsd31284assignment01/History?wsdl" uri="src/conf/xml-resources/web-service-references/History/wsdl/localhost_8080/wsd31284assignment01/History.wsdl"/>
+    <system systemId="http://localhost:8080/wsd31284assignment01/History?xsd=1" uri="src/conf/xml-resources/web-service-references/History/wsdl/localhost_8080/wsd31284assignment01/History.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/wsd31284assignment01/History?xsd=2" uri="src/conf/xml-resources/web-service-references/History/wsdl/localhost_8080/wsd31284assignment01/History.xsd_2.xsd"/>
 </catalog>
