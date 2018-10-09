@@ -163,7 +163,7 @@ public class MovieStoreApplication implements Serializable {
      * @throws FileNotFoundException
      */
     public void addOrder(Order order) throws JAXBException, FileNotFoundException {
-        if(!order.getOrderStatus().equals("Cancelled"))
+        if(!order.getOrderStatus().equals("cancelled"))
             order.setOrderStatus("Submitted");
         getHistory().addOrder(order);
         marshalHistory();
@@ -204,11 +204,14 @@ public class MovieStoreApplication implements Serializable {
     public void cancelOrder(int orderId) throws JAXBException, FileNotFoundException {
         if (getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().isPresent()) {
             Order order = getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().get();
-            order.setOrderStatus("cancelled");
-            
-            order.getMovies().getMovies().forEach((movie) -> {
-                getMovies().addMovie(movie);
-            });
+            if(order.getOrderStatus().equals("cancelled"))
+            {
+                order.setOrderStatus("cancelled");
+
+                order.getMovies().getMovies().forEach((movie) -> {
+                    getMovies().addMovie(movie);
+                });
+            }
             
             marshalHistory();
             marshalMovies();

@@ -102,12 +102,6 @@
                             </xsl:if>
                             Paypal
                         </option>
-                        <option value="Google">
-                            <xsl:if test="ns:paymentMethod = 'Google'">
-                                <xsl:attribute name="selected">selected</xsl:attribute>
-                            </xsl:if>
-                            Google Wallet
-                        </option>
                     </select> 
                 </td>
             </tr>

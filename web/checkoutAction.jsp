@@ -35,7 +35,7 @@
                 return;
             }
             movieStoreApp.addOrder(cartController.getOrder());
-            cartController.cancelOrder(movieStoreApp);
+            cartController.createOrder();
             if (session.getAttribute("user") == null) {
                 response.sendRedirect("index.jsp");
             } else {
