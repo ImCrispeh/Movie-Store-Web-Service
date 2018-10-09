@@ -18,7 +18,6 @@ public class MovieStoreClient {
      * @param args
      */
     public static void main(String[] args) {
-//        AddMovie();
         System.out.println("-------------------------------------------------------------");
         PlaceOrder();
         System.out.println("-------------------------------------------------------------");
@@ -71,16 +70,38 @@ public class MovieStoreClient {
     }
     
     private static void PlaceOrder() {
-        String email, firstName, lastName;
-        Movies movies = null;
+        String email, firstName, lastName, MovieTitle,releaseDate;
         System.out.print("Enter email: ");
         email = in.nextLine();
         System.out.print("Enetr First Name: ");
         firstName = in.nextLine();
         System.out.print("Enter last Name: ");
         lastName = in.nextLine();
-        System.out.print("What Movie would you like to Buy");
-        
+        Boolean AddMovies = true;
+        while (AddMovies == true){
+            String add = "y";
+            System.out.print("What is the title of the Movie would you like to Buy");
+            MovieTitle = in.nextLine();
+            System.out.print("What is the releaseDate of the Movie would you like to Buy");
+            releaseDate = in.nextLine();
+            Movie movie = order.getMovie(MovieTitle, releaseDate );
+            if (movie == null){
+                System.out.println("Hey You need to enter a valid movie");
+            }
+            else { // Add another movie ?
+                while (add != "n") {
+                    System.out.print("Would you like to add another movie? (y/n)");
+                    add = in.nextLine();
+                    if (add != "y" | add != "n"){
+                        System.out.print("Please enter a 'y' or an 'n'");
+                    }
+                    else if (add == "n"){
+                        AddMovies = false;
+                    }
+                }
+            }
+        }
+
         System.out.println("Finalising your order");
         order.addOrder(email, firstName, lastName, movies);
     }
