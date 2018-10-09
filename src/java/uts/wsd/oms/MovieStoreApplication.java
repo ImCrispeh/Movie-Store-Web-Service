@@ -288,4 +288,25 @@ public class MovieStoreApplication implements Serializable {
     public boolean validatePassword(String password) {
         return password.matches("([a-zA-Z0-9]{8,})");
     }
+    
+    /**
+     * Updates users.xml with deletion or update
+     * @param users
+     * @throws Exception 
+     */
+        public void updateUsers(Users users) throws Exception {
+        JAXBContext jc = JAXBContext.newInstance(Users.class);
+        Marshaller m = jc.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        m.marshal(users, new FileOutputStream(filePath + "/users.xml"));
+    }
+    /*
+     *  Updates the user account information
+     */
+    public void editUser(User user, String firstName, String lastName, String email, String password, String phoneNo, String address, String city, String state, String postCode) throws Exception {
+        users.removeUser(user);
+        user.updateUser(firstName, lastName, email, password, phoneNo, address, city, state, postCode);
+        users.addUser(user);
+        updateUsers(users);
+    }
 }
