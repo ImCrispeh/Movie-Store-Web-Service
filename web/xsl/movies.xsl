@@ -14,7 +14,7 @@
                 <div style="text-align:center">
                     <div style="width:10%"/>
                     <div align="center" style="width: 80%; display: inline-block" >
-                        <form action="checkout.jsp">
+                        <form action="checkout.jsp"  method="Post">
                             <table id="movies" class="order">
                                 <thead>
                                     <tr>
@@ -29,7 +29,7 @@
                                 <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
                                 <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />
                             </table>
-                            <button style="float:right;">Submit</button>
+                            <button style="float:right;">Checkout</button>
                         </form>
                     </div>
                     <div style="width:10%"/>
@@ -39,10 +39,10 @@
     </xsl:template>
     
     <xsl:template match="ns:movie">
-        <tr style="height: 50px; vertical-align: bottom; border: 1px solid;" onclick="">
+        <tr style="height: 50px; vertical-align: bottom; border: 1px solid;" >
             <td style="display:none;">
             <!--<td>-->
-                <input name="Checkout" type="checkbox"/>
+                <input name="Checkout_{ns:title}_{ns:releaseDate}" type="checkbox" id=""/>
             </td>
             <td>
                 <xsl:value-of select="ns:title" />

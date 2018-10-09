@@ -47,26 +47,11 @@
         <saleTotal>20</saleTotal>
         <orderStatus>cancelled</orderStatus>
     </order> 
-
     <order>
         <orderID>102</orderID>
         <movies>
             <movie>
-                <title>Name of movie</title>
-                <genre>Action</genre>
-                <releaseDate>2018</releaseDate>
-                <price>20</price>
-                <copies>1</copies>
-            </movie>
-            <movie>
-                <title>test</title>
-                <genre>Action</genre>
-                <releaseDate>2018</releaseDate>
-                <price>20</price>
-                <copies>1</copies>
-            </movie>
-            <movie>
-                <title>test</title>
+                <title>blah</title>
                 <genre>Action</genre>
                 <releaseDate>2018</releaseDate>
                 <price>20</price>
@@ -75,27 +60,9 @@
         </movies>
         <firstName>Christopher</firstName>
         <lastName>Fung</lastName>
-        <email>test@email.com</email>
+        <email>nontest@email.com</email>
         <paymentMethod>visa</paymentMethod>
-        <saleTotal>20</saleTotal>
-        <orderStatus>submitted</orderStatus>
-    </order>
-    <order>
-        <orderID>3</orderID>
-        <movies>
-            <movie>
-                <title>Name of movie</title>
-                <genre>Action</genre>
-                <releaseDate>2018</releaseDate>
-                <price>20</price>
-                <copies>1</copies>
-            </movie>
-        </movies>
-        <firstName>Christopher</firstName>
-        <lastName>Fung</lastName>
-        <email>test@email.com</email>
-        <paymentMethod>visa</paymentMethod>
-        <saleTotal>20</saleTotal>
-        <orderStatus>submitted</orderStatus>
+        <saleTotal>0</saleTotal>
+        <orderStatus>cancelled</orderStatus>
     </order>
 </history>
