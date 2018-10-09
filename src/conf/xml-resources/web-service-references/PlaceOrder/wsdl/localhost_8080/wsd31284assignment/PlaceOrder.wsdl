@@ -13,15 +13,34 @@
 <message name="AddOrderResponse">
 <part name="parameters" element="tns:AddOrderResponse"/>
 </message>
+<message name="AddMovie">
+<part name="parameters" element="tns:AddMovie"/>
+</message>
+<message name="AddMovieResponse">
+<part name="parameters" element="tns:AddMovieResponse"/>
+</message>
 <portType name="PlaceOrder">
 <operation name="AddOrder">
 <input wsam:Action="http://soap.oms.wsd.uts/PlaceOrder/AddOrderRequest" message="tns:AddOrder"/>
 <output wsam:Action="http://soap.oms.wsd.uts/PlaceOrder/AddOrderResponse" message="tns:AddOrderResponse"/>
 </operation>
+<operation name="AddMovie">
+<input wsam:Action="http://soap.oms.wsd.uts/PlaceOrder/AddMovieRequest" message="tns:AddMovie"/>
+<output wsam:Action="http://soap.oms.wsd.uts/PlaceOrder/AddMovieResponse" message="tns:AddMovieResponse"/>
+</operation>
 </portType>
 <binding name="PlaceOrderPortBinding" type="tns:PlaceOrder">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
 <operation name="AddOrder">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="AddMovie">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

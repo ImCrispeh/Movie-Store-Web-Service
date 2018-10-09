@@ -2,9 +2,23 @@
 
 <xs:import namespace="http://uts/wsd/oms" schemaLocation="http://localhost:8080/wsd31284assignment/PlaceOrder?xsd=1"/>
 
+<xs:element name="AddMovie" type="tns:AddMovie"/>
+
+<xs:element name="AddMovieResponse" type="tns:AddMovieResponse"/>
+
 <xs:element name="AddOrder" type="tns:AddOrder"/>
 
 <xs:element name="AddOrderResponse" type="tns:AddOrderResponse"/>
+
+<xs:complexType name="AddMovie">
+<xs:sequence>
+<xs:element name="arg0" type="ns1:movie" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="AddMovieResponse">
+<xs:sequence/>
+</xs:complexType>
 
 <xs:complexType name="AddOrder">
 <xs:sequence>
