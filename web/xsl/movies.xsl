@@ -40,8 +40,8 @@
     
     <xsl:template match="ns:movie">
         <tr style="height: 50px; vertical-align: bottom; border: 1px solid;" >
-            <!--<td style="display:none;">-->
-            <td>
+            <td style="display:none;">
+            <!--<td>-->
                 <input name="Checkout_ns:title_ns:releaseDate" type="checkbox" id=""/>
             </td>
             <td>

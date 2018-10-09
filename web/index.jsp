@@ -4,6 +4,7 @@
 <%@ page import="java.io.*" %>
 <% String msFilePath = application.getRealPath("WEB-INF");%>
 <link rel="stylesheet" href="styles.css"/>
+<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
 <html>
 <head>
     <title>index</title>
@@ -17,7 +18,6 @@
 <script>
 $(document).ready(function () {
     $('.order tr').click(function (event) {
-        console.log("Oder tr clickd")
         if (event.target.type !== 'checkbox') {
             $(':checkbox', this).trigger('click');
         }
