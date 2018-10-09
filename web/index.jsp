@@ -17,6 +17,7 @@
 <script>
 $(document).ready(function () {
     $('.order tr').click(function (event) {
+        console.log("Oder tr clickd")
         if (event.target.type !== 'checkbox') {
             $(':checkbox', this).trigger('click');
         }
@@ -79,8 +80,6 @@ $(document).ready(function () {
         <x:param name="StartYear" value="<%= startY %>" />
         <x:param name="EndYear" value="<%= endY %>" />
     </x:transform>
-</div><div id="Checkout">
-    <a href="checkout."></a>
-</div>
+
 </body>
 </html>

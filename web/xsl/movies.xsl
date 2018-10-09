@@ -39,7 +39,7 @@
     </xsl:template>
     
     <xsl:template match="ns:movie">
-        <tr style="height: 50px; vertical-align: bottom; border: 1px solid;" onclick="">
+        <tr style="height: 50px; vertical-align: bottom; border: 1px solid;" >
             <!--<td style="display:none;">-->
             <td>
                 <input name="Checkout" type="checkbox"/>
