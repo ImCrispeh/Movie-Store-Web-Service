@@ -2,7 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html"%>
 <%@ page import="java.io.*" %>
+<% String msFilePath = application.getRealPath("WEB-INF");%>
 <link rel="stylesheet" href="styles.css"/>
+<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
 <html>
 <head>
     <title>index</title>
@@ -15,7 +17,6 @@
 </head>
 <script>
 $(document).ready(function () {
-    $('form#MovieSearch').css("background-color","green");
     $('.order tr').click(function (event) {
         if (event.target.type !== 'checkbox') {
             $(':checkbox', this).trigger('click');
@@ -37,7 +38,7 @@ $(document).ready(function () {
     <a href="login.jsp">Login</a>
 </div>
 <div id="Search" style="margin: auto; width: 50%; padding: 10px;">
-    <form action="index.jsp" id="MovieSearch" >
+    <form action="checkout.jsp" id="MovieSearch">
         <table>
             <tr>
                 <td>
@@ -68,13 +69,10 @@ $(document).ready(function () {
     <c:import url="xsl/movies.xsl" var="Moviesxslt"/>
 
     <%
-        String genre, title, startY, endY;
-        
-        genre = request.getParameter("Genre");
-        title = request.getParameter("Title");
-        startY = request.getParameter("YearS");
-        endY = request.getParameter("YearF");
-        
+        String genre = request.getParameter("Genre");
+        String title = request.getParameter("Title");
+        String startY = request.getParameter("YearS");
+        String endY = request.getParameter("YearF");
     %>
     <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
         <x:param name="Genre" value="<%= genre %>" />
@@ -82,8 +80,6 @@ $(document).ready(function () {
         <x:param name="StartYear" value="<%= startY %>" />
         <x:param name="EndYear" value="<%= endY %>" />
     </x:transform>
-</div><div id="Checkout">
-    <a href="checkout."></a>
-</div>
+
 </body>
 </html>
