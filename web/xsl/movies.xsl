@@ -25,9 +25,18 @@
                                         <th>copies</th>
                                     </tr>
                                 </thead>
-                                <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title]" />
-                                <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
-                                <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />
+                                <xsl:if test="count(ns:movies) = 1">
+                                    <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title]" />
+                                    <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
+                                    <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />
+                                </xsl:if>
+                                <xsl:if test="count(ns:movies) = 0">
+                                    <p>
+                                        <script>
+                                            window.location = "index.jsp";
+                                        </script>
+                                    </p>
+                                </xsl:if>
                             </table>
                             <button style="float:right;">Checkout</button>
                         </form>
