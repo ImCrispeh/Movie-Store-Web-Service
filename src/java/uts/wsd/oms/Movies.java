@@ -49,12 +49,12 @@ public class Movies implements Serializable {
 
     /**
      * Remove a movie from the list or decrement 
-     * the number of copies if greater than 0
+     * the number of copies if greater than 1
      * @param movie
      */
     public void removeMovie(Movie movie) {
         int i = movies.indexOf(movie);
-        if (i > -1 && movies.get(i).getCopies() > 0)
+        if (i > -1 && movies.get(i).getCopies() - movie.getCopies() > 1)
             movies.get(i).decrementCopies(movie.getCopies());
         else
             movies.remove(movie);

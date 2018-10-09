@@ -111,6 +111,16 @@ public class MovieStoreApplication implements Serializable {
      */
     public void addMovie(Movie movie) throws JAXBException, FileNotFoundException {
         getMovies().addMovie(movie);
+        marshalMovies();
+    }
+    
+    /**
+     * Save changes to the Movies XML
+     * @throws FileNotFoundException
+     * @throws PropertyException
+     * @throws JAXBException 
+     */
+    private void marshalMovies() throws FileNotFoundException, PropertyException, JAXBException {
         JAXBContext jc = JAXBContext.newInstance(Movies.class);
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -126,14 +136,24 @@ public class MovieStoreApplication implements Serializable {
      */
     public boolean registerUser(User user) throws JAXBException, FileNotFoundException {
         if (users.registerUser(user)) {
-            JAXBContext jc = JAXBContext.newInstance(Users.class);
-            Marshaller m = jc.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal(users, new FileOutputStream(filePath + "/users.xml"));
+            marshalUsers();
             return true;
         } else {
             return false;
         }
+    }
+    
+    /**
+     * Save changes to the Users XML
+     * @throws PropertyException
+     * @throws JAXBException
+     * @throws FileNotFoundException 
+     */
+    private void marshalUsers() throws PropertyException, JAXBException, FileNotFoundException {
+        JAXBContext jc = JAXBContext.newInstance(Users.class);
+        Marshaller m = jc.createMarshaller();
+        m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        m.marshal(users, new FileOutputStream(filePath + "/users.xml"));
     }
 
     /**
@@ -146,6 +166,29 @@ public class MovieStoreApplication implements Serializable {
         if(!order.getOrderStatus().equals("Cancelled"))
             order.setOrderStatus("Submitted");
         getHistory().addOrder(order);
+        marshalHistory();
+    }
+    
+    /**
+     * Remove a movie from the movie list
+     * @param movie
+     * @throws FileNotFoundException
+     * @throws JAXBException 
+     */
+    public void removeMovie(Movie movie) throws FileNotFoundException, JAXBException{
+        Movie tempMovie = new Movie(movie);
+        tempMovie.setCopies(1);
+        getMovies().removeMovie(tempMovie);
+        marshalMovies();
+    }
+
+    /**
+     * Save changes to the History XML
+     * @throws JAXBException
+     * @throws FileNotFoundException
+     * @throws PropertyException 
+     */
+    private void marshalHistory() throws JAXBException, FileNotFoundException, PropertyException {
         JAXBContext jc = JAXBContext.newInstance(History.class);
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -160,12 +203,33 @@ public class MovieStoreApplication implements Serializable {
      */
     public void cancelOrder(int orderId) throws JAXBException, FileNotFoundException {
         if (getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().isPresent()) {
-            getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().get().setOrderStatus("cancelled");
-            JAXBContext jc = JAXBContext.newInstance(History.class);
-            Marshaller m = jc.createMarshaller();
-            m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            m.marshal(getHistory(), new FileOutputStream(filePath + "/history.xml"));
+            Order order = getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().get();
+            order.setOrderStatus("cancelled");
+            
+            order.getMovies().getMovies().forEach((movie) -> {
+                getMovies().addMovie(movie);
+            });
+            
+            marshalHistory();
+            marshalMovies();
         }
+    }
+    
+    /**
+     * Look for the movie matching the provided string 
+     * in the format for Checkout_title_releaseDate
+     * @param movie
+     * @return The matching movie
+     */
+    public Movie getMovie(String movie){
+        String[] splitString = movie.split("_");
+        if (splitString.length == 3) {
+            Optional<Movie> result;
+            result = getMovies().getMovies().stream().filter(m -> m.getTitle().equals(splitString[1]) && (""+m.getReleaseDate()).equals(splitString[2])).findFirst();
+            if (result.isPresent())
+                return result.get();
+        }
+        return null;
     }
 
     /**

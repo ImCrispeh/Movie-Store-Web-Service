@@ -41,6 +41,18 @@ public class Movie implements Serializable {
         this.genre = genre;
         this.releaseDate = releaseDate;
     }
+    
+    /**
+     * Constructor that sets the movie with values from another movie
+     * @param movie 
+     */
+    public Movie(Movie movie){
+        this.title = movie.getTitle();
+        this.releaseDate = movie.getReleaseDate();
+        this.genre = movie.getGenre();
+        this.copies = movie.getCopies();
+        this.price = movie.getPrice();
+    }
 
     /**
      * @return Genre of the movie

@@ -34,11 +34,10 @@ $(document).ready(function () {
 <body bgcolor="#bdbdbd">
 <div id="Title" style="text-align: right;">
     <H1 style="text-align: center">Movies</H1>
-    <a href="register.jsp">Register</a>
-    <a href="login.jsp">Login</a>
+    <%@include file="/WEB-INF/jspf/navbar.jspf" %>
 </div>
 <div id="Search" style="margin: auto; width: 50%; padding: 10px;">
-    <form action="checkout.jsp" id="MovieSearch">
+    <form action="index.jsp" method="Post" id="MovieSearch">
         <table>
             <tr>
                 <td>

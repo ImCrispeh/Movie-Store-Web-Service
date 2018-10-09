@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Optional;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -75,24 +76,36 @@ public class CartController {
 
     /**
      * Add a movie to the current order
+     * @param movieStoreApp
      * @param movie
      * @throws JAXBException
      * @throws FileNotFoundException
      */
-    public void addMovie(Movie movie) throws JAXBException, FileNotFoundException {
-        getOrder().addMovie(movie);
+    public void addMovie(MovieStoreApplication movieStoreApp, Movie movie) throws JAXBException, FileNotFoundException {
+        Movie tempMovie = new Movie(movie);
+        tempMovie.setCopies(1);
+        getOrder().addMovie(tempMovie);
+        movieStoreApp.removeMovie(tempMovie);
         marshal();
     }
 
     /**
      * Remove a movie from the current order
+     * @param movieStoreApp
      * @param movie A string describing the movie in the format remove_title_releaseDate
      * @throws JAXBException
      * @throws FileNotFoundException
      */
-    public void removeMovie(String movie) throws JAXBException, FileNotFoundException {
+    public void removeMovie(MovieStoreApplication movieStoreApp, String movie) throws JAXBException, FileNotFoundException {
         String[] splitString = movie.split("_");
         if (splitString.length == 3) {
+            Optional<Movie> result = getOrder().getMovies().getMovies().stream().filter(m -> m.getTitle().equals(splitString[1]) && (m.getReleaseDate() + "").equals(splitString[2])).findFirst();
+            if (result.isPresent()) {
+                Movie tempMovie;
+                tempMovie = new Movie(result.get());
+                movieStoreApp.addMovie(tempMovie);
+            }
+            
             getOrder().removeMovie(splitString[1], splitString[2]);
             marshal();
         }
@@ -103,7 +116,8 @@ public class CartController {
      * @throws JAXBException
      * @throws FileNotFoundException 
      */
-    private void marshal() throws JAXBException, FileNotFoundException {
+    @SuppressWarnings("empty-statement")
+    private void marshal() throws JAXBException, FileNotFoundException{
         JAXBContext jc = JAXBContext.newInstance(Order.class);
         Marshaller m = jc.createMarshaller();
         m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -112,11 +126,18 @@ public class CartController {
 
     /**
      * Cancel the current order and create a new order empty order
+     * @param movieStoreApp
      * @throws JAXBException
      * @throws FileNotFoundException
      */
-    public void cancelOrder() throws JAXBException, FileNotFoundException {
+    public void cancelOrder(MovieStoreApplication movieStoreApp) throws JAXBException, FileNotFoundException {
         Util.removeOrderID(order.getOrderID());
+        for(Movie movie : getOrder().getMovies().getMovies())
+        {
+            Movie tempMovie = new Movie(movie);
+            tempMovie.setCopies(1);
+            movieStoreApp.addMovie(tempMovie);
+        }
         setOrder(new Order());
         marshal();
     }

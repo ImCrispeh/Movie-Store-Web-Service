@@ -11,18 +11,20 @@
         <html>
             <head>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+                <meta http-equiv="Pragma" content="no-cache" />
+                <meta http-equiv="Expires" content="-1" />
             </head>
             <body>
                 <form action="checkoutAction.jsp" method="Post">
                     <xsl:apply-templates/>
                     <input type="submit" name="cancelOrder" value="Cancel Order">
                         <xsl:if test="count(ns:order/ns:movies/ns:movie) &lt; 1">
-                                <xsl:attribute name="disabled"/>
+                            <xsl:attribute name="disabled"/>
                         </xsl:if>
                     </input>
                     <input type="submit" name="placeOrder" value="Place Order">
                         <xsl:if test="count(ns:order/ns:movies/ns:movie) &lt; 1">
-                                <xsl:attribute name="disabled"/>
+                            <xsl:attribute name="disabled"/>
                         </xsl:if>
                     </input>
                 </form>
@@ -36,26 +38,42 @@
         <xsl:apply-templates select="ns:movies"/>
         <table class="CartDetails">
             <tr>
-                <td><label for="saleTotal">Sale Total:</label></td>
-                <td><xsl:value-of select="ns:saleTotal"/></td>
+                <td>
+                    <label for="saleTotal">Sale Total:</label>
+                </td>
+                <td>
+                    <xsl:value-of select="ns:saleTotal"/>
+                </td>
             </tr>
             <tr>
-                <td><label for="firstName">First Name:</label></td>
-                <td><input type="text" name="firstName" value='{ns:firstName}'/></td>
+                <td>
+                    <label for="firstName">First Name:</label>
+                </td>
+                <td>
+                    <input type="text" name="firstName" value='{ns:firstName}'/>
+                </td>
                 <xsl:if test="$firstNameError = 'true'">
                     <td class="validation">First Name Required</td>
                 </xsl:if>
             </tr>
             <tr>
-                <td><label for="lastName">Last Name:</label></td>
-                <td><input type="text" name="lastName" value='{ns:lastName}'/></td>
+                <td>
+                    <label for="lastName">Last Name:</label>
+                </td>
+                <td>
+                    <input type="text" name="lastName" value='{ns:lastName}'/>
+                </td>
                 <xsl:if test="$lastNameError = 'true'">
                     <td class="validation">Last Name Required</td>
                 </xsl:if>
             </tr>
             <tr>
-                <td><label for="email">Email</label></td>
-                <td><input type="email" name="email" value='{ns:email}'/></td>
+                <td>
+                    <label for="email">Email</label>
+                </td>
+                <td>
+                    <input type="email" name="email" value='{ns:email}'/>
+                </td>
                 <xsl:if test="$emailError = 'true'">
                     <td class="validation">Email Required</td>
                 </xsl:if>

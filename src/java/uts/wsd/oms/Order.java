@@ -1,6 +1,7 @@
 package uts.wsd.oms;
 
 import java.io.Serializable;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -38,7 +39,7 @@ public class Order implements Serializable {
 
     @XmlElement(name = "orderStatus")
     private String orderStatus;
-
+    
     /**
      * Constructor that initialises fields and sets the order ID
      */
@@ -241,4 +242,5 @@ public class Order implements Serializable {
         movies.removeMovie(title, releaseDate);
         updateTotal();
     }
+    
 }

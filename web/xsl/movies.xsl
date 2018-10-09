@@ -14,7 +14,7 @@
                 <div style="text-align:center">
                     <div style="width:10%"/>
                     <div align="center" style="width: 80%; display: inline-block" >
-                        <form action="checkout.jsp">
+                        <form action="checkout.jsp"  method="Post">
                             <table id="movies" class="order">
                                 <thead>
                                     <tr>
