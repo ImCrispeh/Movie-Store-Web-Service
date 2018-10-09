@@ -42,7 +42,7 @@
         <tr style="height: 50px; vertical-align: bottom; border: 1px solid;" >
             <!--<td style="display:none;">-->
             <td>
-                <input name="Checkout" type="checkbox"/>
+                <input name="Checkout_ns:title_ns:releaseDate" type="checkbox" id=""/>
             </td>
             <td>
                 <xsl:value-of select="ns:title" />
