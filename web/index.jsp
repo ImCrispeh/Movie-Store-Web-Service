@@ -41,20 +41,24 @@ $(document).ready(function () {
         <table>
             <tr>
                 <td>
-                    <label for="Title">Title</label>
+                    <label for="Title">Title
                     <input name="Title" type="text" value="" autocomplete="false">
+                    </label>
                 </td>
                 <td>
-                    <label for="Genre">Genre</label>
+                    <label for="Genre">Genre
                     <input name="Genre" list="Genres" value="" autocomplete="false" onclick="value=''">
+                    </label>
                 </td>
                 <td>
-                    <label for="YearS">Start Year</label>
-                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> 
+                    <label for="YearS">Start Year
+                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
+                    </label>
                 </td>
                 <td>
-                    <label for="YearF">End</label>
+                    <label for="YearF">End
                     <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
+                    </label>
                 </td>
                 <td>
                     <button>Search</button>
@@ -66,15 +70,14 @@ $(document).ready(function () {
     <%--movies should apear here--%>
     <c:import url="WEB-INF/movies.xml" var="moviesxml"/>
     <c:import url="xsl/movies.xsl" var="Moviesxslt"/>
-
     <%
         String genre = request.getParameter("Genre");
         String title = request.getParameter("Title");
         String startY = request.getParameter("YearS");
         String endY = request.getParameter("YearF");
     %>
-    <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
-        <x:param name="Genre" value="<%= genre %>" />
+    <x:transform xml="${moviesxml}" xslt="${Moviesxslt}" >
+        <x:param name="Genre" value="<%= genre %>"/>
         <x:param name="Title" value="<%= title %>" />
         <x:param name="StartYear" value="<%= startY %>" />
         <x:param name="EndYear" value="<%= endY %>" />
