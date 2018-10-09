@@ -2,14 +2,21 @@ package uts.wsd.oms.soap.client;
 
 import java.util.Scanner;
 
+/**
+ * A SOAP Client that allows access to the SOAP service through the command line
+ */
 public class MovieStoreClient {
 
-    static History_Service locator = new History_Service();
-    static HistorySoap history = locator.getHistorySoapPort();
-    static PlaceOrder_Service Orderlocator = new PlaceOrder_Service();
-    static PlaceOrder order = Orderlocator.getPlaceOrderPort();
+    static final History_Service HISTORY_LOCATOR = new History_Service();
+    static HistorySoap history = HISTORY_LOCATOR.getHistorySoapPort();
+    static final PlaceOrder_Service ORDER_LOCATOR = new PlaceOrder_Service();
+    static PlaceOrder order = ORDER_LOCATOR.getPlaceOrderPort();
     static Scanner in = new Scanner(System.in);
 
+    /**
+     * Print out a menu that allows the user to access the SOAP service
+     * @param args
+     */
     public static void main(String[] args) {
 //        AddMovie();
         System.out.println("-------------------------------------------------------------");
@@ -18,8 +25,12 @@ public class MovieStoreClient {
         ViewOrders();
     }
 
+    /**
+     * Prompt the user for order details to query and the display matching orders
+     */
     private static void ViewOrders() {
         String email, id, title, status;
+        System.out.println("Please provide the filter parameters, leave blank for all");
         System.out.print("Enter email: ");
         email = in.nextLine();
         System.out.print("Enetr Order ID: ");
@@ -35,7 +46,12 @@ public class MovieStoreClient {
             System.out.println(getOrderString(order));
         }
     }
-
+    
+    /**
+     * Build a string for the order so that it can be printed
+     * @param order
+     * @return A string representing the contents of the order
+     */
     private static String getOrderString(Order order) {
         String orderString = "Order ID: " + order.getOrderID() + "\n";
         orderString += "└ Movies:\n";
@@ -53,6 +69,7 @@ public class MovieStoreClient {
         orderString += "└ Order Status: " + order.getOrderStatus();
         return orderString;
     }
+    
     private static void PlaceOrder() {
         String email, firstName, lastName;
         Movies movies = null;

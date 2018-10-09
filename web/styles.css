@@ -17,6 +17,7 @@ table {
 }
 #loginTable, #loginTable th, #loginTable td {
     border: 0px !important;
+    width:auto !important;
 }
 #movies tbody tr:hover{
     background: #eef;

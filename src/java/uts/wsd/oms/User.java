@@ -6,6 +6,7 @@ import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "user")
+@XmlType(namespace="http://uts/wsd/oms")
 public class User implements Serializable {
 
     @XmlElement(name = "firstName")

@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.*;
 import javax.xml.bind.annotation.*;
 
+/**
+ * History Javabean with JAXB bindings
+ */
 @XmlRootElement(name = "history")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(namespace="http://uts/wsd/oms")
@@ -12,6 +15,10 @@ public class History implements Serializable {
     @XmlElement(name = "order")
     private ArrayList<Order> orders;
 
+    /**
+     * Constructor that sets the orders list with the provided list of orders
+     * @param orders
+     */
     public History(ArrayList<Order> orders) {
         this.orders = orders;
     }
@@ -19,19 +26,39 @@ public class History implements Serializable {
     public History() {
     }
 
+    /**
+     * @return List of orders in history
+     */
     public List<Order> getOrders() {
         return orders;
     }
 
+    /**
+     * Set the list of orders with the provided list
+     * @param orders
+     */
     public void setOrders(ArrayList<Order> orders) {
         this.orders = orders;
     }
 
+    /**
+     * Add an order to the list
+     * @param order
+     */
     public void addOrder(Order order) {
         orders.add(order);
     }
 
     //Return orders based from the entirety of history.xml based on URL parameters (for web service)
+
+    /**
+     * Get all orders matching the provided parameters
+     * @param id
+     * @param email
+     * @param title
+     * @param status
+     * @return The list of matching orders
+     */
     public List<Order> getOrdersByParams(int id, String email, String title, String status) {
         List<Order> ordersToReturn = new ArrayList<Order>();
 
