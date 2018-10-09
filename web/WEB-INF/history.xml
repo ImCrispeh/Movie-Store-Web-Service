@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://uts/wsd/oms history.xsd">
     <order>
-        <orderID>0</orderID>
+        <orderID>100</orderID>
         <movies>
             <movie>
                 <title>Name of movie</title>
@@ -23,7 +23,7 @@
         <orderStatus>submitted</orderStatus>
     </order>
     <order>
-        <orderID>1</orderID>
+        <orderID>101</orderID>
         <movies>
             <movie>
                 <title>blah</title>
@@ -48,7 +48,7 @@
         <orderStatus>cancelled</orderStatus>
     </order> 
     <order>
-        <orderID>2</orderID>
+        <orderID>102</orderID>
         <movies>
             <movie>
                 <title>blah</title>
