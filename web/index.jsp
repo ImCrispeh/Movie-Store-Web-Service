@@ -37,7 +37,7 @@ $(document).ready(function () {
     <a href="login.jsp">Login</a>
 </div>
 <div id="Search" style="margin: auto; width: 50%; padding: 10px;">
-    <form action="index.jsp" id="MovieSearch">
+    <form action="checkout.jsp" id="MovieSearch">
         <table>
             <tr>
                 <td>

@@ -29,7 +29,7 @@
                                 <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
                                 <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />
                             </table>
-                            <button style="float:right;">Submit</button>
+                            <button style="float:right;">Checkout</button>
                         </form>
                     </div>
                     <div style="width:10%"/>
@@ -40,8 +40,8 @@
     
     <xsl:template match="ns:movie">
         <tr style="height: 50px; vertical-align: bottom; border: 1px solid;" onclick="">
-            <td style="display:none;">
-            <!--<td>-->
+            <!--<td style="display:none;">-->
+            <td>
                 <input name="Checkout" type="checkbox"/>
             </td>
             <td>
