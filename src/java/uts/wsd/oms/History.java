@@ -49,8 +49,6 @@ public class History implements Serializable {
         orders.add(order);
     }
 
-    //Return orders based from the entirety of history.xml based on URL parameters (for web service)
-
     /**
      * Get all orders matching the provided parameters
      * @param id
@@ -59,23 +57,23 @@ public class History implements Serializable {
      * @param status
      * @return The list of matching orders
      */
-    public List<Order> getOrdersByParams(int id, String email, String title, String status) {
+    public List<Order> getOrdersByParams(String id, String email, String title, String status) {
         List<Order> ordersToReturn = new ArrayList<Order>();
+        ordersToReturn.addAll(orders);
 
-        //Add orders matching given ID (unless no ID given)
-        if (id != -1) {
-            for (Order order : orders) {
-                if (order.getOrderID() == id) {
-                    ordersToReturn.add(order);
+        //Remove any orders that do not match id parameter
+        if (id != null && !id.isEmpty()) {
+            List<Order> toDelete = new ArrayList<Order>();
+            for (Order order : ordersToReturn) {
+                if (!String.valueOf(order.getOrderID()).equals(id)) {
+                    toDelete.add(order);
                 }
             }
-        } else {
-            if (orders != null) {
-                ordersToReturn.addAll(orders);
-            }
+
+            ordersToReturn.removeAll(toDelete);
         }
 
-        //Remove any orders that do match email parameter
+        //Remove any orders that do not match email parameter
         if (email != null && !email.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
             for (Order order : ordersToReturn) {
@@ -87,7 +85,7 @@ public class History implements Serializable {
             ordersToReturn.removeAll(toDelete);
         }
 
-        //Remove any orders that do match title parameter
+        //Remove any orders that do not match title parameter
         if (title != null && !title.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
 
@@ -111,7 +109,7 @@ public class History implements Serializable {
             ordersToReturn.removeAll(toDelete);
         }
 
-        //Remove any orders that do match status parameter
+        //Remove any orders that do not match status parameter
         if (status != null && !status.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
 

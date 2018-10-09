@@ -54,12 +54,7 @@ public class HistorySoap {
     @WebMethod()
     public History ViewAllOrders(@WebParam(name = "orderID") String orderID, @WebParam(name = "email") String email, @WebParam(name = "title") String title, @WebParam(name = "status") String status) {
         History history = new History();
-        int id = -1;
-        try{
-            id = Integer.parseInt(orderID);
-        }catch(NumberFormatException ex){
-        }
-        history.setOrders((ArrayList<Order>)getMovieStoreApp().getHistory().getOrdersByParams(id, email, title, status));
+        history.setOrders((ArrayList<Order>)getMovieStoreApp().getHistory().getOrdersByParams(orderID, email, title, status));
         return history;
     }
 }
