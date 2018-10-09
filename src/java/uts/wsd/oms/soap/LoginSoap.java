@@ -1,7 +1,11 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package uts.wsd.oms.soap;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.annotation.Resource;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
@@ -12,8 +16,12 @@ import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 import uts.wsd.oms.*;
 
-@WebService(serviceName = "History")
-public class HistorySoap {
+/**
+ *
+ * @author Zhong
+ */
+@WebService(serviceName = "LoginSoap")
+public class LoginSoap {
 
     @Resource
     private WebServiceContext context;
@@ -31,16 +39,12 @@ public class HistorySoap {
         }
         return movieStoreApp;
     }
-    
-    @WebMethod()
-    public History ViewAllOrders(@WebParam(name = "orderID") String orderID, @WebParam(name = "email") String email, @WebParam(name = "title") String title, @WebParam(name = "status") String status) {
-        History history = new History();
-        int id = -1;
-        try{
-            id = Integer.parseInt(orderID);
-        }catch(NumberFormatException ex){
-        }
-        history.setOrders((ArrayList<Order>)getMovieStoreApp().getHistory().getOrdersByParams(id, email, title, status));
-        return history;
+
+    /**
+     * This is a sample web service operation
+     */
+    @WebMethod(operationName = "hello")
+    public User Login(@WebParam(name = "email") String email, @WebParam(name = "password") String password) {
+        return getMovieStoreApp().getUsers().login(email, password);
     }
 }

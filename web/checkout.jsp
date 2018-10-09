@@ -1,5 +1,3 @@
-<%@page import="uts.wsd.oms.Movie"%>
-<%@page import="java.util.*"%>
 <%@page import="uts.wsd.oms.Order"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
@@ -8,10 +6,6 @@
 <% String filePath = application.getRealPath("WEB-INF/order.xml");%>
 <jsp:useBean id="cartController" class="uts.wsd.oms.CartController" scope="application">
     <jsp:setProperty name="cartController" property="filePath" value="<%=filePath%>"/>
-</jsp:useBean>
-<% String msFilePath = application.getRealPath("WEB-INF");%>
-<jsp:useBean id="movieStoreApp" class="uts.wsd.oms.MovieStoreApplication" scope="application">
-    <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=msFilePath%>"/>
 </jsp:useBean>
 <%
     String xmlPath = "WEB-INF\\order.xml";
@@ -22,14 +16,6 @@
         Order order = cartController.createOrder();
         if(user != null)
             order.setUserDetails(user);
-    }
-    ArrayList<String> paramNames = Collections.list(request.getParameterNames());
-    for (String param : paramNames) {
-        if (param.contains("Checkout")) {
-            Movie movie = movieStoreApp.getMovie(param);
-            if(movie != null)
-                cartController.addMovie(movieStoreApp, movie);
-        } 
     }
 %>
 <!DOCTYPE html>
@@ -53,10 +39,5 @@
             <x:param name="firstNameError" value="<%=session.getAttribute("firstNameError")%>" />
             <x:param name="lastNameError" value="<%=session.getAttribute("lastNameError")%>" />
         </x:transform>
-        <%
-            session.removeAttribute("emailError");
-            session.removeAttribute("firstNameError");
-            session.removeAttribute("lastNameError");
-        %>
     </body>
 </html>
