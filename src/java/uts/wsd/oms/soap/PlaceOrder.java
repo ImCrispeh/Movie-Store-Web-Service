@@ -7,8 +7,6 @@ package uts.wsd.oms.soap;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.jws.*;
 import javax.servlet.ServletContext;
@@ -80,6 +78,10 @@ public class PlaceOrder {
             getMovieStoreApp().addOrder(cartorder);
         } catch (JAXBException | FileNotFoundException ex) {
         }
+    }
+    @WebMethod()
+    public Movie getMovie(@WebParam(name="Title") String Title,@WebParam(name="releaseDate") String releaseDate){
+        return getMovieStoreApp().getMovie("Checkout"+ "_" + Title + "_" + releaseDate);
     }
 //    public void RemoveOrder(@WebParam(name="OrderID") int id, @WebParam(name="email"))
 }
