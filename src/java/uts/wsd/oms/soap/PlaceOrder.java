@@ -5,7 +5,10 @@
  */
 package uts.wsd.oms.soap;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.jws.*;
 import javax.servlet.ServletContext;
@@ -20,13 +23,13 @@ import uts.wsd.oms.*;
  */
 @WebService(serviceName = "PlaceOrder")
 public class PlaceOrder {
-    
+
     @Resource
     private WebServiceContext context;
 
     private MovieStoreApplication getMovieStoreApp() {
         ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
-        MovieStoreApplication movieStoreApp = (MovieStoreApplication) application.getAttribute("diaryApp");
+        MovieStoreApplication movieStoreApp = (MovieStoreApplication) application.getAttribute("movieStoreApp");
         try {
             if (movieStoreApp == null) {
                 movieStoreApp = new MovieStoreApplication();
@@ -37,20 +40,46 @@ public class PlaceOrder {
         }
         return movieStoreApp;
     }
+    private CartController getCartController() {
+        ServletContext application = (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
+        CartController CartControllerApp = (CartController) application.getAttribute("cartControllerApp");
+        try {
+            if (CartControllerApp == null) {
+                CartControllerApp = new CartController();
+                CartControllerApp.setFilePath(application.getRealPath("WEB-INF/order.xml"));
+                application.setAttribute("cartControllerApp", CartControllerApp);
+            }
+        } catch (JAXBException | IOException ex) {
+        }
+        return CartControllerApp;
+    }
 
     /**
      *
-     * @param email
-     * @param firstName
-     * @param lastName
-     * @param movies
+     * @param email the Users email
+     * @param firstName the Users First name
+     * @param lastName the Users Last name
+     * @param movies the array of movies that are to be ordered
+     * @param paymentMethod The payment method for the transaction
+     * @throws javax.xml.bind.JAXBException
+     * @throws java.io.FileNotFoundException
      */
     @WebMethod()
-    public void AddOrder(@WebParam(name="email") String email, @WebParam(name="firstName") String firstName, @WebParam(name="lastName") String lastName, @WebParam(name="movies") Movies movies ) {
-        Order order = new Order();
-        order.setEmail(email);
-        order.setFirstName(firstName);
-        order.setLastName(lastName);
+    public void AddOrder(@WebParam(name="email") String email, @WebParam(name="firstName") String firstName, @WebParam(name="lastName") String lastName, @WebParam(name="movies") Movies movies, @WebParam(name="paymentMethod")String paymentMethod ){
+        try {
+            //        Order order = new Order();
+            CartController cart = getCartController();
+            Order cartorder = cart.createOrder();
+            cart.setOrderDetails(firstName, lastName, email, paymentMethod);
+            if(movies != null)
+            {
+                for (Movie movie : movies.getMovies()) {
+                    cart.addMovie(getMovieStoreApp(), movie);
+                }
+            }
+            getMovieStoreApp().addOrder(cartorder);
+        } catch (JAXBException | FileNotFoundException ex) {
+        }
     }
+//    public void RemoveOrder(@WebParam(name="OrderID") int id, @WebParam(name="email"))
 }
-
