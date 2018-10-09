@@ -52,12 +52,12 @@ $(document).ready(function () {
                 </td>
                 <td>
                     <label for="YearS">Start Year
-                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
+                    <input name="YearS" type="number"  value="" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
                     </label>
                 </td>
                 <td>
                     <label for="YearF">End
-                    <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
+                    <input name="YearF" type="number" value="" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
                     </label>
                 </td>
                 <td>
