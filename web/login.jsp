@@ -10,23 +10,18 @@
     String email = "";
     String password = "";
     User user = (User) session.getAttribute("user");
-    
     //redirect user if they go to the login page while already logged in
     if(user != null)
             response.sendRedirect("index.jsp");
     
-    //Validate details and log user in
     if (request.getParameter("login") != null) {
         email = request.getParameter("email");
         password = request.getParameter("password");
         user = movieStoreApp.getUsers().login(email, password);
-        //If user is valid, log them in
         if (user != null) {
             session.setAttribute("user", user);
             response.sendRedirect("main.jsp");
-        } 
-        //Otherwise set the validation errors
-        else {
+        } else {
             loginError = true;
             validEmail = movieStoreApp.validateEmail(email);
             validPassword = movieStoreApp.validatePassword(password);
@@ -63,12 +58,7 @@
                         <td><label for="password">Password</label></td>
                         <td><input type="password" name="password"></td>
                         <% if(!validPassword) { %>
-                        <td>
-                            <text class="validation">
-                            Invalid Password format. 
-                            Passwords Must be at least 8 characters long and only include letters and numbers
-                            </text>
-                        </td>
+                        <td><text class="validation">Invalid Password format</text></td>
                         <% } %>
                     </tr>
                     <tr>

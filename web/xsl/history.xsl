@@ -63,7 +63,7 @@
     </xsl:template>
     <xsl:template match="ns:movie">
         <li>
-            <xsl:value-of select="ns:title"/> x <xsl:value-of select="ns:copies"/> [Genre: <xsl:value-of select="ns:genre"/>, Release Date: <xsl:value-of select="ns:releaseDate"/>, Individual Price: $<xsl:value-of select="format-number(ns:price, '0.00')"/>]
+            <xsl:value-of select="ns:title"/> x <xsl:value-of select="ns:copies"/>
         </li>
     </xsl:template>
 </xsl:stylesheet>

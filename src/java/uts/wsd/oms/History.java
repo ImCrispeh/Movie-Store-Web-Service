@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.*;
 import javax.xml.bind.annotation.*;
 
-/**
- * History Javabean with JAXB bindings
- */
 @XmlRootElement(name = "history")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(namespace="http://uts/wsd/oms")
@@ -15,10 +12,6 @@ public class History implements Serializable {
     @XmlElement(name = "order")
     private ArrayList<Order> orders;
 
-    /**
-     * Constructor that sets the orders list with the provided list of orders
-     * @param orders
-     */
     public History(ArrayList<Order> orders) {
         this.orders = orders;
     }
@@ -26,54 +19,36 @@ public class History implements Serializable {
     public History() {
     }
 
-    /**
-     * @return List of orders in history
-     */
     public List<Order> getOrders() {
         return orders;
     }
 
-    /**
-     * Set the list of orders with the provided list
-     * @param orders
-     */
     public void setOrders(ArrayList<Order> orders) {
         this.orders = orders;
     }
 
-    /**
-     * Add an order to the list
-     * @param order
-     */
     public void addOrder(Order order) {
         orders.add(order);
     }
 
-    /**
-     * Get all orders matching the provided parameters
-     * @param id
-     * @param email
-     * @param title
-     * @param status
-     * @return The list of matching orders
-     */
-    public List<Order> getOrdersByParams(String id, String email, String title, String status) {
+    //Return orders based from the entirety of history.xml based on URL parameters (for web service)
+    public List<Order> getOrdersByParams(int id, String email, String title, String status) {
         List<Order> ordersToReturn = new ArrayList<Order>();
-        ordersToReturn.addAll(orders);
 
-        //Remove any orders that do not match id parameter
-        if (id != null && !id.isEmpty()) {
-            List<Order> toDelete = new ArrayList<Order>();
-            for (Order order : ordersToReturn) {
-                if (!String.valueOf(order.getOrderID()).equals(id)) {
-                    toDelete.add(order);
+        //Add orders matching given ID (unless no ID given)
+        if (id != -1) {
+            for (Order order : orders) {
+                if (order.getOrderID() == id) {
+                    ordersToReturn.add(order);
                 }
             }
-
-            ordersToReturn.removeAll(toDelete);
+        } else {
+            if (orders != null) {
+                ordersToReturn.addAll(orders);
+            }
         }
 
-        //Remove any orders that do not match email parameter
+        //Remove any orders that do match email parameter
         if (email != null && !email.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
             for (Order order : ordersToReturn) {
@@ -85,7 +60,7 @@ public class History implements Serializable {
             ordersToReturn.removeAll(toDelete);
         }
 
-        //Remove any orders that do not match title parameter
+        //Remove any orders that do match title parameter
         if (title != null && !title.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
 
@@ -109,7 +84,7 @@ public class History implements Serializable {
             ordersToReturn.removeAll(toDelete);
         }
 
-        //Remove any orders that do not match status parameter
+        //Remove any orders that do match status parameter
         if (status != null && !status.isEmpty()) {
             List<Order> toDelete = new ArrayList<Order>();
 

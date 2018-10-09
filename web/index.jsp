@@ -2,9 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html"%>
 <%@ page import="java.io.*" %>
-<% String msFilePath = application.getRealPath("WEB-INF");%>
 <link rel="stylesheet" href="styles.css"/>
-<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
 <html>
 <head>
     <title>index</title>
@@ -34,10 +32,11 @@ $(document).ready(function () {
 <body bgcolor="#bdbdbd">
 <div id="Title" style="text-align: right;">
     <H1 style="text-align: center">Movies</H1>
-    <%@include file="/WEB-INF/jspf/navbar.jspf" %>
+    <a href="register.jsp">Register</a>
+    <a href="login.jsp">Login</a>
 </div>
 <div id="Search" style="margin: auto; width: 50%; padding: 10px;">
-    <form action="index.jsp" method="Post" id="MovieSearch">
+    <form action="index.jsp">
         <table>
             <tr>
                 <td>
@@ -50,11 +49,11 @@ $(document).ready(function () {
                 </td>
                 <td>
                     <label for="YearS">Start Year</label>
-                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> 
+                    <input name="YearS" type="number"  value="2000" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
                 </td>
                 <td>
                     <label for="YearF">End</label>
-                    <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
+                    <input name="YearF" type="number" value="2020" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
                 </td>
                 <td>
                     <button>Search</button>
@@ -79,6 +78,8 @@ $(document).ready(function () {
         <x:param name="StartYear" value="<%= startY %>" />
         <x:param name="EndYear" value="<%= endY %>" />
     </x:transform>
-
+</div><div id="Checkout">
+    <a href="checkout."></a>
+</div>
 </body>
 </html>
