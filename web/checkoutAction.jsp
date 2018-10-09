@@ -14,7 +14,7 @@
     String lastName = request.getParameter("lastName");
     String email = request.getParameter("email");
     String paymentMethod = request.getParameter("paymentMethod");
-    boolean emailError = email == null || email.isEmpty();
+    boolean emailError = email == null || email.isEmpty() || !movieStoreApp.validateEmail(email);
     boolean firstNameError = firstName == null || firstName.isEmpty();
     boolean lastNameError = lastName == null || lastName.isEmpty();
 
