@@ -85,12 +85,16 @@ public class Users implements Serializable {
      * @param user
      * @param firstName
      * @param lastName
+     * @param email
      * @param password
-     * @param address
      * @param phoneNo
+     * @param address
+     * @param city
+     * @param state
+     * @param postCode
      */
-    public void editUser(User user, String firstName, String lastName, String password, String address, String phoneNo){
+    public void editUser(User user, String firstName, String lastName, String email, String password, String phoneNo, String address, String city, String state, String postCode){
         removeUser(user);
-        user.updateUser(firstName, lastName, password, address, phoneNo);
+        user.updateUser(firstName, lastName, email, password, phoneNo, address, city, state, postCode);
     }
 }

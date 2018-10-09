@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.*;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = "user")
-@XmlType(namespace="http://uts/wsd/oms")
+@XmlType(namespace = "http://uts/wsd/oms")
 public class User implements Serializable {
 
     @XmlElement(name = "firstName")
@@ -37,8 +37,9 @@ public class User implements Serializable {
     }
 
     /**
-     * Constructor method that sets all user first name, last name, email, password
-     * phoneNo, address, city, state and postcode
+     * Constructor method that sets all user first name, last name, email,
+     * password phoneNo, address, city, state and postcode
+     *
      * @param firstName
      * @param lastName
      * @param email
@@ -47,7 +48,7 @@ public class User implements Serializable {
      * @param address
      * @param city
      * @param state
-     * @param postCode 
+     * @param postCode
      */
     public User(String firstName, String lastName, String email, String password, String phoneNo, String address, String city, String state, String postCode) {
         this.firstName = firstName;
@@ -70,7 +71,8 @@ public class User implements Serializable {
 
     /**
      * set first name of user
-     * @param firstName 
+     *
+     * @param firstName
      */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -85,7 +87,8 @@ public class User implements Serializable {
 
     /**
      * set last name of user
-     * @param lastName 
+     *
+     * @param lastName
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -100,52 +103,56 @@ public class User implements Serializable {
 
     /**
      * set email of user
-     * @param email 
+     *
+     * @param email
      */
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
     /**
      * @return password of user
      */
     public String getPassword() {
         return password;
     }
-    
+
     /**
      * set password of user
-     * @param password 
+     *
+     * @param password
      */
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
     /**
      * @return phoneNo of user
      */
     public String getPhoneNo() {
         return phoneNo;
     }
-    
+
     /**
      * set phoneNo of user
-     * @param phoneNo 
+     *
+     * @param phoneNo
      */
     public void setPhoneNo(String phoneNo) {
         this.phoneNo = phoneNo;
     }
-    
+
     /**
      * @return address of user
      */
     public String getAddress() {
         return address;
     }
-    
+
     /**
      * set address of user
-     * @param address 
+     *
+     * @param address
      */
     public void setAddress(String address) {
         this.address = address;
@@ -157,10 +164,11 @@ public class User implements Serializable {
     public String getCity() {
         return city;
     }
-    
+
     /**
      * set city of user
-     * @param city 
+     *
+     * @param city
      */
     public void setCity(String city) {
         this.city = city;
@@ -172,10 +180,11 @@ public class User implements Serializable {
     public String getState() {
         return state;
     }
-    
+
     /**
      * set state of user
-     * @param state 
+     *
+     * @param state
      */
     public void setState(String state) {
         this.state = state;
@@ -187,30 +196,39 @@ public class User implements Serializable {
     public String getPostCode() {
         return postCode;
     }
-    
+
     /**
      * set postcode of user
-     * @param postCode 
+     *
+     * @param postCode
      */
     public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
-    
+
     /**
-     * Updates user information including first name, last name, password, address
-     * and phoneNo
+     * Updates user information including first name, last name, password,
+     * address and phoneNo
+     *
      * @param firstName
      * @param lastName
+     * @param email
      * @param password
+     * @param phoneNo
      * @param address
-     * @param phoneNo 
+     * @param city
+     * @param state
+     * @param postCode
      */
-    public void updateUser(String firstName, String lastName, String password, String address, String phoneNo){
+    public void updateUser(String firstName, String lastName, String email, String password, String phoneNo, String address, String city, String state, String postCode) {
         this.firstName = firstName;
-        this.lastName= lastName;
+        this.lastName = lastName;
+        this.email = email;
         this.password = password;
-        this.address = address;
         this.phoneNo = phoneNo;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.postCode = postCode;
     }
 }
-
