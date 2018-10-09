@@ -6,3 +6,5 @@ out
 /WSDAssignment.iml
 /web/WEB-INF/sun-jaxws.xml
 nbbuild.xml
+catalog.xml
+web/WEB-INF/wsdl
