@@ -22,7 +22,7 @@
                                         <th>Genre</th>
                                         <th>Release Date</th>
                                         <th>Price</th>
-                                        <th>copeis</th>
+                                        <th>copies</th>
                                     </tr>
                                 </thead>
                                 <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title]" />
