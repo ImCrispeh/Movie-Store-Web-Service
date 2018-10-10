@@ -30,7 +30,7 @@
     <!-- Provide XML using user specific orders -->
 
     <body>
-        <h1 align="center">Main Page</h1>
+        <h1>Main Page</h1>
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
         <h3 align="center">Order History</h3>
         <c:import url = "WEB-INF/history.xml" var="xml"/>

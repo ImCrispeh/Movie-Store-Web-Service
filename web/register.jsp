@@ -66,11 +66,16 @@
     </head>
     <body>
         <h1>Register</h1>
-        
+
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
-        
+        <% if (registerError) { %>
+        <p class="validation">Entered information incorrect. See error messages</p>
+        <%}%>
+        <% if (doesUserExist) { %>
+        <p class="validation">User with email already exists</p>
+        <%}%>
         <form action="" method="post">
-            <table>
+            <table id="userDetailsTable">
                 <tbody>
                     <tr>
                         <td><label for="firstName">First Name:</label></td>
@@ -121,14 +126,14 @@
                     <tr>
                         <td><label for="state">State:</label></td>
                         <td><select name="state">
-                                <option value="nsw" <%= state.equals("nsw") ? "selected" : "" %>>NSW</option>  
-                                <option value="qld" <%= state.equals("qld") ? "selected" : "" %>>QLD</option>
-                                <option value="sa" <%= state.equals("sa") ? "selected" : "" %>>SA</option>
-                                <option value="wa" <%= state.equals("wa") ? "selected" : "" %>>WA</option>
-                                <option value="vic" <%= state.equals("vic") ? "selected" : "" %>>VIC</option>
-                                <option value="act" <%= state.equals("act") ? "selected" : "" %>>ACT</option>
-                                <option value="nt" <%= state.equals("nt") ? "selected" : "" %>>NT</option>
-                                <option value="tas" <%= state.equals("tas") ? "selected" : "" %>>TAS</option>
+                                <option value="nsw" <%= state.equals("nsw") ? "selected" : ""%>>NSW</option>  
+                                <option value="qld" <%= state.equals("qld") ? "selected" : ""%>>QLD</option>
+                                <option value="sa" <%= state.equals("sa") ? "selected" : ""%>>SA</option>
+                                <option value="wa" <%= state.equals("wa") ? "selected" : ""%>>WA</option>
+                                <option value="vic" <%= state.equals("vic") ? "selected" : ""%>>VIC</option>
+                                <option value="act" <%= state.equals("act") ? "selected" : ""%>>ACT</option>
+                                <option value="nt" <%= state.equals("nt") ? "selected" : ""%>>NT</option>
+                                <option value="tas" <%= state.equals("tas") ? "selected" : ""%>>TAS</option>
                             </select>
                         </td>
                     </tr>
@@ -146,11 +151,5 @@
                 </tbody>
             </table>
         </form>
-        <% if (registerError) { %>
-        <p class="validation">Entered information incorrect. See error messages</p>
-        <%}%>
-        <% if (doesUserExist) { %>
-        <p class="validation">User with email already exists</p>
-        <%}%>
     </body>
 </html>

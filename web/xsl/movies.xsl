@@ -22,7 +22,7 @@
                                         <th>Genre</th>
                                         <th>Release Date</th>
                                         <th>Price</th>
-                                        <th>copies</th>
+                                        <th>Available Copies</th>
                                     </tr>
                                 </thead>
                                 <xsl:if test="count(ns:movies) = 1">
@@ -63,19 +63,19 @@
             <!--<td>-->
                 <input name="Checkout_{ns:title}_{ns:releaseDate}" type="checkbox" id=""/>
             </td>
-            <td>
+            <td align="center">
                 <xsl:value-of select="ns:title" />
             </td>
-            <td>
+            <td align="center">
                 <xsl:value-of select="ns:genre"/>
             </td>
-            <td>
+            <td align="center">
                 <xsl:value-of select="ns:releaseDate"/>
             </td>
-            <td>
-                <xsl:value-of select="ns:price"/>
+            <td align="center">
+                $<xsl:value-of select="format-number(ns:price, '0.00')"/>
             </td>
-            <td>
+            <td align="center">
                 <xsl:value-of select="ns:copies"/>
             </td>
         </tr>

@@ -42,7 +42,9 @@
                     <label for="saleTotal">Sale Total:</label>
                 </td>
                 <td>
-                    <xsl:value-of select="ns:saleTotal"/>
+                    <xsl:if test="ns:saleTotal">
+                        $<xsl:value-of select="format-number(ns:saleTotal, '0.00')"/>
+                    </xsl:if>
                 </td>
             </tr>
             <tr>

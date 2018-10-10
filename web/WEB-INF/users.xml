@@ -31,7 +31,7 @@
         <email>chrisf@gmail.com</email>
         <password>Password123</password>
         <phoneNo>0294583910</phoneNo>
-        <address>123 Test Lane</address>
+        <address>275 Movie Street</address>
         <city>Hobart</city>
         <state>TAS</state>
         <postCode>1042</postCode>
@@ -42,10 +42,10 @@
         <email>john@doe.com</email>
         <password>johndoe123</password>
         <phoneNo>0987654321</phoneNo>
-        <address>123 John Avenue</address>
+        <address>1 John Avenue</address>
         <city>Sydney</city>
         <state>NSW</state>
-        <postCode>2000</postCode>
+        <postCode>2011</postCode>
     </user>
     <user>
         <firstName>Test</firstName>
@@ -53,7 +53,7 @@
         <email>test@email.com</email>
         <password>testpass</password>
         <phoneNo>0450110540</phoneNo>
-        <address>123 Test Lane</address>
+        <address>89 Test Lane</address>
         <city>Melbourne</city>
         <state>VIC</state>
         <postCode>2071</postCode>

@@ -50,17 +50,17 @@
         <% }%>
 
         <form action="" method="post">
-            <table id="loginTable">
+            <table id="userDetailsTable">
                 <tbody>
                     <tr>
-                        <td><label for="email">Email</label></td>
+                        <td><label for="email">Email:</label></td>
                         <td><input type="email" name="email" value="<%=email%>"></td>
                         <% if(!validEmail) { %>
                         <td><text class="validation">Invalid Email format</text></td>
                         <% } %>
                     </tr>
                     <tr>
-                        <td><label for="password">Password</label></td>
+                        <td><label for="password">Password:</label></td>
                         <td><input type="password" name="password"></td>
                         <% if(!validPassword) { %>
                         <td>

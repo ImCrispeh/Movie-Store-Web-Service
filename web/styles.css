@@ -4,7 +4,7 @@ body{
 table, th, td {
     /*border: 1px solid black;*/
     border-collapse: collapse;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 tbody th, td{
     padding: 3px 10px;
@@ -15,7 +15,12 @@ table {
 .validation{
     color: red;
 }
-#loginTable, #loginTable th, #loginTable td {
+
+h1 {
+    text-align: center;
+}
+
+#userDetailsTable, #userDetailsTable th, #userDetailsTable td {
     border: 0px !important;
     width:auto !important;
 }
@@ -28,9 +33,22 @@ table {
  .OrdersTable, .OrdersTable table,.OrdersTable th,.OrdersTable td{
     border: 1px solid black !important;
     border-collapse: collapse !important;
-    vertical-align: bottom !important;
+    vertical-align: middle !important;
     background-color: #ddd !important;
+    text-align: center;
 }
+
+.historyTable table, .historyTable th, .historyTable td {
+    border: solid 1px black;
+    border-collapse: collapse;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#historyMovies {
+    text-align: left;
+}
+
 .CartDetails{
     width:auto !important;
 }

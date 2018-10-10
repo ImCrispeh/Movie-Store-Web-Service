@@ -16,10 +16,6 @@
     <xsl:template match="/">
         <html>
             <head>
-                <style>
-                    table { border: solid 1px black; border-collapse: collapse; }
-                    th, td { border: solid 1px black; }
-                </style>
             </head>
             <body>
                 <h1 align="center">Viewing Order History From REST Web Service</h1>
@@ -44,25 +40,25 @@
     </xsl:template>
     <xsl:template match="ns:order">
         <tr>
-            <td style="text-align:center">
+            <td>
                 <xsl:value-of select="ns:orderID"/>
             </td>
-            <td>
+            <td id="historyMovies">
                 <xsl:apply-templates select="ns:movies"/>
             </td>
-            <td style="text-align:center">
+            <td>
                 <xsl:value-of select="ns:firstName"/>&#160;<xsl:value-of select="ns:lastName"/>
             </td>
-            <td style="text-align:center">
+            <td>
                 <xsl:value-of select="ns:email"/>
             </td>
-            <td style="text-align:center">
+            <td>
                 <xsl:value-of select="ns:paymentMethod"/>
             </td>
-            <td style="text-align:center">
+            <td>
                 $<xsl:value-of select="format-number(ns:saleTotal, '0.00')"/>
             </td>
-            <td style="text-align:center">
+            <td>
                 <xsl:value-of select="ns:orderStatus"/>
             </td>
         </tr>

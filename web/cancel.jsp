@@ -32,10 +32,13 @@
         } 
     }
     
+    String orderID = "";
+    if (session.getAttribute("orderID") != null) {
+        orderID = (String) session.getAttribute("orderID");
+    }
+    
     if (request.getParameter("Cancel") != null || request.getParameter("Confirm") != null) {
-        String orderID = (String) session.getAttribute("orderID");
         session.removeAttribute("orderID");
-        System.out.println(orderID);
         if (request.getParameter("Cancel") != null) {
             //System.out.print("print");
             response.sendRedirect("main.jsp");
@@ -55,6 +58,12 @@
     <body>
         <h1>Are you sure?</h1>
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
+        <h3 align="center">Cancelling order:</h3>
+        <c:import url = "WEB-INF/history.xml" var="xml"/>
+        <c:import url = "xsl/cancel.xsl" var="xslt"/>
+        <x:transform xml = "${xml}" xslt = "${xslt}">
+            <x:param name="id" value="<%=orderID%>" />
+        </x:transform>
         <form action="" method="Post">
             <input type="submit" value="Confirm" name="Confirm"/>
             <input type="submit" value="Cancel" name="Cancel"/>

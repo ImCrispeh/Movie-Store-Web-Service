@@ -33,34 +33,34 @@ $(document).ready(function () {
 </script>
 <body bgcolor="#bdbdbd">
 <div id="Title" style="text-align: right;">
-    <H1 style="text-align: center">Movies</H1>
+    <h1>Movies</h1>
     <%@include file="/WEB-INF/jspf/navbar.jspf" %>
 </div>
 <div id="Search" style="margin: auto; width: 50%; padding: 10px;">
     <form action="index.jsp" method="Post" id="MovieSearch">
         <table>
             <tr>
-                <td>
+                <td align="center">
                     <label for="Title">Title
                     <input name="Title" type="text" value="" autocomplete="false">
                     </label>
                 </td>
-                <td>
+                <td align="center">
                     <label for="Genre">Genre
                     <input name="Genre" list="Genres" value="" autocomplete="false" onclick="value=''">
                     </label>
                 </td>
-                <td>
+                <td align="center">
                     <label for="YearS">Start Year
                     <input name="YearS" type="number"  value="" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4">
                     </label>
                 </td>
-                <td>
+                <td align="center">
                     <label for="YearF">End
                     <input name="YearF" type="number" value="" autocomplete="false" min="1900" max="2020" maxlength="4" minlength="4"> <!-- TODO Use todays Date -->
                     </label>
                 </td>
-                <td>
+                <td style="vertical-align: bottom">
                     <button>Search</button>
                 </td>
             </tr>
