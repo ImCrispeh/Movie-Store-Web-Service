@@ -42,10 +42,10 @@
         </movies>
         <firstName>Christopher</firstName>
         <lastName>Fung</lastName>
-        <email>test@email.com</email>
+        <email>xz@xz.com</email>
         <paymentMethod>visa</paymentMethod>
         <saleTotal>20</saleTotal>
-        <orderStatus>cancelled</orderStatus>
+        <orderStatus>submitted</orderStatus>
     </order> 
     <order>
         <orderID>102</orderID>

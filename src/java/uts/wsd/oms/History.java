@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.*;
  */
 @XmlRootElement(name = "history")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(namespace="http://uts/wsd/oms")
+@XmlType(namespace = "http://uts/wsd/oms")
 public class History implements Serializable {
 
     @XmlElement(name = "order")
@@ -17,6 +17,7 @@ public class History implements Serializable {
 
     /**
      * Constructor that sets the orders list with the provided list of orders
+     *
      * @param orders
      */
     public History(ArrayList<Order> orders) {
@@ -35,6 +36,7 @@ public class History implements Serializable {
 
     /**
      * Set the list of orders with the provided list
+     *
      * @param orders
      */
     public void setOrders(ArrayList<Order> orders) {
@@ -43,14 +45,25 @@ public class History implements Serializable {
 
     /**
      * Add an order to the list
+     *
      * @param order
      */
     public void addOrder(Order order) {
         orders.add(order);
     }
 
+    public Order getOrderByID(String ID) {
+        for (Order order : orders) {
+            if (String.valueOf(order.getOrderID()) == ID) {
+                return order;
+            }
+        }
+        return null;
+    }
+
     /**
      * Get all orders matching the provided parameters
+     *
      * @param id
      * @param email
      * @param title
@@ -91,7 +104,7 @@ public class History implements Serializable {
 
             for (Order order : ordersToReturn) {
                 List<Movie> movies = order.getMovies().getMovies();
-                
+
                 int i = 0;
                 boolean isMatch = false;
                 while (i < movies.size() && !isMatch) {
@@ -100,7 +113,7 @@ public class History implements Serializable {
                     }
                     i++;
                 }
-                
+
                 if (!isMatch) {
                     toDelete.add(order);
                 }

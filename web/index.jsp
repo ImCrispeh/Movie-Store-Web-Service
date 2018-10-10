@@ -43,7 +43,6 @@ $(document).ready(function () {
                 <td align="center">
                     <label for="Title">Title
                     <input name="Title" type="text" value="" autocomplete="false">
-                    </label>
                 </td>
                 <td align="center">
                     <label for="Genre">Genre
@@ -77,14 +76,15 @@ $(document).ready(function () {
     <%--movies should apear here--%>
     <c:import url="WEB-INF/movies.xml" var="moviesxml"/>
     <c:import url="xsl/movies.xsl" var="Moviesxslt"/>
+
     <%
         String genre = request.getParameter("Genre");
         String title = request.getParameter("Title");
         String startY = request.getParameter("YearS");
         String endY = request.getParameter("YearF");
     %>
-    <x:transform xml="${moviesxml}" xslt="${Moviesxslt}" >
-        <x:param name="Genre" value="<%= genre %>"/>
+    <x:transform xml="${moviesxml}" xslt="${Moviesxslt}">
+        <x:param name="Genre" value="<%= genre %>" />
         <x:param name="Title" value="<%= title %>" />
         <x:param name="StartYear" value="<%= startY %>" />
         <x:param name="EndYear" value="<%= endY %>" />

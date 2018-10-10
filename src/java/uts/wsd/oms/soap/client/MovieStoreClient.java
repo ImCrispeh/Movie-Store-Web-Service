@@ -12,21 +12,54 @@ public class MovieStoreClient {
     static HistorySoap history = HISTORY_LOCATOR.getHistorySoapPort();
     static final PlaceOrder_Service ORDER_LOCATOR = new PlaceOrder_Service();
     static PlaceOrder order = ORDER_LOCATOR.getPlaceOrderPort();
+    static final LoginSoap_Service LOGIN_LOCATOR = new LoginSoap_Service();
+    static LoginSoap login = LOGIN_LOCATOR.getLoginSoapPort();
     static Scanner in = new Scanner(System.in);
 
     /**
      * Print out a menu that allows the user to access the SOAP service
+     *
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("-------------------------------------------------------------");
-        PlaceOrder();
-        System.out.println("-------------------------------------------------------------");
-        ViewOrders();
+        boolean cont = true;
+        while(cont)
+        {
+            System.out.println("-------------------------------------------------------------");
+            System.out.println("Select an option");
+            System.out.println("1. Login");
+            System.out.println("2. Place order");
+            System.out.println("3. View orders");
+            System.out.println("4. Exit");
+            
+            String input = in.nextLine();
+            try {
+                int numInput = Integer.parseInt(input);
+                switch(numInput){
+                    case 1:
+                        Login();
+                        break;
+                    case 2:
+                        PlaceOrder();
+                        break;
+                    case 3:
+                        ViewOrders();
+                        break;
+                    case 4:
+                        cont = false;
+                        break;
+                    default:
+                        throw new NumberFormatException();
+                }
+            } catch (NumberFormatException ex) {
+                System.out.println("Invalid Input");
+            }
+        }
     }
 
     /**
-     * Prompt the user for order details to query and the display matching orders
+     * Prompt the user for order details to query and the display matching
+     * orders
      */
     private static void ViewOrders() {
         String email, id, title, status;
@@ -39,16 +72,17 @@ public class MovieStoreClient {
         title = in.nextLine();
         System.out.print("Enter Order status: ");
         status = in.nextLine();
-        
+        History h = history.viewAllOrders(id, email, title, status);
         System.out.println("");
-        for (Order order : history.viewAllOrders(id, email, title, status).getOrder()) {
+        for (Order order : h.getOrder()) {
             System.out.println("----------------------------------------------------");
             System.out.println(getOrderString(order));
         }
     }
-    
+
     /**
      * Build a string for the order so that it can be printed
+     *
      * @param order
      * @return A string representing the contents of the order
      */
@@ -69,12 +103,12 @@ public class MovieStoreClient {
         orderString += "└ Order Status: " + order.getOrderStatus();
         return orderString;
     }
-    
+
     private static void PlaceOrder() {
         String email, firstName, lastName, MovieTitle,releaseDate, paymentMethod;
         System.out.print("Enter email: ");
         email = in.nextLine();
-        System.out.print("Enetr First Name: ");
+        System.out.print("Enter First Name: ");
         firstName = in.nextLine();
         System.out.print("Enter last Name: ");
         lastName = in.nextLine();
@@ -109,5 +143,20 @@ public class MovieStoreClient {
 
         System.out.println("Finalising your order");
         order.addOrder(email, firstName, lastName, movies, paymentMethod);
+    }
+
+    private static void Login() {
+        String email, password;
+        System.out.println("Enter email: ");
+        email = in.nextLine();
+        System.out.println("Enter Password: ");
+        password = in.nextLine();
+        
+        System.out.println("logging in");
+        login.login(email, password);
+    }
+    
+    private static void Logout(){
+        login.logout();
     }
 }

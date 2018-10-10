@@ -10,18 +10,6 @@
     <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=filePath%>"/>
 </jsp:useBean>
 <%
-    //History history = movieStoreApp.getHistory();
-    //Order order = history.getOrders();
-    //List<String> orderID = Collections.list(request.getParameterNames());
-    //String[] orderNumber;
-    //for(String order : orderName){
-    //    orderNumber = order.split("_")
-    //}
-    //String[] concat;
-    //int orderID = Integer.parseInt("0");
-    //String order = request.getParameter("{ns:orderID}");
-    //String[] concat = order.split("_");
-    //int orderID = Integer.parseInt(order);
     
     ArrayList<String> paramNames = Collections.list(request.getParameterNames());
     for (String param : paramNames) {
@@ -70,5 +58,3 @@
         </form>
             
         
-    </body>
-</html>

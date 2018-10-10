@@ -37,8 +37,8 @@ public class User implements Serializable {
     }
 
     /**
-     * Constructor method that sets user first name, last name, email,
-     * password, phoneNo, address, city, state and postcode
+     * Constructor method that sets all user first name, last name, email,
+     * password phoneNo, address, city, state and postcode
      *
      * @param firstName
      * @param lastName
@@ -208,7 +208,7 @@ public class User implements Serializable {
 
     /**
      * Updates user information including first name, last name, password,
-     * phoneNo, address, city, state and postcode
+     * address and phoneNo
      *
      * @param firstName
      * @param lastName
