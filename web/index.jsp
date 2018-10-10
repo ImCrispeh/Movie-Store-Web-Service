@@ -47,8 +47,15 @@ $(document).ready(function () {
                 </td>
                 <td align="center">
                     <label for="Genre">Genre
-                    <input name="Genre" list="Genres" value="" autocomplete="false" onclick="value=''">
-                    </label>
+                    <select name="Genre">
+                        <option value="" name=""></option>
+                        <option value="Action" name="Action">Action</option>
+                        <option value="Sci-Fi" name="Sci-Fi">Sci-Fi</option>
+                        <option value="Horror" name="Horror">Horror</option>
+                        <option value="Comedy" name="Comedy">Comedy</option>
+                    </select>
+                </label>
+            </td>
                 </td>
                 <td align="center">
                     <label for="YearS">Start Year
