@@ -2,6 +2,7 @@ package uts.wsd.oms.soap.client;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import uts.wsd.oms.soap.client.history.*;
 
 /**
  * A SOAP Client that allows access to the SOAP service through the command line
@@ -72,7 +73,9 @@ public class MovieStoreClient {
         title = in.nextLine();
         System.out.print("Enter Order status: ");
         status = in.nextLine();
+        
         History h = history.viewAllOrders(id, email, title, status);
+        System.out.println(history.viewAllOrders("100", "test@email.com", "Name of movie", "submitted").getOrder().size());
         System.out.println("");
         for (Order order : h.getOrder()) {
             System.out.println("----------------------------------------------------");
@@ -89,7 +92,7 @@ public class MovieStoreClient {
     private static String getOrderString(Order order) {
         String orderString = "Order ID: " + order.getOrderID() + "\n";
         orderString += "└ Movies:\n";
-        for (Movie m : order.getMovies().getMovie()) {
+        for (uts.wsd.oms.soap.client.history.Movie m : order.getMovies().getMovie()) {
             orderString += "└- Title: " + m.getTitle() + "\n";
             orderString += "└- Genre: " + m.getGenre() + "\n";
             orderString += "└- Release Year: " + m.getReleaseDate() + "\n";

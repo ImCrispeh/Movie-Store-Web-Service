@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.*;
  */
 @XmlRootElement(name = "history")
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(namespace = "http://uts/wsd/oms")
+//@XmlType(namespace = "http://uts/wsd/oms")
 public class History implements Serializable {
 
     @XmlElement(name = "order")

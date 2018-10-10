@@ -18,7 +18,7 @@
         <firstName>Christopher</firstName>
         <lastName>Fung</lastName>
         <email>test@email.com</email>
-        <paymentMethod>visa</paymentMethod>
+        <paymentMethod>Visa</paymentMethod>
         <saleTotal>20</saleTotal>
         <orderStatus>submitted</orderStatus>
     </order>
@@ -43,7 +43,7 @@
         <firstName>Christopher</firstName>
         <lastName>Fung</lastName>
         <email>xz@xz.com</email>
-        <paymentMethod>visa</paymentMethod>
+        <paymentMethod>Visa</paymentMethod>
         <saleTotal>20</saleTotal>
         <orderStatus>submitted</orderStatus>
     </order> 
@@ -61,7 +61,7 @@
         <firstName>Christopher</firstName>
         <lastName>Fung</lastName>
         <email>nontest@email.com</email>
-        <paymentMethod>visa</paymentMethod>
+        <paymentMethod>Visa</paymentMethod>
         <saleTotal>0</saleTotal>
         <orderStatus>cancelled</orderStatus>
     </order>
