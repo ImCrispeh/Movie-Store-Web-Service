@@ -6,17 +6,94 @@
     xsi:schemaLocation="http://uts/wsd/oms movies.xsd">
     
     <movie>
-        <title>Title of movie</title>
-        <genre>Action</genre>
+        <title>The Black Panther</title>
+        <genre>Sci-Fi</genre>
         <releaseDate>2018</releaseDate>
-        <price>20</price>
+        <price>25</price>
         <copies>3</copies>
     </movie>
     <movie>
-        <title>The Lord of the Rings</title>
+        <title>Suicide Squad</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>2016</releaseDate>
+        <price>30</price>
+        <copies>9</copies>
+    </movie>
+    <movie>
+        <title>The Dark Knight</title>
+        <genre>Horror</genre>
+        <releaseDate>2008</releaseDate>
+        <price>15</price>
+        <copies>9</copies>
+    </movie>
+    <movie>
+        <title>Suicide Squad 2</title>
+        <genre>Comedy</genre>
+        <releaseDate>2019</releaseDate>
+        <price>3</price>
+        <copies>9</copies>
+    </movie>
+    <movie>
+        <title>Avengers: Infinity War</title>
         <genre>Sci-Fi</genre>
         <releaseDate>2018</releaseDate>
-        <price>3</price>
+        <price>35</price>
+        <copies>2</copies>
+    </movie>
+    <movie>
+        <title>The Avengers</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>2012</releaseDate>
+        <price>15</price>
+        <copies>9</copies>
+    </movie>
+    <movie>
+        <title>The Shape of Water</title>
+        <genre>Horror</genre>
+        <releaseDate>2017</releaseDate>
+        <price>13</price>
+        <copies>50</copies>
+    </movie>
+    <movie>
+        <title>Titanic</title>
+        <genre>Horror</genre>
+        <releaseDate>1997</releaseDate>
+        <price>24</price>
+        <copies>12</copies>
+    </movie>
+    <movie>
+        <title>Inception</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>2010</releaseDate>
+        <price>27</price>
+        <copies>25</copies>
+    </movie>
+    <movie>
+        <title>Star Wars: Episode IV - A New Hope</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>1977</releaseDate>
+        <price>5</price>
+        <copies>80</copies>
+    </movie>
+    <movie>
+        <title>Venom</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>2018</releaseDate>
+        <price>40</price>
+        <copies>14</copies>
+    </movie>
+    <movie>
+        <title>The Godfather</title>
+        <genre>Sci-Fi</genre>
+        <releaseDate>1972</releaseDate>
+        <price>6</price>
+        <copies>20</copies>
+    </movie>
+    <movie>
+        <title>A Star Is Born</title>
+        <genre>Comedy</genre>
+        <releaseDate>2018</releaseDate>
+        <price>20</price>
         <copies>9</copies>
     </movie>
 </movies>
