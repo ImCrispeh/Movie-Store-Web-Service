@@ -17,12 +17,13 @@
     String xmlPath = "WEB-INF\\order.xml";
     String xslPath = "xsl/cart.xsl";
     User user = (User) session.getAttribute("user");
+    Order order;
     if(cartController.getOrder() == null || cartController.getOrder().getOrderID() == 0)
     {
-        Order order = cartController.createOrder();
-        if(user != null)
-            order.setUserDetails(user);
+        order = cartController.createOrder();
     }
+    if(user != null)
+            cartController.setOrderUser(user);
     ArrayList<String> paramNames = Collections.list(request.getParameterNames());
     for (String param : paramNames) {
         if (param.contains("Checkout")) {
