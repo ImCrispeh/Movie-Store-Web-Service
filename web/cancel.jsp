@@ -10,6 +10,7 @@
     <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=filePath%>"/>
 </jsp:useBean>
 <%
+<<<<<<< HEAD
     List<String> orderID = Collections.list(request.getParameterNames());
 
     String email = request.getParameter("email");
@@ -27,9 +28,42 @@
             }
         }
         response.sendRedirect("main.jsp");
+=======
+    //History history = movieStoreApp.getHistory();
+    //Order order = history.getOrders();
+    //List<String> orderID = Collections.list(request.getParameterNames());
+    //String[] orderNumber;
+    //for(String order : orderName){
+    //    orderNumber = order.split("_")
+    //}
+    //String[] concat;
+    //int orderID = Integer.parseInt("0");
+    //String order = request.getParameter("{ns:orderID}");
+    //String[] concat = order.split("_");
+    //int orderID = Integer.parseInt(order);
+    
+    ArrayList<String> paramNames = Collections.list(request.getParameterNames());
+    for (String param : paramNames) {
+        if (param.contains("order")) {
+            String[] split = param.split("_");
+            if(split.length>1)
+                session.setAttribute("orderID", split[1]);
+        } 
     }
-
-
+    
+    if (request.getParameter("Cancel") != null || request.getParameter("Confirm") != null) {
+        String orderID = (String) session.getAttribute("orderID");
+        session.removeAttribute("orderID");
+        System.out.println(orderID);
+        if (request.getParameter("Cancel") != null) {
+            //System.out.print("print");
+            response.sendRedirect("main.jsp");
+        } else if (request.getParameter("Confirm") != null) {
+            movieStoreApp.cancelOrder(Integer.parseInt(orderID));
+            response.sendRedirect("main.jsp");
+        }
+>>>>>>> master
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -41,9 +75,18 @@
     <body>
         <h1>Are you sure?</h1>
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
+<<<<<<< HEAD
 
         <input type="submit" value="Confirm" name="Confirm"/>
         <input type="submit" value="Cancel" name="Cancel"/>
 
+=======
+        <form action="" method="Post">
+            <input type="submit" value="Confirm" name="Confirm"/>
+            <input type="submit" value="Cancel" name="Cancel"/>
+        </form>
+            
+        
+>>>>>>> master
     </body>
 </html>

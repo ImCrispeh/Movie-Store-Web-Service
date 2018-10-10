@@ -25,9 +25,34 @@
                                         <th>copeis</th>
                                     </tr>
                                 </thead>
+<<<<<<< HEAD
                                 <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title]" />
                                 <xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />
                                 <xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />
+=======
+                                <xsl:if test="count(ns:movies) = 1">
+                                    <xsl:choose>
+                                    <xsl:when test="$Title = '' and $Genre = '' and $StartYear = '' and $EndYear = ''">
+                                        <xsl:apply-templates select="//ns:movies/ns:movie"/>
+                                    </xsl:when>
+                                    <xsl:when test="$StartYear = '' or $EndYear = ''">
+                                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title or ns:genre=$Genre or ns:releaseDate &gt;= $StartYear or ns:releaseDate &lt;=$EndYear]"/>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:apply-templates select="//ns:movies/ns:movie[ns:title=$Title or ns:genre=$Genre or (ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear)]"/>
+                                    </xsl:otherwise>
+                                    </xsl:choose>
+                                    <!--<xsl:apply-templates select="//ns:movies/ns:movie[ns:genre=$Genre]" />-->
+                                    <!--<xsl:apply-templates select="//ns:movies/ns:movie[ns:releaseDate &gt;= $StartYear and ns:releaseDate &lt;=$EndYear]" />-->
+                                </xsl:if>
+                                <xsl:if test="count(ns:movies) = 0">
+                                    <p>
+                                        <script>
+                                            window.location = "404NotFound.html";
+                                        </script>
+                                    </p>
+                                </xsl:if>
+>>>>>>> master
                             </table>
                             <button style="float:right;">Checkout</button>
                         </form>

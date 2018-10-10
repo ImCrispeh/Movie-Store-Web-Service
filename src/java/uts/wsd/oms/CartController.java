@@ -116,7 +116,6 @@ public class CartController {
      * @throws JAXBException
      * @throws FileNotFoundException 
      */
-    @SuppressWarnings("empty-statement")
     private void marshal() throws JAXBException, FileNotFoundException{
         JAXBContext jc = JAXBContext.newInstance(Order.class);
         Marshaller m = jc.createMarshaller();
