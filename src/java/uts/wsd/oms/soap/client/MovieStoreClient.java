@@ -1,5 +1,6 @@
 package uts.wsd.oms.soap.client;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -70,32 +71,36 @@ public class MovieStoreClient {
     }
     
     private static void PlaceOrder() {
-        String email, firstName, lastName, MovieTitle,releaseDate;
+        String email, firstName, lastName, MovieTitle,releaseDate, paymentMethod;
         System.out.print("Enter email: ");
         email = in.nextLine();
         System.out.print("Enetr First Name: ");
         firstName = in.nextLine();
         System.out.print("Enter last Name: ");
         lastName = in.nextLine();
+        System.out.print("Enter payment method: ");
+        paymentMethod = in.nextLine();
         Boolean AddMovies = true;
+        ArrayList<Movie> movies = new ArrayList<Movie>();
         while (AddMovies == true){
-            String add = "y";
-            System.out.print("What is the title of the Movie would you like to Buy");
+            String add = "";
+            System.out.print("What is the title of the Movie would you like to Buy: ");
             MovieTitle = in.nextLine();
-            System.out.print("What is the releaseDate of the Movie would you like to Buy");
+            System.out.print("What is the releaseDate of the Movie would you like to Buy: ");
             releaseDate = in.nextLine();
             Movie movie = order.getMovie(MovieTitle, releaseDate );
             if (movie == null){
                 System.out.println("Hey You need to enter a valid movie");
             }
             else { // Add another movie ?
-                while (add != "n") {
+                movies.add(movie);
+                while (!add.equalsIgnoreCase("n") && !add.equalsIgnoreCase("y")) {
                     System.out.print("Would you like to add another movie? (y/n)");
                     add = in.nextLine();
-                    if (add != "y" | add != "n"){
+                    if (!"y".equals(add) && !"n".equals(add)){
                         System.out.print("Please enter a 'y' or an 'n'");
                     }
-                    else if (add == "n"){
+                    else if ("n".equals(add)){
                         AddMovies = false;
                     }
                 }
@@ -103,6 +108,6 @@ public class MovieStoreClient {
         }
 
         System.out.println("Finalising your order");
-        order.addOrder(email, firstName, lastName, movies);
+        order.addOrder(email, firstName, lastName, movies, paymentMethod);
     }
 }

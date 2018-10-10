@@ -7,6 +7,7 @@ package uts.wsd.oms.soap;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.annotation.Resource;
 import javax.jws.*;
 import javax.servlet.ServletContext;
@@ -59,11 +60,9 @@ public class PlaceOrder {
      * @param lastName the Users Last name
      * @param movies the array of movies that are to be ordered
      * @param paymentMethod The payment method for the transaction
-     * @throws javax.xml.bind.JAXBException
-     * @throws java.io.FileNotFoundException
      */
     @WebMethod()
-    public void AddOrder(@WebParam(name="email") String email, @WebParam(name="firstName") String firstName, @WebParam(name="lastName") String lastName, @WebParam(name="movies") Movies movies, @WebParam(name="paymentMethod")String paymentMethod ){
+    public void AddOrder(@WebParam(name="email") String email, @WebParam(name="firstName") String firstName, @WebParam(name="lastName") String lastName, @WebParam(name="movies") ArrayList<Movie> movies, @WebParam(name="paymentMethod")String paymentMethod ){
         try {
             //        Order order = new Order();
             CartController cart = getCartController();
@@ -71,7 +70,7 @@ public class PlaceOrder {
             cart.setOrderDetails(firstName, lastName, email, paymentMethod);
             if(movies != null)
             {
-                for (Movie movie : movies.getMovies()) {
+                for (Movie movie : movies) {
                     cart.addMovie(getMovieStoreApp(), movie);
                 }
             }
