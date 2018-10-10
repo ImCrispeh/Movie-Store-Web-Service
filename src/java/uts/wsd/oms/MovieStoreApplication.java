@@ -164,7 +164,7 @@ public class MovieStoreApplication implements Serializable {
      */
     public void addOrder(Order order) throws JAXBException, FileNotFoundException {
         if(!order.getOrderStatus().equals("cancelled"))
-            order.setOrderStatus("Submitted");
+            order.setOrderStatus("submitted");
         getHistory().addOrder(order);
         marshalHistory();
     }
