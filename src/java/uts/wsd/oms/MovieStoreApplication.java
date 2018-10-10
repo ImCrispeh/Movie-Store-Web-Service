@@ -204,7 +204,7 @@ public class MovieStoreApplication implements Serializable {
     public void cancelOrder(int orderId) throws JAXBException, FileNotFoundException {
         if (getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().isPresent()) {
             Order order = getHistory().getOrders().stream().filter(u -> u.getOrderID() == orderId).findFirst().get();
-            if(order.getOrderStatus().equals("cancelled"))
+            if(!order.getOrderStatus().equals("cancelled"))
             {
                 order.setOrderStatus("cancelled");
 
