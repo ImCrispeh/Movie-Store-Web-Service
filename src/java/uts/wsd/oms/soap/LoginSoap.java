@@ -29,6 +29,7 @@ public class LoginSoap {
     private WebServiceContext context;
     private MessageContext mc = context.getMessageContext();
     private HttpSession session = ((javax.servlet.http.HttpServletRequest) mc.get(MessageContext.SERVLET_REQUEST)).getSession();
+
     /**
      * Get a reference to the previously instantiated MovieStoreApplication Or
      * instantiate a new one if null
@@ -49,26 +50,20 @@ public class LoginSoap {
         return movieStoreApp;
     }
 
-    private User login(String email, String password) {
+    @WebMethod()
+    private void login(@WebParam(name = "email") String email, @WebParam(name = "password") String password) {
         if (session == null) {
             throw new WebServiceException("No session found");
         }
         User user = (User) session.getAttribute("user");
         if (user == null) {
-            user = movieStoreApp.getUsers.login(email, password);
+            user = getMovieStoreApp().getUsers().login(email, password);
             session.setAttribute("user", user);
         }
-        return getMovieStoreApp().getUsers().login(email, password);
-
     }
 
     private void logout() {
         session.invalidate();
     }
 
-//    @WebMethod()
-//    public User Login(@WebParam(name = "email") String email, @WebParam(name = "password") String password) {
-//
-//        
-//    }
 }

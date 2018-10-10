@@ -52,7 +52,7 @@
         validPostCode = movieStoreApp.validatePostCode(postCode);
 
         if (validFirstName && validLastName && validEmail && validPassword && validPhone && validCity && validPostCode) {
-            if (users.getUser(email) == null) {
+            if (users.getUser(email) == null || users.getUser(email) == user) {
                 movieStoreApp.editUser(user, firstName, lastName, email, password, phoneNo, address, city, state, postCode);
             } else {
                 doesUserExist = true;

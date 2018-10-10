@@ -17,6 +17,7 @@ public class MovieStoreClient {
 
     /**
      * Print out a menu that allows the user to access the SOAP service
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -29,7 +30,8 @@ public class MovieStoreClient {
     }
 
     /**
-     * Prompt the user for order details to query and the display matching orders
+     * Prompt the user for order details to query and the display matching
+     * orders
      */
     private static void ViewOrders() {
         String email, id, title, status;
@@ -42,16 +44,17 @@ public class MovieStoreClient {
         title = in.nextLine();
         System.out.print("Enter Order status: ");
         status = in.nextLine();
-        
+
         System.out.println("");
         for (Order order : history.viewAllOrders(id, email, title, status).getOrder()) {
             System.out.println("----------------------------------------------------");
             System.out.println(getOrderString(order));
         }
     }
-    
+
     /**
      * Build a string for the order so that it can be printed
+     *
      * @param order
      * @return A string representing the contents of the order
      */
@@ -72,7 +75,7 @@ public class MovieStoreClient {
         orderString += "└ Order Status: " + order.getOrderStatus();
         return orderString;
     }
-    
+
     private static void PlaceOrder() {
         String email, firstName, lastName;
         Movies movies = null;
@@ -83,22 +86,23 @@ public class MovieStoreClient {
         System.out.print("Enter last Name: ");
         lastName = in.nextLine();
         System.out.print("What Movie would you like to Buy");
-        
+
         System.out.println("Finalising your order");
         order.addOrder(email, firstName, lastName, movies);
     }
-    
-    private static User Login() {
+
+    private static void Login() {
         String email, password;
         System.out.println("Enter email: ");
         email = in.nextLine();
         System.out.println("Enter Password: ");
         password = in.nextLine();
         
-        if (login.login(email, password) != null)
-        {
-            return login.login(email, password);
-        }
-        return null;
+        System.out.println("logging in");
+        login.login(email, password);
+    }
+    
+    private static void Logout(){
+        login.logout();
     }
 }
