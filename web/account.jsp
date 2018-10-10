@@ -9,8 +9,8 @@
     Users users = movieStoreApp.getUsers();
     User user = (User) session.getAttribute("user");
     History history = movieStoreApp.getHistory();
-    List<Order> orders = history.getOrders();
-    
+    List<Order> orders = history.getOrdersByParams(null, user.getEmail(), null, null);
+
     String firstName = "";
     String lastName = "";
     String email = "";
@@ -20,7 +20,9 @@
     String city = "";
     String state = "";
     String postCode = "";
+    int test = 0;
 
+    boolean test2 = true;
     boolean registerError = false;
     boolean doesUserExist = false;
     boolean validFirstName = true;
@@ -59,12 +61,14 @@
             registerError = true;
         }
     } else if (request.getParameter("Delete") != null) {
-        users.removeUser(user);
-        movieStoreApp.updateUsers(users);
-        for(Order order : orders)
-        {
+        for (Order order : orders) {
             movieStoreApp.cancelOrder(order.getOrderID());
         }
+        
+        
+        //movieStoreApp.cancelOrder(101);
+        users.removeUser(user);
+        movieStoreApp.updateUsers(users);
         response.sendRedirect("logout.jsp");
     }
 %>
@@ -152,8 +156,10 @@
                     </tr>
                     <tr>
                         <td><label for=""></label></td>
+                <form action="" method="post">
                         <td><input name="Update" type="submit" value="Update"></td>
                         <td><input name="Delete" type="submit" value="Delete Account"</td>
+                </form>
                     </tr>
                 </tbody>
             </table>
@@ -163,6 +169,9 @@
         <%}%>
         <% if (doesUserExist) { %>
         <p class="validation">User with email already exists</p>
+        <%}%>
+        <% if (test2) {%>
+        <p><%=test%></p>
         <%}%>
     </body>
 </html>

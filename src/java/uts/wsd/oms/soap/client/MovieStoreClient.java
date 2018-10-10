@@ -11,6 +11,8 @@ public class MovieStoreClient {
     static HistorySoap history = HISTORY_LOCATOR.getHistorySoapPort();
     static final PlaceOrder_Service ORDER_LOCATOR = new PlaceOrder_Service();
     static PlaceOrder order = ORDER_LOCATOR.getPlaceOrderPort();
+    static final Login_Service LOGIN_LOCATOR = new Login_Service();
+    static LoginSoap login = LOGIN_LOCATOR.getLoginSoapPort();
     static Scanner in = new Scanner(System.in);
 
     /**
@@ -23,6 +25,7 @@ public class MovieStoreClient {
         PlaceOrder();
         System.out.println("-------------------------------------------------------------");
         ViewOrders();
+        Login();
     }
 
     /**
@@ -75,7 +78,7 @@ public class MovieStoreClient {
         Movies movies = null;
         System.out.print("Enter email: ");
         email = in.nextLine();
-        System.out.print("Enetr First Name: ");
+        System.out.print("Enter First Name: ");
         firstName = in.nextLine();
         System.out.print("Enter last Name: ");
         lastName = in.nextLine();
@@ -83,5 +86,19 @@ public class MovieStoreClient {
         
         System.out.println("Finalising your order");
         order.addOrder(email, firstName, lastName, movies);
+    }
+    
+    private static User Login() {
+        String email, password;
+        System.out.println("Enter email: ");
+        email = in.nextLine();
+        System.out.println("Enter Password: ");
+        password = in.nextLine();
+        
+        if (login.login(email, password) != null)
+        {
+            return login.login(email, password);
+        }
+        return null;
     }
 }

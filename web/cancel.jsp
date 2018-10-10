@@ -10,26 +10,22 @@
     <jsp:setProperty name="movieStoreApp" property="filePath" value="<%=filePath%>"/>
 </jsp:useBean>
 <%
-    //History history = movieStoreApp.getHistory();
-    //Order order = history.getOrders();
-    //List<String> orderID = Collections.list(request.getParameterNames());
-    //String[] orderNumber;
-    //for(String order : orderName){
-    //    orderNumber = order.split("_")
-    //}
-    //String[] concat;
-    //int orderID = Integer.parseInt("0");
-    //String order = request.getParameter("{ns:orderID}");
-    //String[] concat = order.split("_");
-    //int orderID = Integer.parseInt(order);
-//  
-    String orderID = request.getParameter("{ns:orderID}");
+    List<String> orderID = Collections.list(request.getParameterNames());
+
+    String email = request.getParameter("email");
 
     if (request.getParameter("Cancel") != null) {
         //System.out.print("print");
         response.sendRedirect("main.jsp");
     } else if (request.getParameter("Confirm") != null) {
-        movieStoreApp.cancelOrder(Integer.parseInt(orderID));
+        for (String order : orderID) {
+            if (order.contains("order")) {
+                Order selectedOrder = movieStoreApp.getOrder(order);
+                if (selectedOrder != null) {
+                    movieStoreApp.cancelOrder(selectedOrder.getOrderID());
+                }
+            }
+        }
         response.sendRedirect("main.jsp");
     }
 
@@ -45,9 +41,9 @@
     <body>
         <h1>Are you sure?</h1>
         <%@include file="/WEB-INF/jspf/navbar.jspf" %>
-        
-            <input type="submit" value="Confirm" name="Confirm"/>
-            <input type="submit" value="Cancel" name="Cancel"/>
-        
+
+        <input type="submit" value="Confirm" name="Confirm"/>
+        <input type="submit" value="Cancel" name="Cancel"/>
+
     </body>
 </html>
