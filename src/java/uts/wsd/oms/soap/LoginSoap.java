@@ -27,8 +27,8 @@ public class LoginSoap {
 
     @Resource
     private WebServiceContext context;
-    private final MessageContext mc = context.getMessageContext();
-    private final HttpSession session = ((javax.servlet.http.HttpServletRequest) mc.get(MessageContext.SERVLET_REQUEST)).getSession();
+    private MessageContext mc = context.getMessageContext();
+    private HttpSession session = ((javax.servlet.http.HttpServletRequest) mc.get(MessageContext.SERVLET_REQUEST)).getSession();
 
     /**
      * Get a reference to the previously instantiated MovieStoreApplication Or
@@ -62,7 +62,6 @@ public class LoginSoap {
         }
     }
 
-    @WebMethod()
     public void logout() {
         session.invalidate();
     }
