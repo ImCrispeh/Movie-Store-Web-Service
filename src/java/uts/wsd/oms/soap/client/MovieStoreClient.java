@@ -75,7 +75,6 @@ public class MovieStoreClient {
         status = in.nextLine();
         
         History h = history.viewAllOrders(id, email, title, status);
-        System.out.println(history.viewAllOrders("100", "test@email.com", "Name of movie", "submitted").getOrder().size());
         System.out.println("");
         for (Order order : h.getOrder()) {
             System.out.println("----------------------------------------------------");
