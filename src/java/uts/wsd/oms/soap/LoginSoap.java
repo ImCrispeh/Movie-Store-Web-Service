@@ -27,8 +27,6 @@ public class LoginSoap {
 
     @Resource
     private WebServiceContext context;
-    private MessageContext mc = context.getMessageContext();
-    private HttpSession session = ((javax.servlet.http.HttpServletRequest) mc.get(MessageContext.SERVLET_REQUEST)).getSession();
 
     /**
      * Get a reference to the previously instantiated MovieStoreApplication Or
@@ -52,17 +50,23 @@ public class LoginSoap {
 
     @WebMethod()
     public void login(@WebParam(name = "email") String email, @WebParam(name = "password") String password) {
-        if (session == null) {
+        MessageContext mc = context.getMessageContext();
+        HttpSession session = ((javax.servlet.http.HttpServletRequest) mc.get(MessageContext.SERVLET_REQUEST)).getSession();
+        if (session
+                == null) {
             throw new WebServiceException("No session found");
         }
         User user = (User) session.getAttribute("user");
-        if (user == null) {
+        if (user
+                == null) {
             user = getMovieStoreApp().getUsers().login(email, password);
             session.setAttribute("user", user);
         }
     }
 
     public void logout() {
+        MessageContext mc = context.getMessageContext();
+        HttpSession session = ((javax.servlet.http.HttpServletRequest) mc.get(MessageContext.SERVLET_REQUEST)).getSession();
         session.invalidate();
     }
 
